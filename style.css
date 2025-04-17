@@ -187,6 +187,7 @@ button.toggle_theme {
   background: none;
   border: none;
   padding: 0 0.5rem;
+  font-size: 1.5rem;
 }
 button.toggle_theme:hover {
   cursor: pointer;
@@ -214,6 +215,17 @@ textarea {
     margin-left: 0;
     margin-top: 0;
     padding: 1rem;
+  }
+  .ringkasan {
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+  }
+
+  .ringkasan .card {
+    margin-bottom: 0;
+  }
+  .mtxl {
+    margin-top: 0.5rem !important;
   }
 }
 
@@ -254,6 +266,10 @@ body.dark input {
   margin: auto;
   padding: 1rem;
   margin-top: 3rem;
+}
+
+.transaksi-page h2 {
+  margin-bottom: 1rem;
 }
 
 .form-transaksi {
@@ -376,6 +392,10 @@ body.dark .tx-transaksi {
   margin: 1rem auto;
 }
 
+.kategori-page h2 {
+  margin-bottom: 1rem;
+}
+
 .kategori-page form {
   display: flex;
   gap: 1rem;
@@ -462,6 +482,10 @@ body.dark .tx-transaksi {
   padding: 1rem;
 }
 
+.riwayat-section h2 {
+  margin-bottom: 1rem;
+}
+
 .riwayat-container {
   overflow-x: auto;
 }
@@ -489,6 +513,9 @@ body.dark .tx-transaksi {
 /*RIWAYAT END*/
 
 /*LAPORAN START*/
+.laporan h2 {
+  margin-bottom: 1rem;
+}
 .laporan .ringkasan {
   display: flex;
   gap: 1rem;

@@ -40,18 +40,19 @@ function setupDashboard() {
 }
 
 function exportData() {
-  const transaksi = JSON.parse(localStorage.getItem("data-transaksi") || "[]");
-  const kategori = JSON.parse(localStorage.getItem("data-kategori") || "[]");
-  const dataGabungan = { transaksi, kategori };
+  const data = {
+    transaksi: JSON.parse(localStorage.getItem("transaksiKasKu") || "[]"),
+    kategori: JSON.parse(localStorage.getItem("data-kategori") || "[]"),
+  };
 
-  const blob = new Blob([JSON.stringify(dataGabungan, null, 2)], {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: "application/json",
   });
-  const url = URL.createObjectURL(blob);
 
+  const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "backup_kasku.json";
+  a.download = "backup_kas.json";
   a.click();
   URL.revokeObjectURL(url);
 }

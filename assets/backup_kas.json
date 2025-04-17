@@ -1,0 +1,46 @@
+{
+  "transaksi": [
+    {
+      "id": 1744909738640,
+      "tanggal": "2025-04-01",
+      "nominal": 3000000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Modal awal"
+    },
+    {
+      "id": 1744909767951,
+      "tanggal": "2025-04-01",
+      "nominal": 1200000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli Modem 10pcs xpon"
+    },
+    {
+      "id": 1744909800183,
+      "tanggal": "2025-04-01",
+      "nominal": 150000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli adaptor 12v1a 10pcs"
+    }
+  ],
+  "kategori": [
+    {
+      "id": 1744909662104,
+      "nama": "Modal"
+    },
+    {
+      "id": 1744909664648,
+      "nama": "Jasa"
+    },
+    {
+      "id": 1744909668296,
+      "nama": "Minuman"
+    },
+    {
+      "id": 1744909673336,
+      "nama": "Elektronik"
+    }
+  ]
+}
