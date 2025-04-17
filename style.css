@@ -82,7 +82,7 @@ body.dark .btn:hover {
     right: 0;
     left: 0;
     z-index: 100;
-    box-shadow: 0px 2px 13px 0px rgba(0, 0, 0, .5);
+    box-shadow: 0 2px 13px 0 rgba(0, 0, 0, .5);
 }
 .app-header .logo {
     display: flex;
@@ -170,7 +170,7 @@ body.dark .btn:hover {
     cursor: pointer;
     background: none;
     border: none;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .flex {display: flex}
@@ -407,7 +407,7 @@ body.dark .tx-transaksi {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border: none;
-    text-shadow: 0 1px 0px rgb(0,0,0);
+    text-shadow: 0 1px 0 rgb(0,0,0);
     transition: background-color .3s;
     border-radius: 5px;
 }
