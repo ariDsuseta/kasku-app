@@ -24,6 +24,29 @@ function setupDashboard() {
 
   const saldo = pemasukan - pengeluaran;
 
+	renderChart(document.getElementById("chartPie"),"pie",["Pemasukan", "Pengeluaran"],[pemasukan, pengeluaran], ['#4CAF50', '#F44336'], 'Perbandingan Pemasukan & Pengeluaran');
+	const transaksiKeluar = data.filter(data => data.jenis === "pengeluaran");
+	const transaksiMasuk = data.filter(data => data.jenis === 'pemasukan');
+	const pengeluaranPerKategori = {}, pemasukanPerKategori = {};
+	transaksiKeluar.forEach(tx => {
+		if (!pengeluaranPerKategori[tx.kategori]) {
+			pengeluaranPerKategori[tx.kategori] = 0;
+		}
+		pengeluaranPerKategori[tx.kategori] += tx.nominal;
+	});
+
+	transaksiMasuk.forEach(tx => {
+		if (!pemasukanPerKategori[tx.kategori]){
+			pemasukanPerKategori[tx.kategori] = 0;
+		}
+		pemasukanPerKategori[tx.kategori] += tx.nominal;
+	});
+
+	const labels = Object.keys(pengeluaranPerKategori);
+	const dataBar = Object.values(pengeluaranPerKategori);
+
+	renderChart(document.getElementById('chartBar'),"bar",labels, dataBar, "#F44336", "Pengeluaran per Kategori", false);
+
   document.getElementById("saldo").textContent = `Rp ${escapeHTML(
     saldo.toLocaleString()
   )}`;
@@ -67,8 +90,6 @@ function importData() {
   reader.onload = (e) => {
     try {
       const result = JSON.parse(e.target.result);
-      console.log(result);
-
       // Validasi struktur dan isi
       validateDataFormat(result);
 
@@ -83,4 +104,35 @@ function importData() {
     }
   };
   reader.readAsText(file);
+}
+
+function renderChart(chartEl, typeChart,labels,databar, background, textTitle, lagend = true){
+	const ctx = chartEl.getContext("2d");
+	new Chart(ctx, {
+		type: typeChart,
+		data: {
+			labels: labels,
+			datasets: [{
+				data: databar,
+				backgroundColor: background,
+			}]
+		},
+		options: {
+			responsive: true,
+			plugins: {
+				legend: {
+					display: lagend,
+					position: 'bottom'
+				},
+				title: {
+					display: true,
+					text: textTitle,
+					font: {
+						size: 16,
+						weight: "bold"
+					}
+				}
+			}
+		}
+	});
 }

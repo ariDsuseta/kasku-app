@@ -37,3 +37,27 @@ export function validateDataFormat(data) {
 
   return true;
 }
+
+export function getPaginationPages(currentPage, totalPages, maxVisible = 5) {
+	const pages = [];
+	const half = Math.floor(maxVisible / 2);
+	let start = Math.max(1, currentPage - half);
+	let end = Math.min(totalPages, currentPage + half);
+
+	if (start > 1) {
+		pages.push(1);
+		if (start > 2) pages.push('...');
+	}
+
+	for (let i = start; i <= end; i++) {
+		pages.push(i);
+	}
+
+	if (end < totalPages) {
+		if (end < totalPages - 1) pages.push('...');
+		pages.push(totalPages);
+	}
+
+	return pages;
+}
+

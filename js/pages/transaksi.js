@@ -1,4 +1,4 @@
-import { escapeHTML } from "../utils.js";
+import { escapeHTML, getPaginationPages } from "../utils.js";
 
 export function renderTransaksi(content) {
   fetch("pages/transaksi.html")
@@ -17,18 +17,16 @@ function setupTransaksiPage() {
   const saldo = document.getElementById("saldo");
   const transaksiKey = "transaksiKasKu";
 
-  const ITEM_PER_PAGE = 5;
-  let curentPage = 1;
-
   function getData() {
     return JSON.parse(localStorage.getItem(transaksiKey)) || [];
   }
 
-  function tampilkanDaftarTransaksi() {
-    const data = getData();
-    const start = (curentPage - 1) * ITEM_PER_PAGE;
-    const end = start + ITEM_PER_PAGE;
-    const dataShow = data.slice(start, end);
+  function tampilkanDaftarTransaksi(page = 1) {
+		const data = getData(); // Ambil dari localStorage
+		const perHalaman = 5;
+		const totalHalaman = Math.ceil(data.length / perHalaman);
+		const mulai = (page - 1) * perHalaman;
+		const dataShow = data.slice(mulai, mulai + perHalaman);
 
     daftar.innerHTML = "";
     let pemasukan = 0;
@@ -58,7 +56,7 @@ function setupTransaksiPage() {
       else pengeluaran += tx.nominal;
     });
 
-    tampilkanNavigasi(data.length);
+    tampilkanPagination(page, totalHalaman);
     totalPemasukan.textContent = `Rp ${escapeHTML(pemasukan.toLocaleString())}`;
     totalPengeluaran.textContent = `Rp ${escapeHTML(
       pengeluaran.toLocaleString()
@@ -67,7 +65,7 @@ function setupTransaksiPage() {
       (pemasukan - pengeluaran).toLocaleString()
     )}`;
 
-    // 	event litener tombol edit dan hapus
+    // 	event listener tombol edit dan hapus
     daftar
       .querySelectorAll(".edit-btn")
       .forEach((btn) =>
@@ -86,24 +84,53 @@ function setupTransaksiPage() {
       );
   }
 
-  function tampilkanNavigasi(totalData) {
-    const totalPages = Math.ceil(totalData / ITEM_PER_PAGE);
-    const nav = document.getElementById("pagination");
-    nav.innerHTML = "";
+	function tampilkanPagination(currentPage, totalPages) {
+		const paginationEl = document.getElementById("pagination");
+		paginationEl.innerHTML = "";
 
-    for (let i = 1; i <= totalPages; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      btn.className = i === curentPage ? "active" : "";
-      btn.onclick = function () {
-        curentPage = i;
-        tampilkanDaftarTransaksi();
-      };
-      nav.appendChild(btn);
-    }
-  }
+		// Tombol Prev
+		const prevBtn = document.createElement("button");
+		prevBtn.textContent = "Prev";
+		prevBtn.className = "pagination-btn";
+		prevBtn.disabled = currentPage === 1;
+		prevBtn.addEventListener("click", () => {
+			if (currentPage > 1) tampilkanDaftarTransaksi(currentPage - 1);
+		});
+		paginationEl.appendChild(prevBtn);
 
-  function hapusTransaksi(index, message, conf = false) {
+		const pages = getPaginationPages(currentPage, totalPages);
+
+		pages.forEach(page => {
+			const button = document.createElement("button");
+			button.className = "pagination-btn";
+
+			if (page === "...") {
+				button.textContent = "...";
+				button.disabled = true;
+			} else {
+				button.textContent = page;
+				if (page === currentPage) button.classList.add("active");
+				button.addEventListener("click", () => {
+					tampilkanDaftarTransaksi(page); // refresh data untuk halaman tsb
+				});
+			}
+
+			paginationEl.appendChild(button);
+		});
+
+		// Tombol Next
+		const nextBtn = document.createElement("button");
+		nextBtn.textContent = "Next";
+		nextBtn.className = "pagination-btn";
+		nextBtn.disabled = currentPage === totalPages;
+		nextBtn.addEventListener("click", () => {
+			if (currentPage < totalPages) tampilkanDaftarTransaksi(currentPage + 1);
+		});
+		paginationEl.appendChild(nextBtn);
+	}
+
+
+	function hapusTransaksi(index, message, conf = false) {
     // cek mode edit
     if (form.dataset.editing) {
       form.tanggal.disabled = false;
