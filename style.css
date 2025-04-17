@@ -1,594 +1,634 @@
 /* RESET DASAR */
 :root {
-    --primary: #2a7afe;
-    --primary-dark: #1f5fd1;
-    --danger: #e74c3c;
-    --danger-dark: #861414;
-    --card-bg: #f9f9f9;
-    --border-color: #ddd;
-    --bg-card: #f5f5f5;
-    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    --shadow-dark: 0 4px 10px rgba(0, 0, 0, 0.3);
-    --bg-card-light: #f0f4f8;
-    --bg-card-dark: #333;
-    --text-light: #333;
-    --text-dark: #fff;
+  --primary: #2a7afe;
+  --primary-dark: #1f5fd1;
+  --danger: #e74c3c;
+  --danger-dark: #861414;
+  --card-bg: #f9f9f9;
+  --border-color: #ddd;
+  --bg-card: #f5f5f5;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-dark: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --bg-card-light: #f0f4f8;
+  --bg-card-dark: #333;
+  --text-light: #333;
+  --text-dark: #fff;
 
-    --primary-color: #4caf50; /* Hijau */
-    --secondary-color: #ff9800; /* Orange */
-    --danger-color: #f44336; /* Merah */
-    --info-color: #2196f3;
+  --primary-color: #4caf50; /* Hijau */
+  --secondary-color: #ff9800; /* Orange */
+  --danger-color: #f44336; /* Merah */
+  --info-color: #2196f3;
 }
 /*html {scroll-behavior: smooth}*/
 body.dark {
-    --card-bg: #1f1f1f;
-    --border-color: #444;
+  --card-bg: #1f1f1f;
+  --border-color: #444;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
 }
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 /* DARK MODE */
 body.dark {
-    background-color: #121212;
-    color: #e0e0e0;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 body.dark .app-header {
-    background-color: #1e1e1e;
+  background-color: #1e1e1e;
 }
 body.dark .sidebar {
-    background-color: #1f1f1f;
+  background-color: #1f1f1f;
 }
 body.dark .sidebar li:hover {
-    background-color: #333;
+  background-color: #333;
 }
 body.dark .card {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
 body.dark .btn {
-    background-color: #333;
-    color: #e0e0e0;
+  background-color: #333;
+  color: #e0e0e0;
 }
 body.dark .btn:hover {
-    background-color: #555;
+  background-color: #555;
 }
 
 /* HEADER */
 .app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #2196f3;
-    color: white;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 100;
-    box-shadow: 0 2px 13px 0 rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2196f3;
+  color: white;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 2px 13px 0 rgba(0, 0, 0, 0.5);
 }
 .app-header .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 .app-header img {
-    height: 40px;
-    margin-right: 10px;
+  height: 40px;
+  margin-right: 10px;
 }
 .app-header h1 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 /* SIDEBAR */
 .sidebar {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 200px;
-    height: calc(100vh - 70px);
-    background-color: #ffffff;
-    /*border-right: 1px solid #ddd;*/
-    padding-top: 1rem;
-    overflow-y: auto;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 200px;
+  height: calc(100vh - 70px);
+  background-color: #ffffff;
+  /*border-right: 1px solid #ddd;*/
+  padding-top: 1rem;
+  overflow-y: auto;
 }
 .sidebar ul {
-    list-style: none;
+  list-style: none;
 }
 .sidebar li {
-    padding: 12px 20px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 .sidebar li:hover {
-    background-color: #e3f2fd;
+  background-color: #e3f2fd;
 }
 
 /* KONTEN UTAMA */
 #app-content {
-    margin-left: 200px;
-    /*margin-top: 70px;*/
-    padding: 2rem;
+  margin-left: 200px;
+  /*margin-top: 70px;*/
+  padding: 2rem;
 }
 
 /* KOMPONEN UMUM */
 .card {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 .btn {
-    display: inline-block;
-    font-size: 1rem;
-    padding: 0.8rem 1rem;
-    background-color: #2196f3;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 .btn:hover {
-    background-color: #1976d2;
+  background-color: #1976d2;
 }
 
-.mb{
-    margin-bottom: 1rem;
+.mb {
+  margin-bottom: 1rem;
 }
 
 .absolute {
-    position: absolute;
+  position: absolute;
 }
 .relative {
-    position: relative;
+  position: relative;
 }
 
-.absolute.btn-theme{
-    top: 1rem;
-    right: 1rem;
-    border-radius: 100%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
+.absolute.btn-theme {
+  top: 1rem;
+  right: 1rem;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
-.flex {display: flex}
-.flex.columns{flex-direction: column}
-.flex.flex-wrap{flex-wrap: wrap}
-
-
-button.toggle_theme{
-    background: none;
-    border: none;
-    padding: 0 0.5rem;
+.flex {
+  display: flex;
 }
-button.toggle_theme:hover{
-    cursor: pointer;
+.flex.columns {
+  flex-direction: column;
 }
-input, select, textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    margin-bottom: 1rem;
-    border-radius: 6px;
+.flex.flex-wrap {
+  flex-wrap: wrap;
+}
+
+button.toggle_theme {
+  background: none;
+  border: none;
+  padding: 0 0.5rem;
+}
+button.toggle_theme:hover {
+  cursor: pointer;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 6px;
 }
 
 /* RESPONSIF */
 @media (max-width: 768px) {
-    .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-    }
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 3.5rem;
+  }
 
-    #app-content {
-        margin-left: 0;
-        margin-top: 0;
-        padding: 1rem;
-    }
-
-    .app-header {
-        flex-direction: column;
-        align-items: flex-start;
-        height: auto;
-    }
+  #app-content {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 1rem;
+  }
 }
 
 /* HALAMAN LOGIN */
 body.login-page {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 .login-container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 body.dark.login-page {
-    background-color: #121212;
+  background-color: #121212;
 }
 body.dark .login-container {
-    background-color: #1e1e1e;
-    color: #e0e0e0;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
-body.dark input{
-    background: #232323;
-    color: #e0e0e0;
-    border: 1px solid #131313;
+body.dark input {
+  background: #232323;
+  color: #e0e0e0;
+  border: 1px solid #131313;
 }
-
 
 /*halaman transaksi*/
 /* Umum */
 .transaksi-page {
-    max-width: 600px;
-    margin: auto;
-    padding: 1rem;
-    margin-top: 3rem;
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+  margin-top: 3rem;
 }
 
 .form-transaksi {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .form-transaksi input,
 .form-transaksi select {
-    padding: 0.5rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: #000;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #000;
 }
 
 .mtxl {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
-.text-center {text-align: center}
+.text-center {
+  text-align: center;
+}
 
 /* Dark mode */
 body.dark .form-transaksi input,
 body.dark .form-transaksi select {
-    background-color: #1f1f1f;
-    border: 1px solid #555;
-    color: #f0f0f0;
+  background-color: #1f1f1f;
+  border: 1px solid #555;
+  color: #f0f0f0;
 }
 
 .form-transaksi button {
-    padding: 0.5rem;
-    background-color: #00a86b;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
+  padding: 0.5rem;
+  background-color: #00a86b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .form-transaksi button:hover {
-    background-color: #008f5e;
+  background-color: #008f5e;
 }
 
 /* Summary */
 .summary {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    color: #000;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: #000;
 }
 
 body.dark .summary {
-    background-color: #2b2b2b;
-    color: #fff;
+  background-color: #2b2b2b;
+  color: #fff;
 }
 
 /* Daftar transaksi */
 .daftar-transaksi {
-    list-style: none;
-    padding: 0;
-    margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
 }
 
 .tx-transaksi {
-    padding: 0.75rem;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    background-color: #eee;
-    color: #000;
-    border-left: 5px solid #999;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  background-color: #eee;
+  color: #000;
+  border-left: 5px solid #999;
 }
 
 body.dark .tx-transaksi {
-    background-color: #2c2c2c;
-    color: #fff;
+  background-color: #2c2c2c;
+  color: #fff;
 }
 
 .tx-transaksi.pemasukan {
-    border-left-color: #00a86b;
+  border-left-color: #00a86b;
 }
 
 .tx-transaksi.pengeluaran {
-    border-left-color: #e74c3c;
+  border-left-color: #e74c3c;
 }
 
 .aksi {
-    right: 0;
-    top: 0;
+  right: 0;
+  top: 0;
 }
 .dark .aksi button {
-    background-color: #212121;
-
+  background-color: #212121;
 }
 .aksi button {
-    border: none;
-    background-color: #e0e0e0;
-    padding: 3px 6px;
-    cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
-    transition: all .3s;
+  border: none;
+  background-color: #e0e0e0;
+  padding: 3px 6px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
 }
 .dark .aksi button:active {
-    background-color: #121212;
-    box-shadow: none;
+  background-color: #121212;
+  box-shadow: none;
 }
 
 .aksi button:active {
-    background-color: #c5c5c5;
-    box-shadow: none;
+  background-color: #c5c5c5;
+  box-shadow: none;
 }
 
 /*KATEGORI START*/
 .kategori-page {
-    max-width: 600px;
-    margin: 1rem auto;
+  max-width: 600px;
+  margin: 1rem auto;
 }
 
 .kategori-page form {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .kategori-page input {
-    flex: 1;
-    margin-bottom: 0;
+  flex: 1;
+  margin-bottom: 0;
 }
 .kategori-page button {
-    background-color: #00a86b;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+  background-color: #00a86b;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 .tabel-kategori {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .tabel-kategori th,
 .tabel-kategori td {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
 }
 
 .tabel-kategori button {
-    margin: 0 0.25rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border: none;
-    text-shadow: 0 1px 0 rgb(0,0,0);
-    transition: background-color .3s;
-    border-radius: 5px;
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  text-shadow: 0 1px 0 rgb(0, 0, 0);
+  transition: background-color 0.3s;
+  border-radius: 5px;
 }
 .tabel-kategori button:nth-child(1) {
-    background-color: var(--primary);
-    color: var(--primary-dark);
+  background-color: var(--primary);
+  color: var(--primary-dark);
 }
 .tabel-kategori button:nth-child(1):hover {
-    background-color: var(--primary-dark);
-    color: var(--primary);
+  background-color: var(--primary-dark);
+  color: var(--primary);
 }
 .tabel-kategori button:nth-child(2) {
-    background-color: var(--danger);
-    color: var(--danger-dark);
+  background-color: var(--danger);
+  color: var(--danger-dark);
 }
 .tabel-kategori button:nth-child(2):hover {
-    background-color: var(--danger-dark);
-    color: var(--danger);
+  background-color: var(--danger-dark);
+  color: var(--danger);
 }
 /*KATEGORI END*/
 
 .form-transaksi .btn-btl-edit {
-    background-color: var(--danger);
-    transition: background-color .3s;
+  background-color: var(--danger);
+  transition: background-color 0.3s;
 }
 .form-transaksi .btn-btl-edit:hover {
-    background-color: var(--danger-dark);
+  background-color: var(--danger-dark);
 }
 /*Pagination*/
 .pagination-container {
-    margin-top: 10px;
-    display: flex;
-    gap: 5px;
-    justify-content: center;
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
 }
 .pagination-container button {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    background: #f2f2f2;
-    cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background: #f2f2f2;
+  cursor: pointer;
 }
 .pagination-container button.active {
-    background: #333;
-    color: white;
-    font-weight: bold;
+  background: #333;
+  color: white;
+  font-weight: bold;
 }
 
 /*RIWAYAT START*/
 .riwayat-section {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .riwayat-container {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .riwayat-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.riwayat-table th, .riwayat-table td {
-    padding: 0.75rem;
-    border: 1px solid var(--border-color);
-    text-align: left;
+.riwayat-table th,
+.riwayat-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
 .riwayat-table td.plus {
-    color: green;
+  color: green;
 }
 
 .riwayat-table td.minus {
-    color: red;
+  color: red;
 }
 
 /*RIWAYAT END*/
 
 /*LAPORAN START*/
 .laporan .ringkasan {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .laporan .card {
-    flex: 1;
-    padding: 1rem;
-    border-radius: 10px;
-    color: #fff;
-    text-align: center;
+  flex: 1;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
 }
 
-.card.pemasukan { background-color: #2ecc71; }
-.card.pengeluaran { background-color: #e74c3c; }
-.card.saldo { background-color: #3498db; }
+.card.pemasukan {
+  background-color: #2ecc71;
+}
+.card.pengeluaran {
+  background-color: #e74c3c;
+}
+.card.saldo {
+  background-color: #3498db;
+}
 
 .laporan table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
-.laporan th, .laporan td {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    text-align: left;
+.laporan th,
+.laporan td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 /*LAPORAN END*/
 
 /*DASHBOARD START*/
 .dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .stat-box {
-    background-color: var(--bg-card-light);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s;
-    color: var(--text-light);
+  background-color: var(--bg-card-light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+  color: var(--text-light);
 }
 
 .stat-box:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .stat-box h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 .stat-box p {
-    font-size: 1.5rem;
-    font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .stat-box.saldo {
-    background-color: var(--primary-color); /* Hijau untuk saldo */
-    color: #fff;
+  background-color: var(--primary-color); /* Hijau untuk saldo */
+  color: #fff;
 }
 
 .stat-box.masuk {
-    background-color: var(--info-color); /* Biru untuk pemasukan */
-    color: #fff;
+  background-color: var(--info-color); /* Biru untuk pemasukan */
+  color: #fff;
 }
 
 .stat-box.keluar {
-    background-color: var(--danger-color); /* Merah untuk pengeluaran */
-    color: #fff;
+  background-color: var(--danger-color); /* Merah untuk pengeluaran */
+  color: #fff;
 }
 
 .stat-box.jumlah {
-    background-color: var(--secondary-color); /* Orange untuk jumlah transaksi */
-    color: #fff;
+  background-color: var(--secondary-color); /* Orange untuk jumlah transaksi */
+  color: #fff;
 }
 
 /* Dark Mode */
 body.dark .stat-box {
-    background-color: var(--bg-card-dark);
-    color: #fff;
-    box-shadow: var(--shadow-dark);
+  background-color: var(--bg-card-dark);
+  color: #fff;
+  box-shadow: var(--shadow-dark);
 }
 
 body.dark .stat-box.saldo {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 body.dark .stat-box.masuk {
-    background-color: var(--info-color);
+  background-color: var(--info-color);
 }
 
 body.dark .stat-box.keluar {
-    background-color: var(--danger-color);
+  background-color: var(--danger-color);
 }
 
 body.dark .stat-box.jumlah {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 /*DASHBOARD END*/
+
+/* MENU IMPORT EXPORT */
+.export-import-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-export,
+.btn-import {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s;
+}
+
+.btn-export:hover,
+.btn-import:hover {
+  background-color: var(--primary-dark);
+}
+
+.btn-import input[type="file"] {
+  display: none;
+}

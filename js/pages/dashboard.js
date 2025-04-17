@@ -1,43 +1,85 @@
+import { escapeHTML, validateDataFormat } from "../utils.js";
+
 export function renderDashboard(content) {
-	content.innerHTML = `
-		<div class="mtxl">
-			<section class="dashboard">
-				<div class="stat-box saldo">
-					<h3>Saldo</h3>
-					<p id="saldo">Rp 0</p>
-				</div>
-				<div class="stat-box masuk">
-					<h3>Pemasukan</h3>
-					<p id="pemasukan">Rp 0</p>
-				</div>
-				<div class="stat-box keluar">
-					<h3>Pengeluaran</h3>
-					<p id="pengeluaran">Rp 0</p>
-				</div>
-				<div class="stat-box jumlah">
-					<h3>Jumlah Transaksi</h3>
-					<p id="jumlah-transaksi">0</p>
-				</div>
-			</section>
-    </div>
-  `;
+  fetch("pages/dashboard.html")
+    .then((res) => res.text())
+    .then((html) => {
+      content.innerHTML = html;
+      setupDashboard();
+    });
+}
 
-	const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
-	let pemasukan = 0;
-	let pengeluaran = 0;
+function setupDashboard() {
+  const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
+  let pemasukan = 0;
+  let pengeluaran = 0;
 
-	data.forEach(item => {
-		if (item.jenis === "pemasukan") {
-			pemasukan += parseFloat(item.nominal);
-		} else {
-			pengeluaran += parseFloat(item.nominal);
-		}
-	});
+  data.forEach((item) => {
+    if (item.jenis === "pemasukan") {
+      pemasukan += parseFloat(item.nominal);
+    } else {
+      pengeluaran += parseFloat(item.nominal);
+    }
+  });
 
-	const saldo = pemasukan - pengeluaran;
+  const saldo = pemasukan - pengeluaran;
 
-	document.getElementById("saldo").textContent = `Rp ${saldo.toLocaleString()}`;
-	document.getElementById("pemasukan").textContent = `Rp ${pemasukan.toLocaleString()}`;
-	document.getElementById("pengeluaran").textContent = `Rp ${pengeluaran.toLocaleString()}`;
-	document.getElementById("jumlah-transaksi").textContent = data.length;
+  document.getElementById("saldo").textContent = `Rp ${escapeHTML(
+    saldo.toLocaleString()
+  )}`;
+  document.getElementById("pemasukan").textContent = `Rp ${escapeHTML(
+    pemasukan.toLocaleString()
+  )}`;
+  document.getElementById("pengeluaran").textContent = `Rp ${escapeHTML(
+    pengeluaran.toLocaleString()
+  )}`;
+  document.getElementById("jumlah-transaksi").textContent = data.length;
+
+  document.querySelector(".import-data").addEventListener("change", importData);
+  document.querySelector(".btn-export").addEventListener("click", exportData);
+}
+
+function exportData() {
+  const transaksi = JSON.parse(localStorage.getItem("data-transaksi") || "[]");
+  const kategori = JSON.parse(localStorage.getItem("data-kategori") || "[]");
+  const dataGabungan = { transaksi, kategori };
+
+  const blob = new Blob([JSON.stringify(dataGabungan, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "backup_kasku.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData() {
+  const input = document.getElementById("import-file");
+  const file = input.files[0];
+
+  if (!file) return alert("Pilih file terlebih dahulu!");
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    try {
+      const result = JSON.parse(e.target.result);
+      console.log(result);
+
+      // Validasi struktur dan isi
+      validateDataFormat(result);
+
+      // Simpan ke localStorage
+      localStorage.setItem("data-kategori", JSON.stringify(result.kategori));
+      localStorage.setItem("transaksiKasKu", JSON.stringify(result.transaksi));
+
+      alert("Import berhasil!");
+      location.reload(); // refresh halaman agar data tampil
+    } catch (err) {
+      alert("Gagal import: " + err.message);
+    }
+  };
+  reader.readAsText(file);
 }
