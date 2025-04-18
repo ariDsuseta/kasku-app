@@ -1,4 +1,4 @@
-import { escapeHTML, getPaginationPages, getData } from "../utils.js";
+import { escapeHTML, getPaginationPages } from "../utils.js";
 
 export function renderTransaksi(content) {
   fetch("pages/transaksi.html")
@@ -17,12 +17,16 @@ function setupTransaksiPage() {
   const saldo = document.getElementById("saldo");
   const transaksiKey = "transaksiKasKu";
 
+  function getData() {
+    return JSON.parse(localStorage.getItem(transaksiKey)) || [];
+  }
+
   function tampilkanDaftarTransaksi(page = 1) {
-		const data = getData(transaksiKey); // Ambil dari localStorage
-		const perHalaman = 5;
-		const totalHalaman = Math.ceil(data.length / perHalaman);
-		const mulai = (page - 1) * perHalaman;
-		const dataShow = data.slice(mulai, mulai + perHalaman);
+    const data = getData(); // Ambil dari localStorage
+    const perHalaman = 5;
+    const totalHalaman = Math.ceil(data.length / perHalaman);
+    const mulai = (page - 1) * perHalaman;
+    const dataShow = data.slice(mulai, mulai + perHalaman);
 
     daftar.innerHTML = "";
     let pemasukan = 0;
@@ -80,53 +84,61 @@ function setupTransaksiPage() {
       );
   }
 
-	function tampilkanPagination(currentPage, totalPages) {
-		const paginationEl = document.getElementById("pagination");
-		paginationEl.innerHTML = "";
+  function tampilkanPagination(currentPage, totalPages) {
+    const paginationEl = document.getElementById("pagination");
+    paginationEl.innerHTML = "";
 
-		// Tombol Prev
-		const prevBtn = document.createElement("button");
-		prevBtn.textContent = "Prev";
-		prevBtn.className = "pagination-btn";
-		prevBtn.disabled = currentPage === 1;
-		prevBtn.addEventListener("click", () => {
-			if (currentPage > 1) tampilkanDaftarTransaksi(currentPage - 1);
-		});
-		paginationEl.appendChild(prevBtn);
+    // Tombol Prev
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "Prev";
+    prevBtn.className = "pagination-btn";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) tampilkanDaftarTransaksi(currentPage - 1);
+    });
 
-		const pages = getPaginationPages(currentPage, totalPages);
+    const pages = getPaginationPages(currentPage, totalPages);
 
-		pages.forEach(page => {
-			const button = document.createElement("button");
-			button.className = "pagination-btn";
+    if (pages.length !== 0) {
+      paginationEl.appendChild(prevBtn);
+      const btnHps = document.createElement("span");
+      btnHps.classList.add("delete-btn");
+      btnHps.innerText = "Hapus Semua";
+      document.querySelector(".button-delete").appendChild(btnHps);
+      btnHps.onclick = () =>
+        deleteDataAll(transaksiKey, tampilkanDaftarTransaksi, btnHps);
+    }
 
-			if (page === "...") {
-				button.textContent = "...";
-				button.disabled = true;
-			} else {
-				button.textContent = page;
-				if (page === currentPage) button.classList.add("active");
-				button.addEventListener("click", () => {
-					tampilkanDaftarTransaksi(page); // refresh data untuk halaman tsb
-				});
-			}
+    pages.forEach((page) => {
+      const button = document.createElement("button");
+      button.className = "pagination-btn";
 
-			paginationEl.appendChild(button);
-		});
+      if (page === "...") {
+        button.textContent = "...";
+        button.disabled = true;
+      } else {
+        button.textContent = page;
+        if (page === currentPage) button.classList.add("active");
+        button.addEventListener("click", () => {
+          tampilkanDaftarTransaksi(page); // refresh data untuk halaman tsb
+        });
+      }
 
-		// Tombol Next
-		const nextBtn = document.createElement("button");
-		nextBtn.textContent = "Next";
-		nextBtn.className = "pagination-btn";
-		nextBtn.disabled = currentPage === totalPages;
-		nextBtn.addEventListener("click", () => {
-			if (currentPage < totalPages) tampilkanDaftarTransaksi(currentPage + 1);
-		});
-		paginationEl.appendChild(nextBtn);
-	}
+      paginationEl.appendChild(button);
+    });
 
+    // Tombol Next
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.className = "pagination-btn";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener("click", () => {
+      if (currentPage < totalPages) tampilkanDaftarTransaksi(currentPage + 1);
+    });
+    if (pages.length !== 0) paginationEl.appendChild(nextBtn);
+  }
 
-	function hapusTransaksi(index, message, conf = false) {
+  function hapusTransaksi(index, message, conf = false) {
     // cek mode edit
     if (form.dataset.editing) {
       form.tanggal.disabled = false;
@@ -137,7 +149,7 @@ function setupTransaksiPage() {
       const konvirmasi = confirm(message);
       if (!konvirmasi) return;
     }
-    const data = getData(transaksiKey);
+    const data = JSON.parse(localStorage.getItem(transaksiKey));
     const dataId = data.findIndex((item) => item.id.toString() === index);
 
     data.splice(dataId, 1); // menghapus
@@ -146,7 +158,7 @@ function setupTransaksiPage() {
   }
 
   function editTransaksi(index) {
-    const data = getData(transaksiKey);
+    const data = JSON.parse(localStorage.getItem(transaksiKey));
     const tx = data.find((item) => item.id.toString() === index);
     const form = document.querySelector(".form-transaksi");
 
@@ -182,7 +194,7 @@ function setupTransaksiPage() {
     e.preventDefault();
 
     const form = e.target;
-    const transaksi = getData(transaksiKey);
+    const transaksi = JSON.parse(localStorage.getItem(transaksiKey) || "[]");
 
     const data = {
       id: Date.now(),
@@ -221,7 +233,9 @@ function setupTransaksiPage() {
 
 function isiPilihanOption(selectEl) {
   // ambil data kategori
-  const dataKategori = getData("data-kategori");
+  const dataKategori = JSON.parse(
+    localStorage.getItem("data-kategori") || "[]"
+  );
   selectEl.innerHTML =
     '<option value="" disabled selected>Pilih Kategori</option>';
   dataKategori.forEach((item) => {
@@ -232,7 +246,10 @@ function isiPilihanOption(selectEl) {
   });
 }
 
-document.querySelector(".delete-btn").addEventListener("click", () => {
-	localStorage.removeItem("transaksiKasKu");
-	localStorage.removeItem("data-kategori");
-});
+function deleteDataAll(data, tampilkanDaftarTransaksi, btnHps) {
+  if (confirm("Anda yakin ingin menghapus data ini!")) {
+    localStorage.removeItem(data);
+    tampilkanDaftarTransaksi();
+    btnHps.remove();
+  }
+}
