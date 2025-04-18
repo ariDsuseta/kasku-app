@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+	const login = JSON.parse(localStorage.getItem("kasku_login"));
+
+	if (login) window.location.href = './index.html';
 
 	const form = document.getElementById("loginForm");
 

@@ -2,371 +2,363 @@
   "transaksi": [
     {
       "id": 1648771234567,
-      "tanggal": "2025-04-01",
-      "nominal": 2500000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Investasi awal"
-    },
-    {
-      "id": 1648771234568,
-      "tanggal": "2025-04-01",
-      "nominal": 500000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Pembelian mouse baru"
-    },
-    {
-      "id": 1648771234569,
-      "tanggal": "2025-04-01",
-      "nominal": 150000,
+      "tanggal": "2025-04-15",
+      "nominal": 125000,
       "jenis": "pengeluaran",
       "kategori": "Makanan",
-      "catatan": "Makan siang"
+      "catatan": "Beli sarapan"
     },
     {
-      "id": 1648771234570,
-      "tanggal": "2025-04-02",
-      "nominal": 50000,
+      "id": 1648778901234,
+      "tanggal": "2025-04-03",
+      "nominal": 2750000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Investasi baru"
+    },
+    {
+      "id": 1648786567901,
+      "tanggal": "2025-04-22",
+      "nominal": 85000,
       "jenis": "pengeluaran",
       "kategori": "Minuman",
-      "catatan": "Kopi pagi"
+      "catatan": "Kopi siang"
     },
     {
-      "id": 1648771234571,
-      "tanggal": "2025-04-02",
-      "nominal": 300000,
+      "id": 1648794234568,
+      "tanggal": "2025-04-10",
+      "nominal": 420000,
       "jenis": "pengeluaran",
       "kategori": "Jasa",
-      "catatan": "Servis AC"
+      "catatan": "Servis motor"
     },
     {
-      "id": 1648771234572,
-      "tanggal": "2025-04-02",
-      "nominal": 100000,
+      "id": 1648801901235,
+      "tanggal": "2025-04-28",
+      "nominal": 180000,
       "jenis": "pengeluaran",
       "kategori": "Alat Pertukangan",
-      "catatan": "Beli obeng"
+      "catatan": "Beli martil"
     },
     {
-      "id": 1648771234573,
-      "tanggal": "2025-04-03",
-      "nominal": 750000,
+      "id": 1648809567902,
+      "tanggal": "2025-04-07",
+      "nominal": 680000,
       "jenis": "pengeluaran",
       "kategori": "Bahan Pokok",
-      "catatan": "Belanja mingguan"
+      "catatan": "Belanja bulanan"
     },
     {
-      "id": 1648771234574,
-      "tanggal": "2025-04-03",
-      "nominal": 100000,
+      "id": 1648817234569,
+      "tanggal": "2025-04-19",
+      "nominal": 95000,
       "jenis": "pengeluaran",
       "kategori": "Lain Lain",
-      "catatan": "Parkir"
+      "catatan": "Tiket bioskop"
     },
     {
-      "id": 1648771234575,
-      "tanggal": "2025-04-03",
-      "nominal": 1200000,
+      "id": 1648824901236,
+      "tanggal": "2025-04-01",
+      "nominal": 1500000,
       "jenis": "pemasukan",
       "kategori": "Modal",
-      "catatan": "Tambahan investasi"
+      "catatan": "Pinjaman bank"
     },
     {
-      "id": 1648771234576,
-      "tanggal": "2025-04-04",
-      "nominal": 200000,
+      "id": 1648832567903,
+      "tanggal": "2025-04-25",
+      "nominal": 350000,
       "jenis": "pengeluaran",
       "kategori": "Electronik",
-      "catatan": "Baterai laptop"
+      "catatan": "Beli kabel data"
     },
     {
-      "id": 1648771234577,
-      "tanggal": "2025-04-04",
-      "nominal": 80000,
+      "id": 1648840234570,
+      "tanggal": "2025-04-12",
+      "nominal": 70000,
       "jenis": "pengeluaran",
       "kategori": "Makanan",
-      "catatan": "Sarapan"
+      "catatan": "Makan siang sederhana"
     },
     {
-      "id": 1648771234578,
-      "tanggal": "2025-04-04",
+      "id": 1648847901237,
+      "tanggal": "2025-04-05",
       "nominal": 30000,
       "jenis": "pengeluaran",
       "kategori": "Minuman",
-      "catatan": "Teh hangat"
+      "catatan": "Es teh"
     },
     {
-      "id": 1648771234579,
-      "tanggal": "2025-04-05",
-      "nominal": 500000,
+      "id": 1648855567904,
+      "tanggal": "2025-04-29",
+      "nominal": 600000,
       "jenis": "pemasukan",
       "kategori": "Jasa",
-      "catatan": "Bayaran proyek kecil"
+      "catatan": "Bayaran desain"
     },
     {
-      "id": 1648771234580,
-      "tanggal": "2025-04-05",
+      "id": 1648863234571,
+      "tanggal": "2025-04-17",
+      "nominal": 110000,
+      "jenis": "pengeluaran",
+      "kategori": "Alat Pertukangan",
+      "catatan": "Beli amplas"
+    },
+    {
+      "id": 1648870901238,
+      "tanggal": "2025-04-09",
+      "nominal": 520000,
+      "jenis": "pengeluaran",
+      "kategori": "Bahan Pokok",
+      "catatan": "Beli telur"
+    },
+    {
+      "id": 1648878567905,
+      "tanggal": "2025-04-23",
+      "nominal": 40000,
+      "jenis": "pengeluaran",
+      "kategori": "Lain Lain",
+      "catatan": "Parkir bulanan"
+    },
+    {
+      "id": 1648886234572,
+      "tanggal": "2025-04-02",
+      "nominal": 2100000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Tambahan modal usaha"
+    },
+    {
+      "id": 1648893901239,
+      "tanggal": "2025-04-27",
+      "nominal": 900000,
+      "jenis": "pengeluaran",
+      "kategori": "Electronik",
+      "catatan": "Service handphone"
+    },
+    {
+      "id": 1648901567906,
+      "tanggal": "2025-04-14",
+      "nominal": 160000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Makan malam di restoran"
+    },
+    {
+      "id": 1648909234573,
+      "tanggal": "2025-04-06",
+      "nominal": 25000,
+      "jenis": "pengeluaran",
+      "kategori": "Minuman",
+      "catatan": "Jus alpukat"
+    },
+    {
+      "id": 1648916901240,
+      "tanggal": "2025-04-30",
+      "nominal": 750000,
+      "jenis": "pemasukan",
+      "kategori": "Jasa",
+      "catatan": "Konsultasi proyek"
+    },
+    {
+      "id": 1648924567907,
+      "tanggal": "2025-04-18",
+      "nominal": 220000,
+      "jenis": "pengeluaran",
+      "kategori": "Alat Pertukangan",
+      "catatan": "Beli bor"
+    },
+    {
+      "id": 1648932234574,
+      "tanggal": "2025-04-11",
+      "nominal": 480000,
+      "jenis": "pengeluaran",
+      "kategori": "Bahan Pokok",
+      "catatan": "Beli minyak goreng"
+    },
+    {
+      "id": 1648939901241,
+      "tanggal": "2025-04-24",
+      "nominal": 65000,
+      "jenis": "pengeluaran",
+      "kategori": "Lain Lain",
+      "catatan": "Cuci sepatu"
+    },
+    {
+      "id": 1648947567908,
+      "tanggal": "2025-04-04",
+      "nominal": 1800000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Penjualan aset lama"
+    },
+    {
+      "id": 1648955234575,
+      "tanggal": "2025-04-26",
+      "nominal": 550000,
+      "jenis": "pengeluaran",
+      "kategori": "Electronik",
+      "catatan": "Beli charger baru"
+    },
+    {
+      "id": 1648962901242,
+      "tanggal": "2025-04-13",
+      "nominal": 95000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Pesan pizza"
+    },
+    {
+      "id": 1648970567909,
+      "tanggal": "2025-04-07",
+      "nominal": 35000,
+      "jenis": "pengeluaran",
+      "kategori": "Minuman",
+      "catatan": "Sirup"
+    },
+    {
+      "id": 1648978234576,
+      "tanggal": "2025-04-28",
+      "nominal": 800000,
+      "jenis": "pemasukan",
+      "kategori": "Jasa",
+      "catatan": "Freelance web development"
+    },
+    {
+      "id": 1648985901243,
+      "tanggal": "2025-04-19",
       "nominal": 150000,
       "jenis": "pengeluaran",
       "kategori": "Alat Pertukangan",
       "catatan": "Beli paku"
     },
     {
-      "id": 1648771234581,
-      "tanggal": "2025-04-05",
-      "nominal": 350000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli sayuran"
-    },
-    {
-      "id": 1648771234582,
-      "tanggal": "2025-04-06",
-      "nominal": 75000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Bensin"
-    },
-    {
-      "id": 1648771234583,
-      "tanggal": "2025-04-06",
-      "nominal": 500000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Pinjaman teman"
-    },
-    {
-      "id": 1648771234584,
-      "tanggal": "2025-04-06",
-      "nominal": 1000000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Service printer"
-    },
-    {
-      "id": 1648771234585,
-      "tanggal": "2025-04-07",
-      "nominal": 120000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Makan malam"
-    },
-    {
-      "id": 1648771234586,
-      "tanggal": "2025-04-07",
-      "nominal": 25000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Air mineral"
-    },
-    {
-      "id": 1648771234587,
-      "tanggal": "2025-04-07",
-      "nominal": 200000,
-      "jenis": "pengeluaran",
-      "kategori": "Jasa",
-      "catatan": "Cuci mobil"
-    },
-    {
-      "id": 1648771234588,
-      "tanggal": "2025-04-08",
-      "nominal": 75000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli palu"
-    },
-    {
-      "id": 1648771234589,
-      "tanggal": "2025-04-08",
-      "nominal": 400000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli buah"
-    },
-    {
-      "id": 1648771234590,
-      "tanggal": "2025-04-08",
-      "nominal": 30000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Tol"
-    },
-    {
-      "id": 1648771234591,
-      "tanggal": "2025-04-09",
-      "nominal": 800000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Hasil investasi"
-    },
-    {
-      "id": 1648771234592,
-      "tanggal": "2025-04-09",
-      "nominal": 300000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Adaptor laptop"
-    },
-    {
-      "id": 1648771234593,
-      "tanggal": "2025-04-09",
-      "nominal": 90000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Makan siang di luar"
-    },
-    {
-      "id": 1648771234594,
-      "tanggal": "2025-04-10",
-      "nominal": 40000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Jus buah"
-    },
-    {
-      "id": 1648771234595,
-      "tanggal": "2025-04-10",
-      "nominal": 600000,
-      "jenis": "pengeluaran",
-      "kategori": "Jasa",
-      "catatan": "Potong rambut"
-    },
-    {
-      "id": 1648771234596,
-      "tanggal": "2025-04-10",
-      "nominal": 200000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli tang"
-    },
-    {
-      "id": 1648771234597,
-      "tanggal": "2025-04-11",
-      "nominal": 500000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli daging"
-    },
-    {
-      "id": 1648771234598,
-      "tanggal": "2025-04-11",
-      "nominal": 45000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Tip"
-    },
-    {
-      "id": 1648771234599,
-      "tanggal": "2025-04-11",
-      "nominal": 1500000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Penjualan aset"
-    },
-    {
-      "id": 1648771234600,
+      "id": 1648993567910,
       "tanggal": "2025-04-12",
-      "nominal": 750000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Speaker bluetooth"
-    },
-    {
-      "id": 1648771234601,
-      "tanggal": "2025-04-12",
-      "nominal": 110000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Pesan antar makanan"
-    },
-    {
-      "id": 1648771234602,
-      "tanggal": "2025-04-12",
-      "nominal": 35000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Soda"
-    },
-    {
-      "id": 1648771234603,
-      "tanggal": "2025-04-13",
-      "nominal": 350000,
-      "jenis": "pengeluaran",
-      "kategori": "Jasa",
-      "catatan": "Laundry"
-    },
-    {
-      "id": 1648771234604,
-      "tanggal": "2025-04-13",
-      "nominal": 90000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli meteran"
-    },
-    {
-      "id": 1648771234605,
-      "tanggal": "2025-04-13",
-      "nominal": 600000,
+      "nominal": 720000,
       "jenis": "pengeluaran",
       "kategori": "Bahan Pokok",
-      "catatan": "Beli beras"
+      "catatan": "Beli beras kualitas baik"
     },
     {
-      "id": 1648771234606,
-      "tanggal": "2025-04-14",
-      "nominal": 25000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Donasi"
-    },
-    {
-      "id": 1648771234607,
-      "tanggal": "2025-04-14",
-      "nominal": 900000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Hibah"
-    },
-    {
-      "id": 1648771234608,
-      "tanggal": "2025-04-14",
-      "nominal": 400000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Headphone"
-    },
-    {
-      "id": 1648771234609,
-      "tanggal": "2025-04-15",
-      "nominal": 130000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Makan siang spesial"
-    },
-    {
-      "id": 1648771234610,
-      "tanggal": "2025-04-15",
+      "id": 1649001234577,
+      "tanggal": "2025-04-25",
       "nominal": 55000,
       "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Smoothie"
+      "kategori": "Lain Lain",
+      "catatan": "Langganan streaming"
     },
     {
-      "id": 1648771234611,
-      "tanggal": "2025-04-15",
-      "nominal": 450000,
+      "id": 1649008901244,
+      "tanggal": "2025-04-05",
+      "nominal": 1950000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Dana dari investor"
+    },
+    {
+      "id": 1649016567911,
+      "tanggal": "2025-04-29",
+      "nominal": 280000,
       "jenis": "pengeluaran",
-      "kategori": "Jasa",
-      "catatan": "Pijat refleksi"
+      "kategori": "Electronik",
+      "catatan": "Beli mousepad"
     },
     {
-      "id": 1648771234612,
+      "id": 1649024234578,
       "tanggal": "2025-04-16",
-      "nominal": 120000,
+      "nominal": 115000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli roti"
+    },
+    {
+      "id": 1649031901245,
+      "tanggal": "2025-04-08",
+      "nominal": 45000,
+      "jenis": "pengeluaran",
+      "kategori": "Minuman",
+      "catatan": "Teh botol"
+    },
+    {
+      "id": 1649039567912,
+      "tanggal": "2025-04-30",
+      "nominal": 920000,
+      "jenis": "pemasukan",
+      "kategori": "Jasa",
+      "catatan": "Training online"
+    },
+    {
+      "id": 1649047234579,
+      "tanggal": "2025-04-20",
+      "nominal": 85000,
       "jenis": "pengeluaran",
       "kategori": "Alat Pertukangan",
-      "catatan": "Beli gergaji"
+      "catatan": "Beli obeng set"
+    },
+    {
+      "id": 1649054901246,
+      "tanggal": "2025-04-13",
+      "nominal": 390000,
+      "jenis": "pengeluaran",
+      "kategori": "Bahan Pokok",
+      "catatan": "Beli sayuran segar"
+    },
+    {
+      "id": 1649062567913,
+      "tanggal": "2025-04-26",
+      "nominal": 70000,
+      "jenis": "pengeluaran",
+      "kategori": "Lain Lain",
+      "catatan": "Ongkos kirim"
+    },
+    {
+      "id": 1649070234580,
+      "tanggal": "2025-04-06",
+      "nominal": 2300000,
+      "jenis": "pemasukan",
+      "kategori": "Modal",
+      "catatan": "Hibah pemerintah"
+    },
+    {
+      "id": 1649077901247,
+      "tanggal": "2025-04-27",
+      "nominal": 680000,
+      "jenis": "pengeluaran",
+      "kategori": "Electronik",
+      "catatan": "Beli speaker"
+    },
+    {
+      "id": 1649085567914,
+      "tanggal": "2025-04-17",
+      "nominal": 135000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli buah-buahan"
+    },
+    {
+      "id": 1649093234581,
+      "tanggal": "2025-04-09",
+      "nominal": 50000,
+      "jenis": "pengeluaran",
+      "kategori": "Minuman",
+      "catatan": "Air mineral galon"
+    },
+    {
+      "id": 1649100901248,
+      "tanggal": "2025-04-29",
+      "nominal": 1100000,
+      "jenis": "pemasukan",
+      "kategori": "Jasa",
+      "catatan": "Pekerjaan sampingan"
+    },
+    {
+      "id": 1649108567915,
+      "tanggal": "2025-04-21",
+      "nominal": 190000,
+      "jenis": "pengeluaran",
+      "kategori": "Alat Pertukangan",
+      "catatan": "Beli kunci inggris"
     }
   ],
   "kategori": [

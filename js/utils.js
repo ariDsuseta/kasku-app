@@ -61,3 +61,6 @@ export function getPaginationPages(currentPage, totalPages, maxVisible = 5) {
 	return pages;
 }
 
+export function getData(key) {
+	return JSON.parse(localStorage.getItem(key)) || [];
+}

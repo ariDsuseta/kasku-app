@@ -182,6 +182,9 @@ body.dark .btn:hover {
 .flex.flex-wrap {
   flex-wrap: wrap;
 }
+.flex.item-center {align-items: center}
+.flex.content-center{justify-content: center}
+.flex.content-between{justify-content: space-between}
 
 button.toggle_theme {
   background: none;
@@ -702,6 +705,26 @@ body.dark .stat-box.jumlah {
 }
 body.dark .chart-wrapper canvas {
 	background-color: var(--bg-card-dark);
+}
+
+.delete-btn {
+	cursor: pointer;
+	border: 1px solid var(--border-color);
+	box-shadow: var(--shadow);
+	padding: .3rem .8rem;
+	border-radius: 5px;
+	background-color: var(--danger);
+	transition: .3s;
+}
+
+.delete-btn:hover{
+	background-color: var(--danger-dark);
+	color: var(--text-dark);
+	transform: scale(1.05);
+}
+
+.delete-btn:active {
+	transform: scale(1);
 }
 
 /* RESPONSIF */

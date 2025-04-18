@@ -1,4 +1,4 @@
-import { escapeHTML, getPaginationPages } from "../utils.js";
+import { escapeHTML, getPaginationPages, getData } from "../utils.js";
 
 export function renderTransaksi(content) {
   fetch("pages/transaksi.html")
@@ -17,12 +17,8 @@ function setupTransaksiPage() {
   const saldo = document.getElementById("saldo");
   const transaksiKey = "transaksiKasKu";
 
-  function getData() {
-    return JSON.parse(localStorage.getItem(transaksiKey)) || [];
-  }
-
   function tampilkanDaftarTransaksi(page = 1) {
-		const data = getData(); // Ambil dari localStorage
+		const data = getData(transaksiKey); // Ambil dari localStorage
 		const perHalaman = 5;
 		const totalHalaman = Math.ceil(data.length / perHalaman);
 		const mulai = (page - 1) * perHalaman;
@@ -141,7 +137,7 @@ function setupTransaksiPage() {
       const konvirmasi = confirm(message);
       if (!konvirmasi) return;
     }
-    const data = JSON.parse(localStorage.getItem(transaksiKey));
+    const data = getData(transaksiKey);
     const dataId = data.findIndex((item) => item.id.toString() === index);
 
     data.splice(dataId, 1); // menghapus
@@ -150,7 +146,7 @@ function setupTransaksiPage() {
   }
 
   function editTransaksi(index) {
-    const data = JSON.parse(localStorage.getItem(transaksiKey));
+    const data = getData(transaksiKey);
     const tx = data.find((item) => item.id.toString() === index);
     const form = document.querySelector(".form-transaksi");
 
@@ -186,7 +182,7 @@ function setupTransaksiPage() {
     e.preventDefault();
 
     const form = e.target;
-    const transaksi = JSON.parse(localStorage.getItem(transaksiKey) || "[]");
+    const transaksi = getData(transaksiKey);
 
     const data = {
       id: Date.now(),
@@ -225,9 +221,7 @@ function setupTransaksiPage() {
 
 function isiPilihanOption(selectEl) {
   // ambil data kategori
-  const dataKategori = JSON.parse(
-    localStorage.getItem("data-kategori") || "[]"
-  );
+  const dataKategori = getData("data-kategori");
   selectEl.innerHTML =
     '<option value="" disabled selected>Pilih Kategori</option>';
   dataKategori.forEach((item) => {
@@ -237,3 +231,8 @@ function isiPilihanOption(selectEl) {
     selectEl.appendChild(option);
   });
 }
+
+document.querySelector(".delete-btn").addEventListener("click", () => {
+	localStorage.removeItem("transaksiKasKu");
+	localStorage.removeItem("data-kategori");
+});
