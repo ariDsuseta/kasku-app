@@ -1,239 +1,228 @@
-import { escapeHTML, getPaginationPages } from "../utils.js";
+import {escapeHTML, getLocalstorage, paginate, saveLocalStorage, dataSum, createElement} from "../utils.js";
 
 export function renderTransaksi(content) {
-  fetch("pages/transaksi.html")
-    .then((res) => res.text())
-    .then((html) => {
-      content.innerHTML = html;
-      setupTransaksiPage();
-    });
+	fetch("pages/transaksi.html")
+	.then((res) => res.text())
+	.then((html) => {
+		content.innerHTML = html;
+		setupTransaksiPage();
+	});
 }
 
-function setupTransaksiPage() {
-  const form = document.getElementById("form-transaksi");
-  const daftar = document.getElementById("daftar-transaksi");
-  const totalPemasukan = document.getElementById("total-pemasukan");
-  const totalPengeluaran = document.getElementById("total-pengeluaran");
-  const saldo = document.getElementById("saldo");
-  const transaksiKey = "transaksiKasKu";
+const transaksiKey = "transaksiKasKu";
+let status = {}
 
-  function getData() {
-    return JSON.parse(localStorage.getItem(transaksiKey)) || [];
-  }
+window.tampilkanDaftarTransaksi = (page = 1) => {
+	const transaksi = getLocalstorage(transaksiKey) || [];
+	const tableBody = document.querySelector("#transaksi-table tbody");
+	const paginationContainer = document.querySelector("#pagination");
+	const summary = document.querySelector(".summary");
+	const totalPemasukan = dataSum(transaksi, "pemasukan");
+	const totalPengeluaran = dataSum(transaksi, "pengeluaran");
+	const saldo = totalPemasukan - totalPengeluaran;
 
-  function tampilkanDaftarTransaksi(page = 1) {
-		const data = getData(); // Ambil dari localStorage
-		const perHalaman = 5;
-		const totalHalaman = Math.ceil(data.length / perHalaman);
-		const mulai = (page - 1) * perHalaman;
-		const dataShow = data.slice(mulai, mulai + perHalaman);
+	document.getElementById("total-pemasukan").innerText = `Rp ${totalPemasukan.toLocaleString()}`;
+	document.getElementById("total-pengeluaran").innerText = `Rp ${totalPengeluaran.toLocaleString()}`;
+	document.getElementById("saldo").innerText = `Rp ${saldo.toLocaleString()}`;
 
-    daftar.innerHTML = "";
-    let pemasukan = 0;
-    let pengeluaran = 0;
+	paginate({
+		data: transaksi,
+		rowsPerPage: 5,
+		currentPage: page,
+		maxButton: 5,
+		renderRows: (data, startIndex) =>
+			data
+			.map(
+				(item, i) => `
+            <tr class="no-wrap">
+              <td>${startIndex + i + 1}</td>
+              <td>${item.kategori}</td>
+              <td>${item.jenis}</td>
+              <td>Rp ${item.nominal.toLocaleString("id-ID")}</td>
+              <td>${item.tanggal}</td>
+              <td>${item.catatan}</td>
+              <td>
+                <div class="flex gap-1">
+                  <button onclick="edit(${item.id})">✏️</button>
+                  <button onclick="hapusTransaksi(${item.id})">🗑️</button>
+                </div>
+              </td>
+            </tr>
+				`).join(""),
+		renderContainer: tableBody,
+		paginationContainer,
+	});
+}
 
-    dataShow.forEach((tx) => {
-      const li = document.createElement("li");
-      li.classList.add("tx-transaksi", tx.jenis);
-      li.innerHTML = `
-        <div class="flex columns relative">
-        	<strong>${escapeHTML(tx.kategori)}</strong> - ${escapeHTML(tx.tanggal)}
-					<span>${tx.jenis === "pemasukan" ? "+" : "-"} Rp${escapeHTML(
-        tx.nominal.toLocaleString()
-      )}</span>
-					<em>${escapeHTML(tx.catatan) || ""}</em>
-					<div class="aksi absolute">
-						<button class="edit-btn" data-id="${tx.id}">✏️</button>
-						<button class="hapus-btn" data-id="${tx.id}">🗑️</button>
-					</div>
-				</div>
-      `;
-      daftar.appendChild(li);
-    });
+window.hapusTransaksi = (id, conf = confirm("Yakin ingin menghapus data ini!")) => {
+	if (!conf) return;
 
-    data.forEach((tx) => {
-      if (tx.jenis === "pemasukan") pemasukan += tx.nominal;
-      else pengeluaran += tx.nominal;
-    });
+	const data = getLocalstorage(transaksiKey);
+	const index = data.findIndex(item => item.id === id);
 
-    tampilkanPagination(page, totalHalaman);
-    totalPemasukan.textContent = `Rp ${escapeHTML(pemasukan.toLocaleString())}`;
-    totalPengeluaran.textContent = `Rp ${escapeHTML(
-      pengeluaran.toLocaleString()
-    )}`;
-    saldo.textContent = `Rp ${escapeHTML(
-      (pemasukan - pengeluaran).toLocaleString()
-    )}`;
-
-    // 	event listener tombol edit dan hapus
-    daftar
-      .querySelectorAll(".edit-btn")
-      .forEach((btn) =>
-        btn.addEventListener("click", () => editTransaksi(btn.dataset.id))
-      );
-    daftar
-      .querySelectorAll(".hapus-btn")
-      .forEach((btn) =>
-        btn.addEventListener("click", () =>
-          hapusTransaksi(
-            btn.dataset.id,
-            "Yakin ingin menghapus data ini!",
-            true
-          )
-        )
-      );
-  }
-
-	function tampilkanPagination(currentPage, totalPages) {
-		const paginationEl = document.getElementById("pagination");
-		paginationEl.innerHTML = "";
-
-		// Tombol Prev
-		const prevBtn = document.createElement("button");
-		prevBtn.textContent = "Prev";
-		prevBtn.className = "pagination-btn";
-		prevBtn.disabled = currentPage === 1;
-		prevBtn.addEventListener("click", () => {
-			if (currentPage > 1) tampilkanDaftarTransaksi(currentPage - 1);
-		});
-		paginationEl.appendChild(prevBtn);
-
-		const pages = getPaginationPages(currentPage, totalPages);
-
-		pages.forEach(page => {
-			const button = document.createElement("button");
-			button.className = "pagination-btn";
-
-			if (page === "...") {
-				button.textContent = "...";
-				button.disabled = true;
-			} else {
-				button.textContent = page;
-				if (page === currentPage) button.classList.add("active");
-				button.addEventListener("click", () => {
-					tampilkanDaftarTransaksi(page); // refresh data untuk halaman tsb
-				});
-			}
-
-			paginationEl.appendChild(button);
-		});
-
-		// Tombol Next
-		const nextBtn = document.createElement("button");
-		nextBtn.textContent = "Next";
-		nextBtn.className = "pagination-btn";
-		nextBtn.disabled = currentPage === totalPages;
-		nextBtn.addEventListener("click", () => {
-			if (currentPage < totalPages) tampilkanDaftarTransaksi(currentPage + 1);
-		});
-		paginationEl.appendChild(nextBtn);
+	if (index !== -1){
+		data.splice(index, 1);
+		saveLocalStorage(transaksiKey, JSON.stringify(data));
+		status = {status: true, message: "Data Berhasil di Hapus"};
+		tampilkanDaftarTransaksi(pageIndex());
 	}
 
-
-	function hapusTransaksi(index, message, conf = false) {
-    // cek mode edit
-    if (form.dataset.editing) {
-      form.tanggal.disabled = false;
-      delete form.dataset.editing;
-    }
-
-    if (conf) {
-      const konvirmasi = confirm(message);
-      if (!konvirmasi) return;
-    }
-    const data = JSON.parse(localStorage.getItem(transaksiKey));
-    const dataId = data.findIndex((item) => item.id.toString() === index);
-
-    data.splice(dataId, 1); // menghapus
-    localStorage.setItem(transaksiKey, JSON.stringify(data));
-    tampilkanDaftarTransaksi();
-  }
-
-  function editTransaksi(index) {
-    const data = JSON.parse(localStorage.getItem(transaksiKey));
-    const tx = data.find((item) => item.id.toString() === index);
-    const form = document.querySelector(".form-transaksi");
-
-    form.tanggal.value = tx.tanggal;
-    form.tanggal.disabled = true;
-    form.nominal.value = tx.nominal;
-    form.jenis.value = tx.jenis;
-    form.kategori.value = tx.kategori;
-    form.catatan.value = tx.catatan;
-    form.scrollIntoView({ behavior: "smooth" });
-    // tambahkan penanda mode edit
-    form.dataset.editing = index;
-    form.querySelector("button").textContent = "Edit Transaksi";
-    const btnBtlEdit = document.querySelector(".btn-btl-edit");
-    if (!btnBtlEdit) {
-      const btnBtl = document.createElement("button");
-      btnBtl.textContent = "Batal";
-      btnBtl.type = "button";
-      btnBtl.classList.add("btn-btl-edit");
-      form.appendChild(btnBtl);
-
-      btnBtl.onclick = function () {
-        form.reset();
-        delete form.dataset.editing;
-        form.tanggal.disabled = false;
-        this.remove();
-        form.querySelector("button").textContent = "Tambah Transaksi";
-      };
-    }
-  }
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const transaksi = JSON.parse(localStorage.getItem(transaksiKey) || "[]");
-
-    const data = {
-      id: Date.now(),
-      tanggal: form.tanggal.value, // nanti bisa pakai input date
-      nominal: parseInt(form.nominal.value),
-      jenis: form.jenis.value,
-      kategori: escapeHTML(form.kategori.value),
-      catatan: escapeHTML(form.catatan.value),
-    };
-
-    const indexEdit = transaksi.findIndex(
-      (item) => item.id.toString() === form.dataset.editing
-    );
-    if (indexEdit !== -1) {
-      // Mode edit
-      data.tanggal = transaksi[indexEdit].tanggal; // pertahankan tanggal lama
-      transaksi[indexEdit] = data;
-      delete form.dataset.editing;
-      form.tanggal.disabled = false;
-    } else {
-      // Mode tambah
-      transaksi.push(data);
-    }
-
-    localStorage.setItem(transaksiKey, JSON.stringify(transaksi));
-    tampilkanDaftarTransaksi(); // refresh tampilan
-    form.reset();
-    form.querySelector("button").textContent = "Tambah Transaksi";
-    const btlEdit = form.querySelector(".btn-btl-edit");
-    if (btlEdit) btlEdit.remove();
-  });
-
-  tampilkanDaftarTransaksi();
-  isiPilihanOption(form.kategori);
+	if (status.status) showAlert(createEl({el: "div", className: "alert alert-info", inChilderen: status.message}));
 }
 
-function isiPilihanOption(selectEl) {
-  // ambil data kategori
-  const dataKategori = JSON.parse(
-    localStorage.getItem("data-kategori") || "[]"
-  );
-  selectEl.innerHTML =
-    '<option value="" disabled selected>Pilih Kategori</option>';
-  dataKategori.forEach((item) => {
-    const option = document.createElement("option");
-    option.setAttribute("value", item.nama);
-    option.textContent = item.nama;
-    selectEl.appendChild(option);
-  });
+window.edit = (id) => {
+	const dataTransaksi = getLocalstorage(transaksiKey);
+	const form = document.getElementById("form-transaksi");
+	form.dataset.edit = id;
+	document.querySelector("#app-content").scrollIntoView({behavior: "smooth", block: "start"});
+	const data = dataTransaksi.find(data => data.id === id);
+	form.elements.tanggal.value = data.tanggal;
+	form.elements.kategori.value = data.kategori;
+	form.elements.jenis.value = data.jenis;
+	form.elements.nominal.value = data.nominal;
+	form.elements.catatan.value = data.catatan;
+
+
+	let btnBtl = document.querySelector("button[data-action = 'batal-edit-transaksi']");
+	if (!btnBtl){
+		btnBtl = createElement({
+			tag:"button",
+			attributes: {
+				'type': 'button',
+				'class': 'btn-btl',
+				'style': 'background-color:#e34442',
+				'data-action': 'batal-edit-transaksi'
+			},
+			textContent: "Batal"
+		});
+		form.appendChild(btnBtl);
+	}
+
+	const btnEdit = document.querySelector(".form-transaksi button");
+	btnEdit.innerText = "Edit Data";
+	btnBtl.onclick = (e) => btlEdit(form, e, btnEdit);
+}
+
+function btlEdit(form, e, btnEdit) {
+	form.reset();
+	form.removeAttribute("data-edit");
+	e.target.remove();
+	btnEdit.innerText = "Tambah Transaksi";
+}
+
+function pageIndex(){
+	let index;
+	const btnPagination = document.querySelectorAll(".pagination-btn");
+	btnPagination.forEach(el => {
+		if(el.classList.contains("active")) {
+			index = el.textContent;
+		}
+	});
+	return index;
+}
+
+function addDataForm (form, event) {
+	event.preventDefault();
+	const data = getLocalstorage(transaksiKey) || [];
+	const dataInput = {
+		id: Date.now(),
+		tanggal: form.elements.tanggal.value,
+		kategori: form.elements.kategori.value,
+		jenis: form.elements.jenis.value,
+		nominal: parseFloat(form.elements.nominal.value),
+		catatan: form.elements.catatan.value
+	}
+
+	// mode edit
+	if(form.dataset.edit !== undefined){
+		const index = data.findIndex(item => item.id === parseInt(form.dataset.edit));
+		dataInput.id = parseInt(form.dataset.edit);
+		data[index] = dataInput;
+		form.reset();
+		event.target.querySelector("button").innerText = "Tambah Transaksi";
+		event.target.querySelector(".btn-btl").remove();
+		event.target.removeAttribute("data-edit");
+
+		saveLocalStorage(transaksiKey, JSON.stringify(data));
+		tampilkanDaftarTransaksi(pageIndex());
+		status = {status: true, message: "Data berhasil di Edit"}
+		return;
+	}
+
+	data.push(dataInput);
+	saveLocalStorage(transaksiKey, JSON.stringify(data));
+	form.reset();
+	tampilkanDaftarTransaksi(pageIndex());
+	status = {status: true, message: "Data Berhasil ditambahkan"};
+}
+
+function setupTransaksiPage(){
+	const transaksi = getLocalstorage(transaksiKey) || [];
+	const tableBody = document.querySelector("#transaksi-table tbody");
+	const paginationContainer = document.querySelector("#pagination");
+	const formEl = document.getElementById("form-transaksi");
+	const elOptionKategori = document.getElementById("kategori");
+	const getDataOptionKategori = getLocalstorage("data-kategori");
+
+	// data kategori default
+	const elOption = document.createElement("option");
+	elOption.disabled = true;
+	elOption.setAttribute("selected", "");
+	elOption.setAttribute("value", "");
+	elOption.textContent = "Pilih Kategori";
+	elOptionKategori.appendChild(elOption);
+
+	getDataOptionKategori.forEach(data => {
+		const elOption = document.createElement("option");
+		elOption.value = data.nama;
+		elOption.textContent = data.nama;
+		elOptionKategori.appendChild(elOption);
+	});
+
+	if (transaksi.length === 0) {
+		const tabelTransaksi = document.getElementById("transaksi-table");
+		// mebuat alert
+		tabelTransaksi.innerHTML = `
+			<div class="alert alert-info">
+				Data Masih kosong
+			</div>
+		`;
+	} else {
+		tampilkanDaftarTransaksi(pageIndex());
+		formEl.addEventListener("submit", function (e) {
+			addDataForm(this, e);
+			let alertEl;
+			if(status){
+				alertEl = createEl({
+					el: "div",
+					className: "alert alert-success",
+					inChilderen: status.message
+				});
+				showAlert(alertEl);
+			}
+		});
+	}
+}
+
+function createEl({
+	el,
+	className,
+	inChilderen
+}){
+	const elementParent = document.createElement(el);
+	elementParent.classList.add(className.split(" ")[0]);
+	elementParent.classList.add(className.split(" ")[1]);
+	elementParent.innerText = inChilderen;
+
+	return elementParent;
+}
+
+function showAlert(alertEl){
+	alertEl.style.position = "fixed";
+	alertEl.zIndex = "30";
+	alertEl.style.top = window.innerWidth <= 375 ? "80%" : "10%";
+	alertEl.style.left = "50%";
+	alertEl.style.transform = window.innerWidth <= 375 ? "translateX(-50%)":"translateX(-10%)";
+	document.body.appendChild(alertEl);
+	setTimeout(() => alertEl.remove(), 1000);
 }

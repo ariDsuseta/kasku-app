@@ -1,8 +1,5 @@
-import {renderDashboard} from "./pages/dashboard.js";
-import {renderTransaksi} from "./pages/transaksi.js";
-import {renderKategori} from "./pages/kategori.js";
-import {renderRiwayat} from "./pages/riwayat.js";
-import {renderLaporan} from "./pages/laporan.js";
+import {loadPage} from "./router.js";
+import {checkLogin, getLocalstorage, saveLocalStorage} from "./utils.js";
 
 // cek login
 checkLogin();
@@ -29,47 +26,23 @@ const menuItems = document.querySelectorAll(".sidebar li");
 
 // ganti konten berdasarkan click menu
 menuItems.forEach((item) => {
-	item.addEventListener("click", () => {
-		const page = item.getAttribute("data-page");
-		loadPage(page);
+	item.addEventListener("click", (e) => {
+		const page = e.target.dataset.page;
+		// Hapus kelas "active-page" dari semua elemen menu
+		menuItems.forEach(el => el.classList.remove("active-page"));
+		e.target.classList.add("active-page");
+		saveLocalStorage("page", page !== "logout" ? page : "dashboard");
+		loadPage(page, content);
 	});
 });
 
-// load halaman berdasarkan nama halaman
-function loadPage (page){
-	switch (page){
-		case "dashboard":
-			renderDashboard(content);
-			break;
-		case "transaksi":
-			renderTransaksi(content);
-			break;
-		case "kategori":
-			renderKategori(content);
-			break;
-		case "riwayat":
-			renderRiwayat(content);
-			break;
-		case "laporan":
-			renderLaporan(content);
-			break;
-		case "logout":
-			logoutUser();
-			break;
-		default:
-			renderDashboard(content);
-	}
-};
 
-loadPage("dashboard");
-
-// ========== SIMULASI LOGIN (sementara) ==========
-function logoutUser() {
-	localStorage.removeItem("kasku_login");
-	window.location.href = './login.html';
+// default jika belum diset page nya
+const dataPage = getLocalstorage('page');
+if(dataPage) {
+	loadPage(dataPage, content);
+	menuItems.forEach(el=>{
+		if(el.getAttribute("data-page") === dataPage) el.classList.add("active-page");
+	})
 }
 
-function checkLogin(){
-	const loginData = JSON.parse(localStorage.getItem("kasku_login"));
-	if (!loginData || !loginData.isLoggedIn) window.location.href = "./login.html";
-}

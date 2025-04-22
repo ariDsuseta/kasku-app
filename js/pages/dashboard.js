@@ -24,7 +24,7 @@ function setupDashboard() {
 
   const saldo = pemasukan - pengeluaran;
 
-	renderChart(document.getElementById("chartPie"),"pie",["Pemasukan", "Pengeluaran"],[pemasukan, pengeluaran], ['#4CAF50', '#F44336'], 'Perbandingan Pemasukan & Pengeluaran');
+	renderChart(document.getElementById("chartPie"),"bar",["Pemasukan", "Pengeluaran", 'Saldo'],[pemasukan, pengeluaran, saldo, data.length], ['#2196f3', '#F44336', '#4caf50'], 'Perbandingan Pemasukan, Pengeluaran & Saldo', false);
 	const transaksiKeluar = data.filter(data => data.jenis === "pengeluaran");
 	const transaksiMasuk = data.filter(data => data.jenis === 'pemasukan');
 	const pengeluaranPerKategori = {}, pemasukanPerKategori = {};

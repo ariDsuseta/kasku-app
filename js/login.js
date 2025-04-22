@@ -1,4 +1,8 @@
+import {getLocalstorage} from "./utils.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+	const dataLogin = getLocalstorage("kasku_login") || false;
+	if (dataLogin) window.location.href = './';
 
 	const form = document.getElementById("loginForm");
 
