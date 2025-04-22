@@ -787,6 +787,9 @@ body.dark .element-info {
   overflow-x: scroll;
   margin-top: 1rem;
 }
+#kategori-table {
+  overflow-x: scroll;
+}
 
 /* Gaya dasar alert (bisa Anda sesuaikan) */
 .alert {

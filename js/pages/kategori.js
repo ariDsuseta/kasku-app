@@ -96,7 +96,7 @@ function editData(id) {
         attributes: {
           type: "button",
           name: "batal",
-          style: "background-color: #861414; color:white",
+          style: "background-color: #861414; color:white; margin-left:-10px;",
           "data-action": "batal-edit-data",
         },
         textContent: "Batal",
@@ -129,6 +129,7 @@ function tampilkanDaftarKategori() {
         tag: "td",
         attributes: {
           style: "text-align:center",
+          class: "no-wrap",
         },
         children: [
           createElement({
