@@ -1,7 +1,5 @@
 import {
 	createElement,
-	elFollowMe,
-	escapeHTML,
 	getLocalstorage, loadStatus,
 	saveLocalStorage,
 } from "../utils.js";

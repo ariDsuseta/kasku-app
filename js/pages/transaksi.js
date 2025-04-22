@@ -22,7 +22,6 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
   const transaksi = getLocalstorage(transaksiKey) || [];
   const tableBody = document.querySelector("#transaksi-table tbody");
   const paginationContainer = document.querySelector("#pagination");
-  const summary = document.querySelector(".summary");
   const totalPemasukan = dataSum(transaksi, "pemasukan");
   const totalPengeluaran = dataSum(transaksi, "pengeluaran");
   const saldo = totalPemasukan - totalPengeluaran;

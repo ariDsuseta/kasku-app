@@ -1,3 +1,5 @@
+import {getLocalstorage, paginate} from "../utils.js";
+
 export function renderRiwayat(content) {
   fetch("pages/riwayat.html")
     .then((res) => res.text())
@@ -7,31 +9,33 @@ export function renderRiwayat(content) {
     });
 }
 
+const kategoriKey = "transaksiKasKu";
+
 const setupRiwayatPage = () => {
-  const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
-
-  // Urutkan dari terbaru
-  const sorted = data.sort((a, b) => new Date(b.tanggal) - new Date(a.tanggal));
-
-  const tbody = document.getElementById("riwayat-body");
-  tbody.innerHTML = "";
-
-  sorted.forEach((item, index) => {
-    const row = document.createElement("tr");
-
-    row.innerHTML = `
-			<td>${index + 1}</td>
-      <td>${item.tanggal}</td>
-      <td>${item.kategori}</td>
-      <td class="${
-        item.jenis === "pengeluaran" ? "minus" : "plus"
-      }">Rp ${Number(item.nominal).toLocaleString()}</td>
-      <td class="${item.jenis === "pengeluaran" ? "minus" : "plus"}">${
-      item.jenis
-    }</td>
-      <td>${item.catatan}</td>
-    `;
-
-    tbody.appendChild(row);
-  });
+	const dataKategori = getLocalstorage(kategoriKey) || [];
+	const tableBody = document.getElementById("riwayat-body");
+	const paginationContainer = document.querySelector("#pagination");
+	paginate({
+		data: dataKategori,
+		rowsPerPage: 12,
+		currentPage: 1,
+		maxButton: 5,
+		renderRows: (data, startIndex) =>
+			data
+			.map(
+				(item, i) => `
+					<tr class="no-wrap ${item.jenis === "pemasukan" ? "bg-success" : ""}">
+						<td>${startIndex + i + 1}</td>
+						<td>${item.tanggal}</td>
+						<td>${item.kategori}</td>
+						<td>Rp ${item.nominal.toLocaleString("id-ID")}</td>
+						<td>${item.jenis}</td>
+						<td>${item.catatan}</td>
+					</tr>
+				`
+			)
+			.join(""),
+		renderContainer: tableBody,
+		paginationContainer,
+	});
 };
