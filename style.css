@@ -2,8 +2,6 @@
 :root {
   --primary: #2a7afe;
   --primary-dark: #1f5fd1;
-  --danger: #e74d3c;
-  --danger-dark: #861414;
   --card-bg: #f9f9f9;
   --border-color: #ddd;
   --bg-card: #f5f5f5;
@@ -19,11 +17,20 @@
   --danger-dark: #731913;
   --info: var(--info-color);
   --info-dark: #206098;
-  --primary-color: #4caf50; /* Hijau */
-  --secondary-color: #ff9800; /* Orange */
-  --danger-color: #f44336; /* Merah */
-  --info-color: #2987ce;
+	--warning: #ffb300;
+	/*========================*/
+	--success-color: #28a745;
+	--info-color: #17a2b8;
+	--warning-color: #ffc107;
+	--danger-color: #dc3545;
+	--primary-color: #007bff;
+	--secondary-color: #6c757d;
+	--light-color: #f8f9fa;
+	--dark-color: #343a40;
+	--white-color: white;
+	--black-color: black;
 }
+
 /*html {scroll-behavior: smooth}*/
 body.dark {
   --card-bg: #1f1f1f;
@@ -195,6 +202,54 @@ body.dark .sidebar li.active-page {
 .flex.gap-1 {
   gap: 10px;
 }
+
+/*color*/
+.c-danger {color: var(--danger)}
+.c-success{color: var(--success)}
+.c-warning{color: var(--warning)}
+.c-info{color: var(--info-color)}
+
+/*background*/
+.bg-success {
+	background-color: var(--success-color) !important;
+	color: var(--white-color) !important;
+}
+
+.bg-info {
+	background-color: var(--info-color) !important;
+	color: var(--white-color) !important;
+}
+
+.bg-warning {
+	background-color: var(--warning-color) !important;
+	color: var(--black-color) !important;
+}
+
+.bg-danger {
+	background-color: var(--danger-color) !important;
+	color: var(--white-color) !important;
+}
+
+.bg-primary {
+	background-color: var(--primary-color) !important;
+	color: var(--white-color) !important;
+}
+
+.bg-secondary {
+	background-color: var(--secondary-color) !important;
+	color: var(--white-color) !important;
+}
+
+.bg-light {
+	background-color: var(--light-color) !important;
+	color: var(--black-color) !important;
+}
+
+.bg-dark {
+	background-color: var(--dark-color) !important;
+	color: var(--white-color) !important;
+}
+/*BACKGROUND END*/
 
 button.toggle_theme {
   background: none;
