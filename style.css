@@ -2,7 +2,7 @@
 :root {
   --primary: #2a7afe;
   --primary-dark: #1f5fd1;
-  --danger: #e74c3c;
+  --danger: #e74d3c;
   --danger-dark: #861414;
   --card-bg: #f9f9f9;
   --border-color: #ddd;
@@ -13,12 +13,12 @@
   --bg-card-dark: #333;
   --text-light: #333;
   --text-dark: #fff;
-	--success-dark:#347e37;
+  --success-dark: #347e37;
   --success: #4caf50;
-	--danger: #ab271e;
-	--danger-dark: #731913;
-	--info: var(--info-color);
-	--info-dark: #206098;
+  --danger: #ab271e;
+  --danger-dark: #731913;
+  --info: var(--info-color);
+  --info-dark: #206098;
   --primary-color: #4caf50; /* Hijau */
   --secondary-color: #ff9800; /* Orange */
   --danger-color: #f44336; /* Merah */
@@ -127,7 +127,7 @@ body.dark .btn:hover {
 }
 
 body.dark .sidebar li.active-page {
-	background-color: var(--bg-card-dark);
+  background-color: var(--bg-card-dark);
 }
 
 /* KONTEN UTAMA */
@@ -192,8 +192,8 @@ body.dark .sidebar li.active-page {
 .flex.flex-wrap {
   flex-wrap: wrap;
 }
-.flex.gap-1{
-	gap: 10px;
+.flex.gap-1 {
+  gap: 10px;
 }
 
 button.toggle_theme {
@@ -251,7 +251,7 @@ body.dark input {
   max-width: 850px;
   margin: 3rem auto auto;
   padding: 1rem;
-	scroll-padding-top: 1rem;
+  scroll-padding-top: 1rem;
 }
 
 .transaksi-page h2 {
@@ -273,12 +273,14 @@ body.dark input {
   background-color: #fff;
   color: #000;
 }
-.mbsm{margin-bottom: 1rem}
+.mbsm {
+  margin-bottom: 1rem;
+}
 .mtxl {
   margin-top: 3.5rem;
 }
 mbsm {
-	margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 .text-center {
   text-align: center;
@@ -402,21 +404,18 @@ body.dark .tx-transaksi {
   border: none;
   cursor: pointer;
 }
-.tabel-kategori
-{
+.tabel-kategori {
   width: 100%;
   border-collapse: collapse;
 }
 
 .tabel-kategori th,
-.tabel-kategori td
-{
+.tabel-kategori td {
   padding: 0.5rem;
   border: 1px solid #ccc;
 }
 
-.tabel-kategori button
-{
+.tabel-kategori button {
   margin: 0 0.25rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -452,64 +451,65 @@ body.dark .tx-transaksi {
 }
 /*Pagination*/
 .pagination-container {
-	margin-top: 20px;
-	text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .pagination-btn {
-	margin: 0 4px;
-	padding: 6px 10px;
-	border: none;
-	background: var(--bg-card);
-	color: var(--text-light);
-	cursor: pointer;
-	border-radius: 6px;
-	transition: 0.2s;
+  margin: 0 4px;
+  padding: 6px 10px;
+  border: none;
+  background: var(--bg-card);
+  color: var(--text-light);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
 .pagination-btn:hover {
-	background: var(--primary);
-	color: white;
+  background: var(--primary);
+  color: white;
 }
 
 .pagination-btn.active {
-	background: var(--primary);
-	color: white;
-	font-weight: bold;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
 }
 
 .pagination-btn {
-	margin: 0 4px;
-	padding: 6px 10px;
-	border: 1px solid;
-	background: var(--bg-card, #f1f1f1);
-	color: var(--text-light, #333);
-	cursor: pointer;
-	border-radius: 6px;
-	transition: 0.2s;
+  margin: 0 4px;
+  padding: 6px 10px;
+  border: 1px solid;
+  background: var(--bg-card, #f1f1f1);
+  color: var(--text-light, #333);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
-body.dark .pagination-btn{border: none}
+body.dark .pagination-btn {
+  border: none;
+}
 .pagination-btn:hover:not(:disabled) {
-	background: var(--primary, #007bff);
-	color: white;
+  background: var(--primary, #007bff);
+  color: white;
 }
 .pagination-btn:hover:disabled {
-	background: white;
-	color: #333;
+  background: white;
+  color: #333;
 }
 .pagination-btn.active {
-	background: var(--primary, #007bff);
-	color: white;
-	font-weight: bold;
-	transform: scale(1.3);
+  background: var(--primary, #007bff);
+  color: white;
+  font-weight: bold;
+  transform: scale(1.3);
 }
 
 .pagination-btn:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
-
 
 /*RIWAYAT START*/
 .riwayat-section {
@@ -525,8 +525,7 @@ body.dark .pagination-btn{border: none}
 }
 
 .riwayat-table,
-#transaksi-table table
-{
+#transaksi-table table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -534,7 +533,7 @@ body.dark .pagination-btn{border: none}
 .riwayat-table th,
 .riwayat-table td,
 #transaksi-table table th,
-#transaksi-table table td{
+#transaksi-table table td {
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   text-align: left;
@@ -549,19 +548,19 @@ body.dark .pagination-btn{border: none}
 }
 
 #transaksi-table button {
-	background: var(--bg-card-light);
-	padding: .2rem 0.35rem;
-	border: none;
-	border-radius: 3px;
-	box-shadow: var(--shadow);
-	cursor: pointer;
-	transition: background-color .3s;
+  background: var(--bg-card-light);
+  padding: 0.2rem 0.35rem;
+  border: none;
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 #transaksi-table button:hover {
-	background-color: #a1a1a1;
+  background-color: #a1a1a1;
 }
 body.dark #transaksi-table button {
-	background-color: var(--bg-card-dark);
+  background-color: var(--bg-card-dark);
 }
 
 /*RIWAYAT END*/
@@ -584,16 +583,21 @@ body.dark #transaksi-table button {
   text-align: center;
 }
 
-
-.card.pemasukan {background-color: var(--success)}
+.card.pemasukan {
+  background-color: var(--success);
+}
 body.dark .card.pemasukan {
   background-color: var(--success-dark);
 }
-.card.pengeluaran {background-color: var(--danger)}
-body.dark .card.pengeluaran{
+.card.pengeluaran {
+  background-color: var(--danger);
+}
+body.dark .card.pengeluaran {
   background-color: var(--danger-dark);
 }
-.card.saldo {background-color: var(--info)}
+.card.saldo {
+  background-color: var(--info);
+}
 body.dark .card.saldo {
   background-color: var(--info-dark);
 }
@@ -693,7 +697,7 @@ body.dark .stat-box.jumlah {
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .btn-export,
@@ -720,122 +724,124 @@ body.dark .stat-box.jumlah {
 
 /*Chart*/
 .chart-section {
-	padding: 1rem;
+  padding: 1rem;
 }
 
 .chart-wrapper {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	justify-content: center;
-	align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .chart-wrapper canvas {
-	flex: 1 1 300px;
-	max-width: 48%;
-	background: var(--bg-card, #fff);
-	padding: 1rem;
-	border-radius: 12px;
-	box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
+  flex: 1 1 300px;
+  max-width: 48%;
+  background: var(--bg-card, #fff);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
 }
 body.dark .chart-wrapper canvas {
-	background-color: var(--bg-card-dark);
+  background-color: var(--bg-card-dark);
 }
-.center-element{
-	display: flex;
-	align-items: center;
-	gap: .5rem;
+.center-element {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .center-element h2 {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 button.kategori-info {
-	background: none;
-	border: 1px solid var(--border-color);
-	box-shadow: var(--shadow);
-	padding: 0;
-	width: 20px;
-	height: 20px;
+  background: none;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  padding: 0;
+  width: 20px;
+  height: 20px;
 }
 body.dark button.kategori-info {
-	color: var(--text-dark);
+  color: var(--text-dark);
 }
 .element-info {
-	/*position: absolute;*/
-	border: 1px solid var(--border-color);
-	padding: .5rem;
-	border-radius: 10px;
-	width: 300px;
-	background-color: var(--bg-card);
-	transform: scale(0);
-	transition: transform .3s;
-	z-index: 20;
+  /*position: absolute;*/
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 10px;
+  width: 300px;
+  background-color: var(--bg-card);
+  transform: scale(0);
+  transition: transform 0.3s;
+  z-index: 20;
 }
-body.dark .element-info{background-color: var(--bg-card-dark)}
+body.dark .element-info {
+  background-color: var(--bg-card-dark);
+}
 .element-info.show {
-	transform: scale(1);
+  transform: scale(1);
 }
 
 #transaksi-table {
-	overflow-x: scroll;
-	margin-top: 1rem;
+  overflow-x: scroll;
+  margin-top: 1rem;
 }
 
 /* Gaya dasar alert (bisa Anda sesuaikan) */
 .alert {
-	padding: 15px;
-	margin-bottom: 15px;
-	border-radius: 5px;
-	border: 1px solid transparent; /* Untuk memberikan kesan yang sama pada semua alert */
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid transparent; /* Untuk memberikan kesan yang sama pada semua alert */
 }
 
 .alert-success {
-	background-color: #d4edda;
-	color: #155724;
-	border-color: #c3e6cb;
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
 }
 
 .alert-info {
-	background-color: #e7f5fe;
-	color: #0c5460;
-	border-color: #bee5eb;
+  background-color: #e7f5fe;
+  color: #0c5460;
+  border-color: #bee5eb;
 }
 
 .alert-warning {
-	background-color: #fff3cd;
-	color: #85640c;
-	border-color: #ffeeba;
+  background-color: #fff3cd;
+  color: #85640c;
+  border-color: #ffeeba;
 }
 
 .alert-danger {
-	background-color: #f8d7da;
-	color: #721c24;
-	border-color: #f5c6cb;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
 }
 
 .alert-secondary {
-	background-color: #e2e3e5;
-	color: #383d41;
-	border-color: #d6d8db;
+  background-color: #e2e3e5;
+  color: #383d41;
+  border-color: #d6d8db;
 }
 
 .alert-primary {
-	background-color: #cce5ff;
-	color: #004085;
-	border-color: #b8daff;
+  background-color: #cce5ff;
+  color: #004085;
+  border-color: #b8daff;
 }
 
 .alert-light {
-	background-color: #fefefe;
-	color: #818182;
-	border-color: #fdfdfe;
+  background-color: #fefefe;
+  color: #818182;
+  border-color: #fdfdfe;
 }
 
 .alert-dark {
-	background-color: #d6d8d9;
-	color: #1b1e21;
-	border-color: #c6c8ca;
+  background-color: #d6d8d9;
+  color: #1b1e21;
+  border-color: #c6c8ca;
 }
 
 /* Gaya untuk tombol tutup (jika Anda menggunakannya) */
@@ -857,47 +863,47 @@ body.dark .element-info{background-color: var(--bg-card-dark)}
 /*}*/
 
 .no-wrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 /* RESPONSIF */
 @media (max-width: 768px) {
-	.sidebar {
-		position: static;
-		width: 100%;
-		height: auto;
-		margin-top: 3.5rem;
-	}
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 3.5rem;
+  }
 
-	#app-content {
-		margin-left: 0;
-		margin-top: 0;
-		padding: 1rem;
-	}
-	.ringkasan {
-		flex-wrap: wrap;
-		gap: 0.5rem !important;
-	}
+  #app-content {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 1rem;
+  }
+  .ringkasan {
+    flex-wrap: wrap;
+    gap: 0.5rem !important;
+  }
 
-	.ringkasan .card {
-		margin-bottom: 0;
-	}
-	.mtxl {
-		margin-top: 0.5rem !important;
-	}
-	.chart-wrapper canvas {
-		max-width: 80%;
-	}
-	.element-info {
-		transform: scale(0) translateX(50%);
-		right: 50%;
-		top: 50%;
-	}
-	.element-info.show{
-		transform:scale(1) translateX(50%);
-		transform-origin: center center;
-	}
-	.export-import-container {
-		justify-content: center;
-	}
+  .ringkasan .card {
+    margin-bottom: 0;
+  }
+  .mtxl {
+    margin-top: 0.5rem !important;
+  }
+  .chart-wrapper canvas {
+    max-width: 80%;
+  }
+  .element-info {
+    transform: scale(0) translateX(50%);
+    right: 50%;
+    top: 50%;
+  }
+  .element-info.show {
+    transform: scale(1) translateX(50%);
+    transform-origin: center center;
+  }
+  .export-import-container {
+    justify-content: center;
+  }
 }
