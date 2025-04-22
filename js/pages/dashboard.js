@@ -1,4 +1,4 @@
-import { escapeHTML, validateDataFormat } from "../utils.js";
+import {escapeHTML, loadStatus, validateDataFormat} from "../utils.js";
 
 export function renderDashboard(content) {
   fetch("pages/dashboard.html")
