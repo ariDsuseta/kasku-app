@@ -1,9 +1,9 @@
 import {
-  createElement,
-  elFollowMe,
-  escapeHTML,
-  getLocalstorage,
-  saveLocalStorage,
+	createElement,
+	elFollowMe,
+	escapeHTML,
+	getLocalstorage, loadStatus,
+	saveLocalStorage,
 } from "../utils.js";
 
 export function renderKategori(content) {
@@ -33,6 +33,9 @@ function addData(form, event) {
     const btnBtl = form["batal"];
     handleBtl(btnBtl, form);
     saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
+
+		const setAlert = {status: true, message: "Data Berhasil di Edit", info:'alert-success'};
+		saveLocalStorage("alert", JSON.stringify(setAlert));
     tampilkanDaftarKategori();
     return;
   }
@@ -42,11 +45,15 @@ function addData(form, event) {
   if (index !== -1) {
     dataKategori[index] = dataInput;
     tampilkanDaftarKategori();
+		// tambahkan alert jika perlu
     form.reset();
     return;
   }
+
   dataKategori.push(dataInput);
   saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
+	const setAlert = {status: true, message: "Data Berhasil di Tambahkan", info:'alert-success'};
+	saveLocalStorage("alert", JSON.stringify(setAlert));
   tampilkanDaftarKategori();
   form.reset();
 }
@@ -70,6 +77,9 @@ function hapusData(id, conf = confirm("Yakin ingin menghapus data ini!")) {
   if (index !== -1) {
     dataKategori.splice(index, 1);
     saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
+
+		const setAlert = {status: true, message: "Data Berhasil di hapus", info:'alert-error'};
+		saveLocalStorage("alert", JSON.stringify(setAlert));
     tampilkanDaftarKategori();
   }
 }
@@ -102,7 +112,7 @@ function editData(id) {
         textContent: "Batal",
         eventListeners: {
           click: function () {
-            handleBtl(this, formEl);
+            handleBtl(this, formEl, true);
           },
         },
       })
@@ -110,7 +120,13 @@ function editData(id) {
   }
 }
 
-function handleBtl(el, form) {
+function handleBtl(el, form, sts = false) {
+	if (sts){
+		const setAlert = {status: true, message: "Data Batal di Edit", info:'alert-error'};
+		saveLocalStorage("alert", JSON.stringify(setAlert));
+		tampilkanDaftarKategori();
+	}
+
   form.removeAttribute("data-edit");
   form.reset();
   form["btn-kategori"].innerText = "Simpan";
@@ -118,6 +134,28 @@ function handleBtl(el, form) {
 }
 
 function tampilkanDaftarKategori() {
+
+	// cek status alert
+	// alert = {
+	// 	status: true,
+	// 	message: 'test',
+	// 	info: 'alert-waning'
+	// }
+
+	const statusAlert = getLocalstorage("alert");
+	if (statusAlert){
+	// 	tampilkan alert jika status bernilai true
+		if(statusAlert.status){
+			loadStatus({
+				status: true,
+				message: statusAlert.message,
+				info: statusAlert.info
+			});
+		}
+	}
+
+
+
   const tableBody = document.getElementById("daftar-kategori");
   tableBody.innerHTML = "";
   if (tableBody) {

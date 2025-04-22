@@ -183,11 +183,16 @@ const createElement = ({
   attributes = {},
   eventListeners = {},
   children = [],
+	simbol = {
+		status: false,
+		teged: ''
+	},
 }) => {
   const elemen = document.createElement(tag);
   if (id) elemen.id = id;
   if (className) elemen.className = className;
   if (textContent) elemen.textContent = textContent;
+	if (simbol.status) elemen.innerHTML = simbol.taged;
   if (innerHTML) elemen.innerHTML = innerHTML;
 
   // 	setel atribute
@@ -216,6 +221,47 @@ const createElement = ({
   return elemen;
 };
 
+// fungsi untuk alert / pemberitahuan
+function loadStatus({
+	status = false,
+	message = '',
+	info = 'alert-success',
+	parentEl = document.body,
+	time = 500,
+	datakey = 'alert'
+}){
+	if (status) {
+		const alertEl = createElement({
+			textContent: message,
+			attributes: {
+				'class' : 'alert ' + info +' show',
+				style: 'z-index: 40; position:absolute; top:5rem; right:1rem;'
+			},
+			children:[
+				createElement({
+					tag: 'span',
+					className: 'closebtn',
+					simbol: {
+						status: true,
+						taged: '&times;'
+					},
+					eventListeners: {
+						click: function() {
+							this.parentElement.classList.add('hide');
+							setTimeout(function (){
+								this.parentElement.style.display = 'none';
+								this.parentElement.remove();
+								localStorage.removeItem(datakey);
+							}.bind(this), time)
+						}
+					}
+				})
+			]
+		});
+		parentEl.appendChild(alertEl);
+	}
+}
+
 export {
   escapeHTML,
   validateDataFormat,
@@ -227,4 +273,5 @@ export {
   paginate,
   dataSum,
   createElement,
+	loadStatus
 };
