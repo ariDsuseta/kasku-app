@@ -1,3 +1,5 @@
+import { printElement } from "../utils.js";
+
 export function renderLaporan(content) {
   const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
 
@@ -29,15 +31,19 @@ export function renderLaporan(content) {
   content.innerHTML = `
 		<div class="mtxl">
 			<section class="laporan">
-				<h2>Laporan Keuangan</h2>
+				<h2>📈 Laporan Keuangan</h2>
 				<div class="ringkasan">
 					<div class="card pemasukan">Pemasukan: Rp ${totalMasuk.toLocaleString()}</div>
 					<div class="card pengeluaran">Pengeluaran: Rp ${totalKeluar.toLocaleString()}</div>
 					<div class="card saldo">Saldo: Rp ${saldo.toLocaleString()}</div>
 				</div>
-	
-				<h3>Ringkasan per Kategori</h3>
-				<table>
+        <div class="flex beetwen mb">
+          <h3>📑 Ringkasan per Kategori</h3>
+          <button id="btnPrintRingkasan" class="print" type="button">
+            🖨️ Print Ringkasan
+          </button>
+        </div>
+				<table id="riwayat">
 					<thead>
 						<tr><th>Kategori</th><th>Pemasukan</th><th>Pengeluaran</th></tr>
 					</thead>
@@ -58,4 +64,9 @@ export function renderLaporan(content) {
 			</section>
     </div>
   `;
+
+  document.getElementById("btnPrintRingkasan").addEventListener("click", () => {
+    const table = document.getElementById("riwayat");
+    printElement(table, "Ringkasan Perkategori");
+  });
 }
