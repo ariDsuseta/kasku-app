@@ -6,7 +6,7 @@
   --border-color: #ddd;
   --bg-card: #f5f5f5;
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  --shadow-dark: 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-dark: 0 4px 10px rgba(240, 240, 240, 0.418);
   --bg-card-light: #f0f4f8;
   --bg-card-dark: #333;
   --text-light: #333;
@@ -17,19 +17,19 @@
   --danger-dark: #731913;
   --info: var(--info-color);
   --info-dark: #286396;
-	--warning: #ffb300;
-	--primary-dark: #0357b0;
-	/*========================*/
-	--success-color: #28a745;
-	--info-color: #17a2b8;
-	--warning-color: #ffc107;
-	--danger-color: #dc3545;
-	--primary-color: #007bff;
-	--secondary-color: #6c757d;
-	--light-color: #f8f9fa;
-	--dark-color: #343a40;
-	--white-color: white;
-	--black-color: black;
+  --warning: #ffb300;
+  --primary-dark: #0357b0;
+  /*========================*/
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --white-color: white;
+  --black-color: black;
 }
 
 /*html {scroll-behavior: smooth}*/
@@ -203,54 +203,66 @@ body.dark .sidebar li.active-page {
 .flex.gap-1 {
   gap: 10px;
 }
-.flex.content-center {justify-content: center}
-.flex.beetwen{justify-content: space-between}
+.flex.content-center {
+  justify-content: center;
+}
+.flex.beetwen {
+  justify-content: space-between;
+}
 
 /*color*/
-.c-danger {color: var(--danger)}
-.c-success{color: var(--success)}
-.c-warning{color: var(--warning)}
-.c-info{color: var(--info-color)}
+.c-danger {
+  color: var(--danger);
+}
+.c-success {
+  color: var(--success);
+}
+.c-warning {
+  color: var(--warning);
+}
+.c-info {
+  color: var(--info-color);
+}
 
 /*background*/
 .bg-success {
-	background-color: var(--success-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--success-color) !important;
+  color: var(--white-color) !important;
 }
 
 .bg-info {
-	background-color: var(--info-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--info-color) !important;
+  color: var(--white-color) !important;
 }
 
 .bg-warning {
-	background-color: var(--warning-color) !important;
-	color: var(--black-color) !important;
+  background-color: var(--warning-color) !important;
+  color: var(--black-color) !important;
 }
 
 .bg-danger {
-	background-color: var(--danger-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--danger-color) !important;
+  color: var(--white-color) !important;
 }
 
 .bg-primary {
-	background-color: var(--primary-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--primary-color) !important;
+  color: var(--white-color) !important;
 }
 
 .bg-secondary {
-	background-color: var(--secondary-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--secondary-color) !important;
+  color: var(--white-color) !important;
 }
 
 .bg-light {
-	background-color: var(--light-color) !important;
-	color: var(--black-color) !important;
+  background-color: var(--light-color) !important;
+  color: var(--black-color) !important;
 }
 
 .bg-dark {
-	background-color: var(--dark-color) !important;
-	color: var(--white-color) !important;
+  background-color: var(--dark-color) !important;
+  color: var(--white-color) !important;
 }
 /*BACKGROUND END*/
 
@@ -756,7 +768,7 @@ body.dark .stat-box.jumlah {
   gap: 1rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-	margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .btn-export,
@@ -772,24 +784,22 @@ body.dark .stat-box.jumlah {
   transition: background-color 0.3s;
 }
 
-.btn-export{
-	background-color: var(--success-color);
+.btn-export {
+  background-color: var(--success-color);
 }
-
 
 .btn-export:hover,
 .btn-import:hover {
   background-color: var(--primary-dark);
 }
 
-.btn-export:hover{
-	background-color: var(--success-dark);
+.btn-export:hover {
+  background-color: var(--success-dark);
 }
 
 .btn-import input[type="file"] {
   display: none;
 }
-
 
 .center-element {
   display: flex;
@@ -836,7 +846,6 @@ body.dark .element-info {
   overflow-x: scroll;
 }
 
-
 .no-wrap {
   white-space: nowrap;
 }
@@ -844,84 +853,111 @@ body.dark .element-info {
 /*ALERT START*/
 /* Style Dasar Alert */
 .alert {
-	padding: 20px;
-	margin-bottom: 15px;
-	border-left: 6px solid; /* Warna akan ditentukan oleh kelas spesifik */
-	opacity: 1;
-	transition: opacity 0.6s; /* Efek fade out saat ditutup */
-	width: 45%
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 6px solid; /* Warna akan ditentukan oleh kelas spesifik */
+  opacity: 1;
+  transition: opacity 0.6s; /* Efek fade out saat ditutup */
+  width: 45%;
 }
 
 /* Tombol Close */
 .closebtn {
-	margin-left: 15px;
-	color: black;
-	font-weight: bold;
-	float: right;
-	font-size: 22px;
-	line-height: 20px;
-	cursor: pointer;
-	transition: 0.3s;
-	position: absolute;
-	top: 10px;
-	right: 20px;;
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
 .closebtn:hover {
-	color: black;
+  color: black;
 }
 
 /* Warna Alert */
 .alert-info {
-	background-color: #f0f8ff; /* Light Blue */
-	color: #1e88e5; /* Blue Grey */
-	border-color: #1e88e5;
+  background-color: #f0f8ff; /* Light Blue */
+  color: #1e88e5; /* Blue Grey */
+  border-color: #1e88e5;
 }
 
 .alert-success {
-	background-color: #f0fff0; /* Light Green */
-	color: #43a047; /* Green */
-	border-color: #43a047;
+  background-color: #f0fff0; /* Light Green */
+  color: #43a047; /* Green */
+  border-color: #43a047;
 }
 
 .alert-warning {
-	background-color: #fff8e1; /* Light Yellow */
-	color: #ffb300; /* Amber */
-	border-color: #ffb300;
+  background-color: #fff8e1; /* Light Yellow */
+  color: #ffb300; /* Amber */
+  border-color: #ffb300;
 }
 
 .alert-error {
-	background-color: #ffebee; /* Light Red */
-	color: #e53935; /* Red */
-	border-color: #e53935;
+  background-color: #ffebee; /* Light Red */
+  color: #e53935; /* Red */
+  border-color: #e53935;
 }
 
 /* Animasi Show */
 .alert.show {
-	animation: slideIn 0.5s forwards;
+  animation: slideIn 0.5s forwards;
 }
 
 @keyframes slideIn {
-	from {transform: translateY(-50px); opacity: 0;}
-	to {transform: translateY(0); opacity: 1;}
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Animasi Hide (akan dipicu oleh JavaScript) */
 .alert.hide {
-	animation: fadeOut 0.5s forwards;
+  animation: fadeOut 0.5s forwards;
 }
 
 @keyframes fadeOut {
-	from {opacity: 1;}
-	to {opacity: 0;}
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 /*ALERT END*/
 
-
 /*TABEL HOVER*/
-table tbody tr:hover{
-	background-color: #b2b1b1;
-	color: var(--black-color);
+table tbody tr:hover {
+  background-color: #b2b1b1;
+  color: var(--black-color);
+}
+
+.over-auto-x {
+  overflow-x: auto;
+}
+
+.print {
+  padding: 0 0.75rem;
+  border: none;
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+body.dark .print {
+  box-shadow: 0px 0px 10px rgba(240, 240, 240, 0.3);
+  background-color: #1e1e1e;
+  color: white;
 }
 
 /* RESPONSIF */
@@ -964,7 +1000,7 @@ table tbody tr:hover{
   .export-import-container {
     justify-content: center;
   }
-  .alert{
-	  width: calc(100% - 2rem);
+  .alert {
+    width: calc(100% - 2rem);
   }
 }
