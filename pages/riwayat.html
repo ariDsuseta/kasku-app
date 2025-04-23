@@ -1,10 +1,21 @@
 <div class="mtxl">
   <section class="riwayat-section">
-    <div class="flex beetwen mb">
+    <div class="flex beetwen mb item-center flex-wrap container">
       <h2>📋 Riwayat Transaksi</h2>
-      <button id="btnPrintRiwayat" class="print" type="button">
-        🖨️ Print riwayat
-      </button>
+      <div class="flex flex-wrap gap-1 item-center no-wrap">
+        <div class="flex gap-1 item-center">
+          <label for="filter-export" class="d-none:mobile no-wrap">Pilih Data:</label>
+          <select id="filter-export" class="mb-0">
+            <option value="semua">Semua</option>
+            <option value="pemasukan">Pemasukan</option>
+            <option value="pengeluaran">Pengeluaran</option>
+          </select>
+          <button id="btn-export-csv" class="print">📁 Export CSV</button>
+        </div>
+        <button id="btnPrintRiwayat" class="print" type="button">
+          🖨️ Print riwayat
+        </button>
+      </div>
     </div>
     <div class="riwayat-container">
       <table class="riwayat-table">

@@ -3,7 +3,10 @@ import {
 	paginate,
 	saveLocalStorage,
 	dataSum,
-	createElement, loadStatus, setAlert, escapeHTML,
+	createElement,
+	setAlert,
+	escapeHTML,
+	tampilkanStatus,
 } from "../utils.js";
 
 export function renderTransaksi(content) {
@@ -26,24 +29,7 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
   const saldo = totalPemasukan - totalPengeluaran;
 
 	const statusAlert = getLocalstorage("alert");
-	if (statusAlert){
-		// 	tampilkan alert jika status bernilai true
-		if(statusAlert.status){
-			loadStatus({
-				status: true,
-				message: statusAlert.message,
-				info: statusAlert.info
-			});
-			const alertEl = document.querySelector(".alert");
-			setTimeout(() => {
-				alertEl.classList.add("hide");
-				setTimeout(() => {
-					alertEl.remove();
-					localStorage.removeItem("alert");
-				}, 500);
-			}, 1500);
-		}
-	}
+	tampilkanStatus(statusAlert);
   document.getElementById(
     "total-pemasukan"
   ).innerText = `Rp ${totalPemasukan.toLocaleString()}`;

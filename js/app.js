@@ -12,6 +12,8 @@ const body = document.body;
 const theme = localStorage.getItem("theme") || "light";
 body.classList.toggle("dark", theme === "dark");
 
+if (!getLocalstorage("page")) saveLocalStorage("page", "dashboard");
+
 //event toggle
 toggleThemeBtn.addEventListener("click", () => {
 	body.classList.toggle("dark");

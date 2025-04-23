@@ -1,7 +1,7 @@
 import {
 	createElement,
-	getLocalstorage, loadStatus,
-	saveLocalStorage, setAlert,
+	getLocalstorage,
+	saveLocalStorage, setAlert, tampilkanStatus,
 } from "../utils.js";
 
 export function renderKategori(content) {
@@ -145,34 +145,9 @@ function handleBtl(el, form, sts = false) {
 
 function tampilkanDaftarKategori() {
 
-	// cek status alert
-	// alert = {
-	// 	status: true,
-	// 	message: 'test',
-	// 	info: 'alert-waning'
-	// }
-
 	const statusAlert = getLocalstorage("alert");
-	if (statusAlert){
-	// 	tampilkan alert jika status bernilai true
-		if(statusAlert.status){
-			loadStatus({
-				status: true,
-				message: statusAlert.message,
-				info: statusAlert.info
-			});
-			const alertEl = document.querySelector(".alert");
-			setTimeout(() => {
-				alertEl.classList.add("hide");
-				setTimeout(() => {
-					alertEl.remove();
-					localStorage.removeItem("alert");
-				}, 500);
-			}, 1500);
-		}
-	}
-
-
+	// tampilkan alert
+	tampilkanStatus(statusAlert);
 
   const tableBody = document.getElementById("daftar-kategori");
   tableBody.innerHTML = "";

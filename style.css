@@ -167,7 +167,9 @@ body.dark .sidebar li.active-page {
 .btn:hover {
   background-color: #1976d2;
 }
-
+.mb-0{
+	margin-bottom: 0;
+}
 .mb {
   margin-bottom: 1rem;
 }
@@ -209,6 +211,7 @@ body.dark .sidebar li.active-page {
 .flex.beetwen {
   justify-content: space-between;
 }
+.flex.item-center {align-items: center}
 
 /*color*/
 .c-danger {
@@ -587,7 +590,7 @@ body.dark .pagination-btn {
 }
 
 .riwayat-section h2 {
-  margin-bottom: 1rem;
+	margin-bottom: 0;
 }
 
 .riwayat-container {
@@ -741,7 +744,6 @@ body.dark .card.saldo {
 body.dark .stat-box {
   background-color: var(--bg-card-dark);
   color: #fff;
-  box-shadow: var(--shadow-dark);
 }
 
 body.dark .stat-box.saldo {
@@ -941,17 +943,36 @@ table tbody tr:hover {
   background-color: #b2b1b1;
   color: var(--black-color);
 }
-
+.over-auto {
+	overflow: auto;
+}
+.over-auto-y{
+	overflow-y: auto;
+}
 .over-auto-x {
   overflow-x: auto;
 }
 
 .print {
-  padding: 0 0.75rem;
-  border: none;
-  box-shadow: var(--shadow);
-  border-radius: 10px;
-  cursor: pointer;
+	padding: 0.75rem;
+	border: none;
+	box-shadow: var(--shadow);
+	border-radius: 7px;
+	cursor: pointer;
+	transition: background-color .3s;
+}
+.print:nth-child(2){
+	background-color: var(--primary);
+	color: var(--white-color);
+	border: none;
+	transition: background-color .3s;
+}
+.print:hover{
+	background-color: var(--dark-color);
+	color: var(--white-color);
+}
+.print:nth-child(2):hover {
+	background-color: var(--primary-dark);
 }
 
 body.dark .print {
@@ -959,7 +980,23 @@ body.dark .print {
   background-color: #1e1e1e;
   color: white;
 }
+body.dark .print:hover{
+	background-color: var(--light-color);
+	color: var(--black-color);
+}
+body.dark .print:nth-child(2) {
+	background-color: var(--primary-dark);
+}
 
+body.dark .print:nth-child(2):hover {
+	background-color: var(--primary);
+}
+
+.d-none {display: none}
+
+/*.setting-dashboard {*/
+/*	padding: 1rem;*/
+/*}*/
 /* RESPONSIF */
 @media (max-width: 768px) {
   .sidebar {
@@ -1003,4 +1040,5 @@ body.dark .print {
   .alert {
     width: calc(100% - 2rem);
   }
+  .d-none\:mobile{display: none}
 }
