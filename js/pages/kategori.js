@@ -1,7 +1,7 @@
 import {
 	createElement,
 	getLocalstorage, loadStatus,
-	saveLocalStorage,
+	saveLocalStorage, setAlert,
 } from "../utils.js";
 
 export function renderKategori(content) {
@@ -32,8 +32,11 @@ function addData(form, event) {
     handleBtl(btnBtl, form);
     saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
 
-		const setAlert = {status: true, message: "Data Berhasil di Edit", info:'alert-success'};
-		saveLocalStorage("alert", JSON.stringify(setAlert));
+		setAlert({
+			status: true,
+			message: "Data Berhasil di Edit",
+			info:'alert-success'
+		});
     tampilkanDaftarKategori();
     return;
   }
@@ -50,8 +53,11 @@ function addData(form, event) {
 
   dataKategori.push(dataInput);
   saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
-	const setAlert = {status: true, message: "Data Berhasil di Tambahkan", info:'alert-success'};
-	saveLocalStorage("alert", JSON.stringify(setAlert));
+	setAlert({
+		status: true,
+		message: "Data Berhasil di Tambahkan",
+		info:'alert-success'
+	});
   tampilkanDaftarKategori();
   form.reset();
 }
@@ -76,8 +82,11 @@ function hapusData(id, conf = confirm("Yakin ingin menghapus data ini!")) {
     dataKategori.splice(index, 1);
     saveLocalStorage(kategoriKey, JSON.stringify(dataKategori));
 
-		const setAlert = {status: true, message: "Data Berhasil di hapus", info:'alert-error'};
-		saveLocalStorage("alert", JSON.stringify(setAlert));
+		setAlert({
+			status: true,
+			message: "Data Berhasil di hapus",
+			info:'alert-error'
+		});
     tampilkanDaftarKategori();
   }
 }
@@ -120,8 +129,11 @@ function editData(id) {
 
 function handleBtl(el, form, sts = false) {
 	if (sts){
-		const setAlert = {status: true, message: "Data Batal di Edit", info:'alert-error'};
-		saveLocalStorage("alert", JSON.stringify(setAlert));
+		setAlert({
+			status: true,
+			message: "Data Batal di Edit",
+			info:'alert-error'
+		});
 		tampilkanDaftarKategori();
 	}
 
@@ -149,6 +161,14 @@ function tampilkanDaftarKategori() {
 				message: statusAlert.message,
 				info: statusAlert.info
 			});
+			const alertEl = document.querySelector(".alert");
+			setTimeout(() => {
+				alertEl.classList.add("hide");
+				setTimeout(() => {
+					alertEl.remove();
+					localStorage.removeItem("alert");
+				}, 500);
+			}, 1500);
 		}
 	}
 

@@ -1,398 +1,846 @@
 {
   "transaksi": [
     {
-      "id": 1648771234567,
-      "tanggal": "2025-04-15",
-      "nominal": 125000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Beli sarapan"
-    },
-    {
-      "id": 1648778901234,
-      "tanggal": "2025-04-03",
-      "nominal": 2750000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Investasi baru"
-    },
-    {
-      "id": 1648786567901,
-      "tanggal": "2025-04-22",
-      "nominal": 85000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Kopi siang"
-    },
-    {
-      "id": 1648794234568,
-      "tanggal": "2025-04-10",
-      "nominal": 420000,
-      "jenis": "pengeluaran",
-      "kategori": "Jasa",
-      "catatan": "Servis motor"
-    },
-    {
-      "id": 1648801901235,
-      "tanggal": "2025-04-28",
-      "nominal": 180000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli martil"
-    },
-    {
-      "id": 1648809567902,
-      "tanggal": "2025-04-07",
-      "nominal": 680000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Belanja bulanan"
-    },
-    {
-      "id": 1648817234569,
-      "tanggal": "2025-04-19",
-      "nominal": 95000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Tiket bioskop"
-    },
-    {
-      "id": 1648824901236,
-      "tanggal": "2025-04-01",
-      "nominal": 1500000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Pinjaman bank"
-    },
-    {
-      "id": 1648832567903,
-      "tanggal": "2025-04-25",
-      "nominal": 350000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Beli kabel data"
-    },
-    {
-      "id": 1648840234570,
-      "tanggal": "2025-04-12",
-      "nominal": 70000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Makan siang sederhana"
-    },
-    {
-      "id": 1648847901237,
-      "tanggal": "2025-04-05",
-      "nominal": 30000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Es teh"
-    },
-    {
-      "id": 1648855567904,
-      "tanggal": "2025-04-29",
-      "nominal": 600000,
-      "jenis": "pemasukan",
-      "kategori": "Jasa",
-      "catatan": "Bayaran desain"
-    },
-    {
-      "id": 1648863234571,
-      "tanggal": "2025-04-17",
-      "nominal": 110000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli amplas"
-    },
-    {
-      "id": 1648870901238,
-      "tanggal": "2025-04-09",
-      "nominal": 520000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli telur"
-    },
-    {
-      "id": 1648878567905,
+      "id": 1648771234611,
       "tanggal": "2025-04-23",
-      "nominal": 40000,
+      "nominal": 210000,
       "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Parkir bulanan"
+      "kategori": "Rumah & Dapur",
+      "catatan": "Beli kotak penyimpanan"
     },
     {
-      "id": 1648886234572,
-      "tanggal": "2025-04-02",
-      "nominal": 2100000,
+      "id": 1648771234612,
+      "tanggal": "2025-04-23",
+      "nominal": 500000,
       "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Tambahan modal usaha"
+      "kategori": "Pakaian",
+      "catatan": "Jual baju bekas"
     },
     {
-      "id": 1648893901239,
-      "tanggal": "2025-04-27",
-      "nominal": 900000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Service handphone"
-    },
-    {
-      "id": 1648901567906,
-      "tanggal": "2025-04-14",
-      "nominal": 160000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Makan malam di restoran"
-    },
-    {
-      "id": 1648909234573,
-      "tanggal": "2025-04-06",
-      "nominal": 25000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Jus alpukat"
-    },
-    {
-      "id": 1648916901240,
-      "tanggal": "2025-04-30",
-      "nominal": 750000,
-      "jenis": "pemasukan",
-      "kategori": "Jasa",
-      "catatan": "Konsultasi proyek"
-    },
-    {
-      "id": 1648924567907,
-      "tanggal": "2025-04-18",
-      "nominal": 220000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli bor"
-    },
-    {
-      "id": 1648932234574,
-      "tanggal": "2025-04-11",
-      "nominal": 480000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli minyak goreng"
-    },
-    {
-      "id": 1648939901241,
+      "id": 1648771234613,
       "tanggal": "2025-04-24",
-      "nominal": 65000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Cuci sepatu"
-    },
-    {
-      "id": 1648947567908,
-      "tanggal": "2025-04-04",
-      "nominal": 1800000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Penjualan aset lama"
-    },
-    {
-      "id": 1648955234575,
-      "tanggal": "2025-04-26",
-      "nominal": 550000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Beli charger baru"
-    },
-    {
-      "id": 1648962901242,
-      "tanggal": "2025-04-13",
-      "nominal": 95000,
-      "jenis": "pengeluaran",
-      "kategori": "Makanan",
-      "catatan": "Pesan pizza"
-    },
-    {
-      "id": 1648970567909,
-      "tanggal": "2025-04-07",
-      "nominal": 35000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Sirup"
-    },
-    {
-      "id": 1648978234576,
-      "tanggal": "2025-04-28",
-      "nominal": 800000,
-      "jenis": "pemasukan",
-      "kategori": "Jasa",
-      "catatan": "Freelance web development"
-    },
-    {
-      "id": 1648985901243,
-      "tanggal": "2025-04-19",
-      "nominal": 150000,
-      "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli paku"
-    },
-    {
-      "id": 1648993567910,
-      "tanggal": "2025-04-12",
-      "nominal": 720000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli beras kualitas baik"
-    },
-    {
-      "id": 1649001234577,
-      "tanggal": "2025-04-25",
-      "nominal": 55000,
-      "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Langganan streaming"
-    },
-    {
-      "id": 1649008901244,
-      "tanggal": "2025-04-05",
-      "nominal": 1950000,
-      "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Dana dari investor"
-    },
-    {
-      "id": 1649016567911,
-      "tanggal": "2025-04-29",
-      "nominal": 280000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Beli mousepad"
-    },
-    {
-      "id": 1649024234578,
-      "tanggal": "2025-04-16",
-      "nominal": 115000,
+      "nominal": 75000,
       "jenis": "pengeluaran",
       "kategori": "Makanan",
       "catatan": "Beli roti"
     },
     {
-      "id": 1649031901245,
-      "tanggal": "2025-04-08",
-      "nominal": 45000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Teh botol"
-    },
-    {
-      "id": 1649039567912,
-      "tanggal": "2025-04-30",
-      "nominal": 920000,
+      "id": 1648771234614,
+      "tanggal": "2025-04-24",
+      "nominal": 1200000,
       "jenis": "pemasukan",
-      "kategori": "Jasa",
-      "catatan": "Training online"
+      "kategori": "Elektronik",
+      "catatan": "Jual gadget lama"
     },
     {
-      "id": 1649047234579,
-      "tanggal": "2025-04-20",
-      "nominal": 85000,
+      "id": 1648771234615,
+      "tanggal": "2025-04-25",
+      "nominal": 300000,
       "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli obeng set"
+      "kategori": "Aksesoris",
+      "catatan": "Beli dompet baru"
     },
     {
-      "id": 1649054901246,
-      "tanggal": "2025-04-13",
-      "nominal": 390000,
-      "jenis": "pengeluaran",
-      "kategori": "Bahan Pokok",
-      "catatan": "Beli sayuran segar"
+      "id": 1648771234616,
+      "tanggal": "2025-04-25",
+      "nominal": 250000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual buku kuliah"
     },
     {
-      "id": 1649062567913,
+      "id": 1648771234617,
       "tanggal": "2025-04-26",
-      "nominal": 70000,
+      "nominal": 950000,
       "jenis": "pengeluaran",
-      "kategori": "Lain Lain",
-      "catatan": "Ongkos kirim"
+      "kategori": "Sepatu",
+      "catatan": "Beli sneakers"
     },
     {
-      "id": 1649070234580,
-      "tanggal": "2025-04-06",
-      "nominal": 2300000,
+      "id": 1648771234618,
+      "tanggal": "2025-04-26",
+      "nominal": 150000,
       "jenis": "pemasukan",
-      "kategori": "Modal",
-      "catatan": "Hibah pemerintah"
+      "kategori": "Kecantikan",
+      "catatan": "Jual produk skincare"
     },
     {
-      "id": 1649077901247,
+      "id": 1648771234619,
       "tanggal": "2025-04-27",
-      "nominal": 680000,
-      "jenis": "pengeluaran",
-      "kategori": "Electronik",
-      "catatan": "Beli speaker"
-    },
-    {
-      "id": 1649085567914,
-      "tanggal": "2025-04-17",
-      "nominal": 135000,
+      "nominal": 40000,
       "jenis": "pengeluaran",
       "kategori": "Makanan",
-      "catatan": "Beli buah-buahan"
+      "catatan": "Beli minuman"
     },
     {
-      "id": 1649093234581,
-      "tanggal": "2025-04-09",
-      "nominal": 50000,
-      "jenis": "pengeluaran",
-      "kategori": "Minuman",
-      "catatan": "Air mineral galon"
-    },
-    {
-      "id": 1649100901248,
-      "tanggal": "2025-04-29",
-      "nominal": 1100000,
+      "id": 1648771234620,
+      "tanggal": "2025-04-27",
+      "nominal": 600000,
       "jenis": "pemasukan",
-      "kategori": "Jasa",
-      "catatan": "Pekerjaan sampingan"
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Jual alat pancing"
     },
     {
-      "id": 1649108567915,
-      "tanggal": "2025-04-21",
+      "id": 1648771234621,
+      "tanggal": "2025-04-28",
+      "nominal": 110000,
+      "jenis": "pengeluaran",
+      "kategori": "Tas",
+      "catatan": "Beli tote bag"
+    },
+    {
+      "id": 1648771234622,
+      "tanggal": "2025-04-28",
+      "nominal": 800000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual perabot kecil"
+    },
+    {
+      "id": 1648771234623,
+      "tanggal": "2025-04-29",
+      "nominal": 1800000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli tablet"
+    },
+    {
+      "id": 1648771234624,
+      "tanggal": "2025-04-29",
+      "nominal": 90000,
+      "jenis": "pemasukan",
+      "kategori": "Pakaian",
+      "catatan": "Terima bayaran jahitan"
+    },
+    {
+      "id": 1648771234625,
+      "tanggal": "2025-04-30",
+      "nominal": 60000,
+      "jenis": "pengeluaran",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Beli spidol warna"
+    },
+    {
+      "id": 1648771234626,
+      "tanggal": "2025-04-30",
+      "nominal": 450000,
+      "jenis": "pemasukan",
+      "kategori": "Aksesoris",
+      "catatan": "Jual gelang handmade"
+    },
+    {
+      "id": 1648771234627,
+      "tanggal": "2025-05-01",
+      "nominal": 220000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli skincare"
+    },
+    {
+      "id": 1648771234628,
+      "tanggal": "2025-05-01",
+      "nominal": 700000,
+      "jenis": "pemasukan",
+      "kategori": "Sepatu",
+      "catatan": "Jual sepatu custom"
+    },
+    {
+      "id": 1648771234629,
+      "tanggal": "2025-05-02",
+      "nominal": 15000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli permen"
+    },
+    {
+      "id": 1648771234630,
+      "tanggal": "2025-05-02",
+      "nominal": 350000,
+      "jenis": "pemasukan",
+      "kategori": "Tas",
+      "catatan": "Jual tas selempang"
+    },
+    {
+      "id": 1648771234631,
+      "tanggal": "2025-05-03",
+      "nominal": 1150000,
+      "jenis": "pengeluaran",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Beli alat panjat"
+    },
+    {
+      "id": 1648771234632,
+      "tanggal": "2025-05-03",
+      "nominal": 1000000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Terima bayaran servis laptop"
+    },
+    {
+      "id": 1648771234633,
+      "tanggal": "2025-05-04",
+      "nominal": 280000,
+      "jenis": "pengeluaran",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Beli taplak meja"
+    },
+    {
+      "id": 1648771234634,
+      "tanggal": "2025-05-04",
+      "nominal": 65000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual alat tulis antik"
+    },
+    {
+      "id": 1648771234635,
+      "tanggal": "2025-05-05",
+      "nominal": 55000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli makeup remover"
+    },
+    {
+      "id": 1648771234636,
+      "tanggal": "2025-05-05",
+      "nominal": 900000,
+      "jenis": "pemasukan",
+      "kategori": "Pakaian",
+      "catatan": "Jual koleksi baju"
+    },
+    {
+      "id": 1648771234637,
+      "tanggal": "2025-05-06",
+      "nominal": 175000,
+      "jenis": "pengeluaran",
+      "kategori": "Aksesoris",
+      "catatan": "Beli kacamata hitam"
+    },
+    {
+      "id": 1648771234638,
+      "tanggal": "2025-05-06",
+      "nominal": 200000,
+      "jenis": "pemasukan",
+      "kategori": "Makanan",
+      "catatan": "Jual kue buatan sendiri"
+    },
+    {
+      "id": 1648771234639,
+      "tanggal": "2025-05-07",
+      "nominal": 35000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli snack sore"
+    },
+    {
+      "id": 1648771234640,
+      "tanggal": "2025-05-07",
+      "nominal": 1300000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual kamera bekas"
+    },
+    {
+      "id": 1648771234641,
+      "tanggal": "2025-05-08",
+      "nominal": 580000,
+      "jenis": "pengeluaran",
+      "kategori": "Sepatu",
+      "catatan": "Beli sepatu lari"
+    },
+    {
+      "id": 1648771234642,
+      "tanggal": "2025-05-08",
+      "nominal": 110000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual koleksi komik"
+    },
+    {
+      "id": 1648771234643,
+      "tanggal": "2025-05-09",
+      "nominal": 140000,
+      "jenis": "pengeluaran",
+      "kategori": "Tas",
+      "catatan": "Beli pouch makeup"
+    },
+    {
+      "id": 1648771234644,
+      "tanggal": "2025-05-09",
+      "nominal": 750000,
+      "jenis": "pemasukan",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Jual perlengkapan camping"
+    },
+    {
+      "id": 1648771234645,
+      "tanggal": "2025-05-10",
+      "nominal": 85000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli masker wajah"
+    },
+    {
+      "id": 1648771234646,
+      "tanggal": "2025-05-10",
+      "nominal": 300000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual tanaman hias"
+    },
+    {
+      "id": 1648771234647,
+      "tanggal": "2025-05-11",
+      "nominal": 25000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli es krim"
+    },
+    {
+      "id": 1648771234648,
+      "tanggal": "2025-05-11",
+      "nominal": 1600000,
+      "jenis": "pemasukan",
+      "kategori": "Pakaian",
+      "catatan": "Terima orderan desain baju"
+    },
+    {
+      "id": 1648771234649,
+      "tanggal": "2025-05-12",
+      "nominal": 420000,
+      "jenis": "pengeluaran",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Beli alat masak"
+    },
+    {
+      "id": 1648771234650,
+      "tanggal": "2025-05-12",
+      "nominal": 180000,
+      "jenis": "pemasukan",
+      "kategori": "Aksesoris",
+      "catatan": "Jual perhiasan perak"
+    },
+    {
+      "id": 1648771234651,
+      "tanggal": "2025-05-13",
+      "nominal": 980000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli charger baru"
+    },
+    {
+      "id": 1648771234652,
+      "tanggal": "2025-05-13",
+      "nominal": 70000,
+      "jenis": "pemasukan",
+      "kategori": "Kecantikan",
+      "catatan": "Jual produk makeup"
+    },
+    {
+      "id": 1648771234653,
+      "tanggal": "2025-05-14",
+      "nominal": 120000,
+      "jenis": "pengeluaran",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Beli buku impor"
+    },
+    {
+      "id": 1648771234654,
+      "tanggal": "2025-05-14",
+      "nominal": 520000,
+      "jenis": "pemasukan",
+      "kategori": "Sepatu",
+      "catatan": "Jual sepatu koleksi"
+    },
+    {
+      "id": 1648771234655,
+      "tanggal": "2025-04-23",
+      "nominal": 30000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli cemilan"
+    },
+    {
+      "id": 1648771234656,
+      "tanggal": "2025-04-24",
+      "nominal": 880000,
+      "jenis": "pemasukan",
+      "kategori": "Tas",
+      "catatan": "Jual tas branded"
+    },
+    {
+      "id": 1648771234657,
+      "tanggal": "2025-04-24",
+      "nominal": 1950000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli smart watch"
+    },
+    {
+      "id": 1648771234658,
+      "tanggal": "2025-04-25",
+      "nominal": 150000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual dekorasi dinding"
+    },
+    {
+      "id": 1648771234659,
+      "tanggal": "2025-04-25",
+      "nominal": 65000,
+      "jenis": "pengeluaran",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Beli tinta printer"
+    },
+    {
+      "id": 1648771234660,
+      "tanggal": "2025-04-26",
+      "nominal": 320000,
+      "jenis": "pemasukan",
+      "kategori": "Kecantikan",
+      "catatan": "Terima bayaran makeup"
+    },
+    {
+      "id": 1648771234661,
+      "tanggal": "2025-04-26",
+      "nominal": 790000,
+      "jenis": "pengeluaran",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Beli perlengkapan renang"
+    },
+    {
+      "id": 1648771234662,
+      "tanggal": "2025-04-27",
+      "nominal": 280000,
+      "jenis": "pemasukan",
+      "kategori": "Sepatu",
+      "catatan": "Jual sepatu futsal"
+    },
+    {
+      "id": 1648771234663,
+      "tanggal": "2025-04-27",
+      "nominal": 95000,
+      "jenis": "pengeluaran",
+      "kategori": "Aksesoris",
+      "catatan": "Beli gelang"
+    },
+    {
+      "id": 1648771234664,
+      "tanggal": "2025-04-28",
+      "nominal": 1400000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual monitor bekas"
+    },
+    {
+      "id": 1648771234665,
+      "tanggal": "2025-04-28",
+      "nominal": 160000,
+      "jenis": "pengeluaran",
+      "kategori": "Pakaian",
+      "catatan": "Beli celana pendek"
+    },
+    {
+      "id": 1648771234666,
+      "tanggal": "2025-04-29",
+      "nominal": 400000,
+      "jenis": "pemasukan",
+      "kategori": "Makanan",
+      "catatan": "Jual makanan rumahan"
+    },
+    {
+      "id": 1648771234667,
+      "tanggal": "2025-04-29",
+      "nominal": 70000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli kutek"
+    },
+    {
+      "id": 1648771234668,
+      "tanggal": "2025-04-30",
+      "nominal": 210000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual novel langka"
+    },
+    {
+      "id": 1648771234669,
+      "tanggal": "2025-04-30",
+      "nominal": 510000,
+      "jenis": "pengeluaran",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Beli peralatan kebersihan"
+    },
+    {
+      "id": 1648771234670,
+      "tanggal": "2025-05-01",
+      "nominal": 920000,
+      "jenis": "pemasukan",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Jual alat musik bekas"
+    },
+    {
+      "id": 1648771234671,
+      "tanggal": "2025-05-01",
+      "nominal": 105000,
+      "jenis": "pengeluaran",
+      "kategori": "Aksesoris",
+      "catatan": "Beli syal"
+    },
+    {
+      "id": 1648771234672,
+      "tanggal": "2025-05-02",
+      "nominal": 680000,
+      "jenis": "pemasukan",
+      "kategori": "Pakaian",
+      "catatan": "Terima orderan jahit"
+    },
+    {
+      "id": 1648771234673,
+      "tanggal": "2025-05-02",
+      "nominal": 38000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli buah potong"
+    },
+    {
+      "id": 1648771234674,
+      "tanggal": "2025-05-03",
+      "nominal": 1700000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual aksesoris gaming"
+    },
+    {
+      "id": 1648771234675,
+      "tanggal": "2025-05-03",
+      "nominal": 290000,
+      "jenis": "pengeluaran",
+      "kategori": "Sepatu",
+      "catatan": "Beli kaos kaki"
+    },
+    {
+      "id": 1648771234676,
+      "tanggal": "2025-05-04",
+      "nominal": 160000,
+      "jenis": "pemasukan",
+      "kategori": "Kecantikan",
+      "catatan": "Jual alat makeup"
+    },
+    {
+      "id": 1648771234677,
+      "tanggal": "2025-05-04",
+      "nominal": 85000,
+      "jenis": "pengeluaran",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Beli stabilo"
+    },
+    {
+      "id": 1648771234678,
+      "tanggal": "2025-05-05",
+      "nominal": 620000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual peralatan makan"
+    },
+    {
+      "id": 1648771234679,
+      "tanggal": "2025-05-05",
+      "nominal": 480000,
+      "jenis": "pengeluaran",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Beli senar pancing"
+    },
+    {
+      "id": 1648771234680,
+      "tanggal": "2025-05-06",
+      "nominal": 120000,
+      "jenis": "pemasukan",
+      "kategori": "Aksesoris",
+      "catatan": "Jual pin custom"
+    },
+    {
+      "id": 1648771234681,
+      "tanggal": "2025-05-06",
+      "nominal": 55000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli roti bakar"
+    },
+    {
+      "id": 1648771234682,
+      "tanggal": "2025-05-07",
+      "nominal": 1900000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual speaker aktif"
+    },
+    {
+      "id": 1648771234683,
+      "tanggal": "2025-05-07",
+      "nominal": 310000,
+      "jenis": "pengeluaran",
+      "kategori": "Pakaian",
+      "catatan": "Beli jaket"
+    },
+    {
+      "id": 1648771234684,
+      "tanggal": "2025-05-08",
+      "nominal": 250000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual majalah koleksi"
+    },
+    {
+      "id": 1648771234685,
+      "tanggal": "2025-05-08",
+      "nominal": 130000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli lip balm"
+    },
+    {
+      "id": 1648771234686,
+      "tanggal": "2025-05-09",
+      "nominal": 780000,
+      "jenis": "pemasukan",
+      "kategori": "Sepatu",
+      "catatan": "Jual sepatu lukis"
+    },
+    {
+      "id": 1648771234687,
+      "tanggal": "2025-05-09",
+      "nominal": 90000,
+      "jenis": "pengeluaran",
+      "kategori": "Aksesoris",
+      "catatan": "Beli ikat rambut"
+    },
+    {
+      "id": 1648771234688,
+      "tanggal": "2025-05-10",
+      "nominal": 450000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual lampu tidur"
+    },
+    {
+      "id": 1648771234689,
+      "tanggal": "2025-05-10",
+      "nominal": 60000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli sereal"
+    },
+    {
+      "id": 1648771234690,
+      "tanggal": "2025-05-11",
+      "nominal": 1150000,
+      "jenis": "pemasukan",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Jual papan skateboard"
+    },
+    {
+      "id": 1648771234691,
+      "tanggal": "2025-05-11",
+      "nominal": 270000,
+      "jenis": "pengeluaran",
+      "kategori": "Pakaian",
+      "catatan": "Beli rok"
+    },
+    {
+      "id": 1648771234692,
+      "tanggal": "2025-05-12",
+      "nominal": 80000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual alat lukis"
+    },
+    {
+      "id": 1648771234693,
+      "tanggal": "2025-05-12",
       "nominal": 190000,
       "jenis": "pengeluaran",
-      "kategori": "Alat Pertukangan",
-      "catatan": "Beli kunci inggris"
+      "kategori": "Kecantikan",
+      "catatan": "Beli toner"
+    },
+    {
+      "id": 1648771234694,
+      "tanggal": "2025-05-13",
+      "nominal": 500000,
+      "jenis": "pemasukan",
+      "kategori": "Tas",
+      "catatan": "Jual tas rajut"
+    },
+    {
+      "id": 1648771234695,
+      "tanggal": "2025-05-13",
+      "nominal": 1550000,
+      "jenis": "pengeluaran",
+      "kategori": "Elektronik",
+      "catatan": "Beli power bank"
+    },
+    {
+      "id": 1648771234696,
+      "tanggal": "2025-05-14",
+      "nominal": 720000,
+      "jenis": "pemasukan",
+      "kategori": "Sepatu",
+      "catatan": "Jual sepatu handmade"
+    },
+    {
+      "id": 1648771234697,
+      "tanggal": "2025-05-14",
+      "nominal": 110000,
+      "jenis": "pengeluaran",
+      "kategori": "Aksesoris",
+      "catatan": "Beli kalung"
+    },
+    {
+      "id": 1648771234698,
+      "tanggal": "2025-05-15",
+      "nominal": 300000,
+      "jenis": "pemasukan",
+      "kategori": "Makanan",
+      "catatan": "Jual minuman segar"
+    },
+    {
+      "id": 1648771234699,
+      "tanggal": "2025-05-15",
+      "nominal": 220000,
+      "jenis": "pengeluaran",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Beli buku mewarnai"
+    },
+    {
+      "id": 1648771234700,
+      "tanggal": "2025-05-16",
+      "nominal": 950000,
+      "jenis": "pemasukan",
+      "kategori": "Pakaian",
+      "catatan": "Jual pakaian preloved"
+    },
+    {
+      "id": 1648771234701,
+      "tanggal": "2025-05-16",
+      "nominal": 75000,
+      "jenis": "pengeluaran",
+      "kategori": "Kecantikan",
+      "catatan": "Beli kapas wajah"
+    },
+    {
+      "id": 1648771234702,
+      "tanggal": "2025-05-17",
+      "nominal": 1300000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual speaker bluetooth"
+    },
+    {
+      "id": 1648771234703,
+      "tanggal": "2025-05-17",
+      "nominal": 450000,
+      "jenis": "pengeluaran",
+      "kategori": "Hobi & Olahraga",
+      "catatan": "Beli tali skipping"
+    },
+    {
+      "id": 1648771234704,
+      "tanggal": "2025-05-18",
+      "nominal": 180000,
+      "jenis": "pemasukan",
+      "kategori": "Aksesoris",
+      "catatan": "Jual bros handmade"
+    },
+    {
+      "id": 1648771234705,
+      "tanggal": "2025-05-18",
+      "nominal": 40000,
+      "jenis": "pengeluaran",
+      "kategori": "Makanan",
+      "catatan": "Beli telur"
+    },
+    {
+      "id": 1648771234706,
+      "tanggal": "2025-05-19",
+      "nominal": 600000,
+      "jenis": "pemasukan",
+      "kategori": "Rumah & Dapur",
+      "catatan": "Jual vas keramik"
+    },
+    {
+      "id": 1648771234707,
+      "tanggal": "2025-05-19",
+      "nominal": 820000,
+      "jenis": "pengeluaran",
+      "kategori": "Sepatu",
+      "catatan": "Beli sepatu casual"
+    },
+    {
+      "id": 1648771234708,
+      "tanggal": "2025-05-20",
+      "nominal": 110000,
+      "jenis": "pemasukan",
+      "kategori": "Buku & Alat Tulis",
+      "catatan": "Jual pena antik"
+    },
+    {
+      "id": 1648771234709,
+      "tanggal": "2025-05-20",
+      "nominal": 250000,
+      "jenis": "pengeluaran",
+      "kategori": "Tas",
+      "catatan": "Beli dompet kecil"
+    },
+    {
+      "id": 1648771234710,
+      "tanggal": "2025-05-21",
+      "nominal": 1750000,
+      "jenis": "pemasukan",
+      "kategori": "Elektronik",
+      "catatan": "Jual drone mini"
     }
   ],
   "kategori": [
     {
-      "id": 578912,
-      "nama": "Electronik"
+      "id": 98765,
+      "nama": "Rumah & Dapur"
     },
     {
-      "id": 12345678,
+      "id": 12345,
+      "nama": "Pakaian"
+    },
+    {
+      "id": 67890,
       "nama": "Makanan"
     },
     {
-      "id": 987654,
-      "nama": "Minuman"
+      "id": 54321,
+      "nama": "Elektronik"
     },
     {
-      "id": 14725836,
-      "nama": "Jasa"
+      "id": 11223,
+      "nama": "Aksesoris"
     },
     {
-      "id": 258369,
-      "nama": "Alat Pertukangan"
+      "id": 77889,
+      "nama": "Buku & Alat Tulis"
     },
     {
-      "id": 74185296,
-      "nama": "Bahan Pokok"
+      "id": 33445,
+      "nama": "Sepatu"
     },
     {
-      "id": 369258,
-      "nama": "Modal"
+      "id": 99001,
+      "nama": "Kecantikan"
     },
     {
-      "id": 85214796,
-      "nama": "Lain Lain"
+      "id": 22334,
+      "nama": "Hobi & Olahraga"
+    },
+    {
+      "id": 88776,
+      "nama": "Tas"
     }
   ]
 }

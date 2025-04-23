@@ -1,9 +1,9 @@
 import {
-  getLocalstorage,
-  paginate,
-  saveLocalStorage,
-  dataSum,
-  createElement,
+	getLocalstorage,
+	paginate,
+	saveLocalStorage,
+	dataSum,
+	createElement, loadStatus, setAlert, escapeHTML,
 } from "../utils.js";
 
 export function renderTransaksi(content) {
@@ -16,7 +16,6 @@ export function renderTransaksi(content) {
 }
 
 const transaksiKey = "transaksiKasKu";
-let status = {};
 
 window.tampilkanDaftarTransaksi = (page = 1) => {
   const transaksi = getLocalstorage(transaksiKey) || [];
@@ -26,6 +25,25 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
   const totalPengeluaran = dataSum(transaksi, "pengeluaran");
   const saldo = totalPemasukan - totalPengeluaran;
 
+	const statusAlert = getLocalstorage("alert");
+	if (statusAlert){
+		// 	tampilkan alert jika status bernilai true
+		if(statusAlert.status){
+			loadStatus({
+				status: true,
+				message: statusAlert.message,
+				info: statusAlert.info
+			});
+			const alertEl = document.querySelector(".alert");
+			setTimeout(() => {
+				alertEl.classList.add("hide");
+				setTimeout(() => {
+					alertEl.remove();
+					localStorage.removeItem("alert");
+				}, 500);
+			}, 1500);
+		}
+	}
   document.getElementById(
     "total-pemasukan"
   ).innerText = `Rp ${totalPemasukan.toLocaleString()}`;
@@ -46,7 +64,7 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
             <tr class="no-wrap">
               <td>${startIndex + i + 1}</td>
               <td>${item.kategori}</td>
-              <td>${item.jenis}</td>
+              <td class="${item.jenis === "pemasukan" ? 'c-success' : 'c-danger'}">${item.jenis}</td>
               <td>Rp ${item.nominal.toLocaleString("id-ID")}</td>
               <td>${item.tanggal}</td>
               <td>${item.catatan}</td>
@@ -77,18 +95,15 @@ window.hapusTransaksi = (
   if (index !== -1) {
     data.splice(index, 1);
     saveLocalStorage(transaksiKey, JSON.stringify(data));
-    status = { status: true, message: "Data Berhasil di Hapus" };
+    // status
+		setAlert({
+			status: true,
+			message: "Data berhasil di hapus",
+			info: "alert-success"
+		});
+
     tampilkanDaftarTransaksi(pageIndex());
   }
-
-  if (status.status)
-    showAlert(
-      createEl({
-        el: "div",
-        className: "alert alert-info",
-        inChilderen: status.message,
-      })
-    );
 };
 
 window.edit = (id) => {
@@ -103,7 +118,7 @@ window.edit = (id) => {
   form.elements.kategori.value = data.kategori;
   form.elements.jenis.value = data.jenis;
   form.elements.nominal.value = data.nominal;
-  form.elements.catatan.value = data.catatan;
+  form.elements.catatan.value = escapeHTML(data.catatan);
 
   let btnBtl = document.querySelector(
     "button[data-action = 'batal-edit-transaksi']"
@@ -154,7 +169,7 @@ function addDataForm(form, event) {
     kategori: form.elements.kategori.value,
     jenis: form.elements.jenis.value,
     nominal: parseFloat(form.elements.nominal.value),
-    catatan: form.elements.catatan.value,
+    catatan: escapeHTML(form.elements.catatan.value),
   };
 
   // mode edit
@@ -170,22 +185,28 @@ function addDataForm(form, event) {
     event.target.removeAttribute("data-edit");
 
     saveLocalStorage(transaksiKey, JSON.stringify(data));
+    // status
+		setAlert({
+			status: true,
+			message: "Data Berhasil di Edit",
+		});
     tampilkanDaftarTransaksi(pageIndex());
-    status = { status: true, message: "Data berhasil di Edit" };
     return;
   }
 
   data.push(dataInput);
   saveLocalStorage(transaksiKey, JSON.stringify(data));
   form.reset();
+  // status
+	setAlert({
+		status:true,
+		message: "Data berhasil di tambahkan"
+	});
   tampilkanDaftarTransaksi(pageIndex());
-  status = { status: true, message: "Data Berhasil ditambahkan" };
 }
 
 function setupTransaksiPage() {
   const transaksi = getLocalstorage(transaksiKey) || [];
-  const tableBody = document.querySelector("#transaksi-table tbody");
-  const paginationContainer = document.querySelector("#pagination");
   const formEl = document.getElementById("form-transaksi");
   const elOptionKategori = document.getElementById("kategori");
   const getDataOptionKategori = getLocalstorage("data-kategori");
@@ -198,54 +219,24 @@ function setupTransaksiPage() {
   elOption.textContent = "Pilih Kategori";
   elOptionKategori.appendChild(elOption);
 
-  getDataOptionKategori.forEach((data) => {
+  getDataOptionKategori && getDataOptionKategori.forEach((data) => {
     const elOption = document.createElement("option");
     elOption.value = data.nama;
     elOption.textContent = data.nama;
     elOptionKategori.appendChild(elOption);
   });
 
-  if (transaksi.length === 0) {
-    const tabelTransaksi = document.getElementById("transaksi-table");
-    // mebuat alert
-    tabelTransaksi.innerHTML = `
-			<div class="alert alert-info">
-				Data Masih kosong
-			</div>
-		`;
-  } else {
-    tampilkanDaftarTransaksi(pageIndex());
-    formEl.addEventListener("submit", function (e) {
-      addDataForm(this, e);
-      let alertEl;
-      if (status) {
-        alertEl = createEl({
-          el: "div",
-          className: "alert alert-success",
-          inChilderen: status.message,
-        });
-        showAlert(alertEl);
-      }
-    });
-  }
+	if (transaksi.length === 0){
+		setAlert({
+			status: true,
+			message: "Data Masih Kosong",
+			info: "alert-info",
+		});
+	}
+
+	formEl.addEventListener("submit", function (e) {
+		addDataForm(this, e);
+	});
+	tampilkanDaftarTransaksi(pageIndex());
 }
 
-function createEl({ el, className, inChilderen }) {
-  const elementParent = document.createElement(el);
-  elementParent.classList.add(className.split(" ")[0]);
-  elementParent.classList.add(className.split(" ")[1]);
-  elementParent.innerText = inChilderen;
-
-  return elementParent;
-}
-
-function showAlert(alertEl) {
-  alertEl.style.position = "fixed";
-  alertEl.zIndex = "30";
-  alertEl.style.top = window.innerWidth <= 375 ? "80%" : "10%";
-  alertEl.style.left = "50%";
-  alertEl.style.transform =
-    window.innerWidth <= 375 ? "translateX(-50%)" : "translateX(-10%)";
-  document.body.appendChild(alertEl);
-  setTimeout(() => alertEl.remove(), 1000);
-}

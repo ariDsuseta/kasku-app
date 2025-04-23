@@ -1,4 +1,12 @@
-import {escapeHTML, loadStatus, validateDataFormat} from "../utils.js";
+import {
+	capitalize,
+	escapeHTML,
+	getLocalstorage,
+	loadStatus,
+	validateDataFormat,
+	renderGrafik,
+	saveLocalStorage
+} from "../utils.js";
 
 export function renderDashboard(content) {
   fetch("pages/dashboard.html")
@@ -10,9 +18,15 @@ export function renderDashboard(content) {
 }
 
 function setupDashboard() {
-  const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
+  const data = getLocalstorage("transaksiKasKu") || [];
+	const pageActive = getLocalstorage("page");
+
   let pemasukan = 0;
   let pengeluaran = 0;
+
+	if (pageActive) {
+		saveLocalStorage("page", "dashboard");
+	}
 
   data.forEach((item) => {
     if (item.jenis === "pemasukan") {
@@ -24,7 +38,34 @@ function setupDashboard() {
 
   const saldo = pemasukan - pengeluaran;
 
-	renderChart(document.getElementById("chartPie"),"bar",["Pemasukan", "Pengeluaran", 'Saldo'],[pemasukan, pengeluaran, saldo, data.length], ['#2196f3', '#F44336', '#4caf50'], 'Perbandingan Pemasukan, Pengeluaran & Saldo', false);
+	// render chart bar
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: "pemasukan",
+		brdColor: ["blue"],
+		parentEl: document.getElementById("chart-bar1"),
+		labelGrafik: "chart-label-bar1",
+		tipe: "bar"
+	});
+
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: "pengeluaran",
+		brdColor: ["orange"],
+		parentEl: document.getElementById("chart-bar2"),
+		labelGrafik: "chart-label-bar2",
+		tipe: "bar"
+	});
+
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: ["pemasukan","pengeluaran"],
+		brdColor: ['blue',"orange"],
+		parentEl: document.getElementById("chart-bar3"),
+		labelGrafik: "chart-label-bar3",
+		tipe: "bar"
+	});
+
 	const transaksiKeluar = data.filter(data => data.jenis === "pengeluaran");
 	const transaksiMasuk = data.filter(data => data.jenis === 'pemasukan');
 	const pengeluaranPerKategori = {}, pemasukanPerKategori = {};
@@ -45,7 +86,7 @@ function setupDashboard() {
 	const labels = Object.keys(pengeluaranPerKategori);
 	const dataBar = Object.values(pengeluaranPerKategori);
 
-	renderChart(document.getElementById('chartBar'),"bar",labels, dataBar, "#F44336", "Pengeluaran per Kategori", false);
+	// render chart bar
 
   document.getElementById("saldo").textContent = `Rp ${escapeHTML(
     saldo.toLocaleString()
@@ -60,6 +101,30 @@ function setupDashboard() {
 
   document.querySelector(".import-data").addEventListener("change", importData);
   document.querySelector(".btn-export").addEventListener("click", exportData);
+
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: "pengeluaran",
+		brdColor: "rgb(134,20,20)",
+		parentEl: document.getElementById("pengeluaran-chart"),
+		labelGrafik: "label-grafik-pengeluaran"
+	});
+
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: "pemasukan",
+		parentEl: document.getElementById("pemasukan-chart"),
+		labelGrafik: "label-grafik-pemasukan"
+	});
+
+	renderGrafik({
+		datakey: "transaksiKasKu",
+		jenis: ["pemasukan", "pengeluaran"],
+		brdColor: ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+		parentEl: document.getElementById("pemasukan-pengeluaran-chart"),
+		labelGrafik: "label-grafik-pemasukan-pengeluaran"
+	});
+
 }
 
 function exportData() {
@@ -106,33 +171,3 @@ function importData() {
   reader.readAsText(file);
 }
 
-function renderChart(chartEl, typeChart,labels,databar, background, textTitle, lagend = true){
-	const ctx = chartEl.getContext("2d");
-	new Chart(ctx, {
-		type: typeChart,
-		data: {
-			labels: labels,
-			datasets: [{
-				data: databar,
-				backgroundColor: background,
-			}]
-		},
-		options: {
-			responsive: true,
-			plugins: {
-				legend: {
-					display: lagend,
-					position: 'bottom'
-				},
-				title: {
-					display: true,
-					text: textTitle,
-					font: {
-						size: 16,
-						weight: "bold"
-					}
-				}
-			}
-		}
-	});
-}

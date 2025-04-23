@@ -126,13 +126,6 @@ function paginate({
         });
       }
     );
-  } else {
-    document.querySelector("#transaksi-table table").remove();
-    const pEl = document.createElement("p");
-    pEl.classList.add("alert");
-    pEl.classList.add("alert-warning");
-    pEl.textContent = "Data masih kosong";
-    document.querySelector(".transaksi-page").appendChild(pEl);
   }
 }
 
@@ -262,6 +255,115 @@ function loadStatus({
 	}
 }
 
+function capitalize(str) {
+	return str.toLowerCase().split(' ').map(function(word) {
+		return word.charAt(0).toUpperCase() + word.slice(1);
+	}).join(' ');
+}
+
+// GRAFIK LINE
+
+function renderGrafik({
+	datakey = "",
+	jenis = [], // string atau array
+	brdColor = ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+	parentEl,
+	labelGrafik,
+	tipe = "line" // bisa "line", "bar", dll
+}) {
+	const transaksi = getLocalstorage(datakey) || [];
+
+	const jenisList = Array.isArray(jenis) ? jenis : [jenis];
+	const colors = Array.isArray(brdColor) ? brdColor : [brdColor];
+
+	// Ambil dan urutkan semua tanggal unik
+	const allTanggal = [...new Set(
+		transaksi.map(item => item.tanggal)
+	)].sort((a, b) => new Date(a) - new Date(b));
+
+	const datasets = jenisList.map((jns, idx) => {
+		const dataJenis = transaksi.filter(item => item.jenis === jns);
+		const dataPerTanggal = {};
+
+		dataJenis.forEach(item => {
+			const tgl = item.tanggal;
+			if (!dataPerTanggal[tgl]) dataPerTanggal[tgl] = 0;
+			dataPerTanggal[tgl] += item.nominal;
+		});
+
+		const data = allTanggal.map(tgl => dataPerTanggal[tgl] || 0);
+
+		return {
+			label: capitalize(jns),
+			data,
+			backgroundColor: colors[idx] || "rgba(0,0,0,0.5)",
+			borderColor: colors[idx] || "rgba(0,0,0,1)",
+			borderWidth: 2,
+			fill: false,
+			tension: tipe === "line" ? 0.3 : 0,
+			pointRadius: tipe === "line" ? 4 : 0,
+			pointHoverRadius: tipe === "line" ? 6 : 0
+		};
+	});
+
+	if (!parentEl) return;
+
+	const grafikLabel = document.getElementById(labelGrafik);
+	grafikLabel.textContent = `Grafik ${jenisList.map(capitalize).join(" & ")}`;
+
+	const ctx = parentEl.getContext("2d");
+
+	// Hapus chart lama jika ada
+	if (parentEl._chartInstance) {
+		parentEl._chartInstance.destroy();
+	}
+
+	const chart = new Chart(ctx, {
+		type: tipe,
+		data: {
+			labels: allTanggal,
+			datasets
+		},
+		options: {
+			responsive: true,
+			plugins: {
+				tooltip: {
+					callbacks: {
+						label: ctx => `Rp ${ctx.raw.toLocaleString('id-ID')}`
+					}
+				},
+				legend: {
+					display: true
+				}
+			},
+			scales: ["line", "bar"].includes(tipe) ? {
+				y: {
+					beginAtZero: true,
+					ticks: {
+						callback: val => `Rp ${val.toLocaleString("id-ID")}`
+					}
+				}
+			} : undefined
+		}
+	});
+
+	parentEl._chartInstance = chart;
+}
+
+
+function setAlert({
+	status= false,
+	message = "",
+	info = "alert-success"
+}){
+	const setAlert = {
+		status,
+		message,
+		info
+	}
+	saveLocalStorage("alert", setAlert);
+}
+
 export {
   escapeHTML,
   validateDataFormat,
@@ -273,5 +375,8 @@ export {
   paginate,
   dataSum,
   createElement,
-	loadStatus
+	loadStatus,
+	capitalize,
+	renderGrafik,
+	setAlert
 };
