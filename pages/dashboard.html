@@ -34,12 +34,40 @@
   </label>
 </div>
 
-<section class="chart-section">
-  <h2 class="mbsm">Visualisasi Keuangan</h2>
-  <div class="chart-wrapper">
-    <canvas id="chartPie"></canvas>
-    <canvas id="chartBar"></canvas>
+<div class="flex gap-1 flex-wrap" style="margin: 1rem">
+  <div class="card-panel" style="flex: 1; display: flex; flex-direction: column;">
+    <div class="card" style="flex: 1">
+      <h2 id="chart-label-bar1" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+      <canvas id="chart-bar1" height="150"></canvas>
+    </div>
+    <div class="card" style="flex: 1">
+      <h2 id="chart-label-bar2" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+      <canvas id="chart-bar2" height="150"></canvas>
+    </div>
   </div>
-</section>
+  <div class="card" style="flex: 1 55%">
+    <h2 id="chart-label-bar3" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+    <canvas id="chart-bar3" height="150"></canvas>
+  </div>
+</div>
+
+<div class="flex gap-1 flex-wrap no-wrap" style="margin: 1rem;">
+  <div class="card" style="flex: 1 55%;">
+    <h2 id="label-grafik-pemasukan-pengeluaran" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+    <canvas id="pemasukan-pengeluaran-chart" height="250"></canvas>
+  </div>
+  <div class="card-panel" style="flex-direction: column; display: flex; flex: 1">
+    <div class="card" style="flex: 1;">
+      <h2 id="label-grafik-pengeluaran" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+      <canvas id="pengeluaran-chart" height="150"></canvas>
+    </div>
+    <div class="card" style="flex: 1;">
+      <h2 id="label-grafik-pemasukan" class="font-semibold text-lg mb-2 text-center" style="margin-bottom: 3rem;">Grafik Pemasukan</h2>
+      <canvas id="pemasukan-chart" height="150"></canvas>
+    </div>
+  </div>
+</div>
+
+
 
 

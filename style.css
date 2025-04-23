@@ -16,8 +16,9 @@
   --danger: #ab271e;
   --danger-dark: #731913;
   --info: var(--info-color);
-  --info-dark: #206098;
+  --info-dark: #286396;
 	--warning: #ffb300;
+	--primary-dark: #0357b0;
 	/*========================*/
 	--success-color: #28a745;
 	--info-color: #17a2b8;
@@ -202,6 +203,8 @@ body.dark .sidebar li.active-page {
 .flex.gap-1 {
   gap: 10px;
 }
+.flex.content-center {justify-content: center}
+.flex.beetwen{justify-content: space-between}
 
 /*color*/
 .c-danger {color: var(--danger)}
@@ -651,7 +654,7 @@ body.dark .card.pengeluaran {
   background-color: var(--danger-dark);
 }
 .card.saldo {
-  background-color: var(--info);
+  background-color: var(--primary-color);
 }
 body.dark .card.saldo {
   background-color: var(--info-dark);
@@ -708,7 +711,7 @@ body.dark .card.saldo {
 }
 
 .stat-box.masuk {
-  background-color: var(--info-color); /* Biru untuk pemasukan */
+  background-color: var(--success-color); /* Biru untuk pemasukan */
   color: #fff;
 }
 
@@ -718,7 +721,7 @@ body.dark .card.saldo {
 }
 
 .stat-box.jumlah {
-  background-color: var(--secondary-color); /* Orange untuk jumlah transaksi */
+  background-color: var(--info-color); /* Orange untuk jumlah transaksi */
   color: #fff;
 }
 
@@ -730,19 +733,19 @@ body.dark .stat-box {
 }
 
 body.dark .stat-box.saldo {
-  background-color: var(--primary-color);
+  background-color: var(--primary-dark);
 }
 
 body.dark .stat-box.masuk {
-  background-color: var(--info-color);
+  background-color: var(--success-dark);
 }
 
 body.dark .stat-box.keluar {
-  background-color: var(--danger-color);
+  background-color: var(--danger-dark);
 }
 
 body.dark .stat-box.jumlah {
-  background-color: var(--secondary-color);
+  background-color: var(--info-dark);
 }
 /*DASHBOARD END*/
 
@@ -753,6 +756,7 @@ body.dark .stat-box.jumlah {
   gap: 1rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
+	margin-left: 1rem;
 }
 
 .btn-export,
@@ -768,39 +772,25 @@ body.dark .stat-box.jumlah {
   transition: background-color 0.3s;
 }
 
+.btn-export{
+	background-color: var(--success-color);
+}
+
+
 .btn-export:hover,
 .btn-import:hover {
   background-color: var(--primary-dark);
+}
+
+.btn-export:hover{
+	background-color: var(--success-dark);
 }
 
 .btn-import input[type="file"] {
   display: none;
 }
 
-/*Chart*/
-.chart-section {
-  padding: 1rem;
-}
 
-.chart-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  align-items: stretch;
-}
-
-.chart-wrapper canvas {
-  flex: 1 1 300px;
-  max-width: 48%;
-  background: var(--bg-card, #fff);
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
-}
-body.dark .chart-wrapper canvas {
-  background-color: var(--bg-card-dark);
-}
 .center-element {
   display: flex;
   align-items: center;
@@ -927,6 +917,12 @@ body.dark .element-info {
 }
 /*ALERT END*/
 
+
+/*TABEL HOVER*/
+table tbody tr:hover{
+	background-color: #b2b1b1;
+	color: var(--black-color);
+}
 
 /* RESPONSIF */
 @media (max-width: 768px) {
