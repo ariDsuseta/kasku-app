@@ -1,8 +1,6 @@
 import {
-	capitalize,
 	escapeHTML,
 	getLocalstorage,
-	loadStatus,
 	validateDataFormat,
 	renderGrafik,
 	saveLocalStorage
@@ -83,8 +81,8 @@ function setupDashboard() {
 		pemasukanPerKategori[tx.kategori] += tx.nominal;
 	});
 
-	const labels = Object.keys(pengeluaranPerKategori);
-	const dataBar = Object.values(pengeluaranPerKategori);
+	// const labels = Object.keys(pengeluaranPerKategori);
+	// const dataBar = Object.values(pengeluaranPerKategori);
 
 	// render chart bar
 

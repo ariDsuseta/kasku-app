@@ -4,6 +4,7 @@ import {renderKategori} from "./pages/kategori.js";
 import {renderRiwayat} from "./pages/riwayat.js";
 import {renderLaporan} from "./pages/laporan.js";
 import {logoutUser} from "./utils.js";
+import {renderSetting} from "./pages/setting.js";
 // load halaman berdasarkan nama halaman
 export function loadPage (page, content){
 	switch (page){
@@ -21,6 +22,9 @@ export function loadPage (page, content){
 			break;
 		case "laporan":
 			renderLaporan(content);
+			break;
+		case "setting":
+			renderSetting(content);
 			break;
 		case "logout":
 			logoutUser();

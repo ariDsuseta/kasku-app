@@ -1,4 +1,4 @@
-import { getLocalstorage, paginate, printElement } from "../utils.js";
+import {exportToCSV, getLocalstorage, paginate, printElement, tampilkanStatus} from "../utils.js";
 
 export function renderRiwayat(content) {
   fetch("pages/riwayat.html")
@@ -39,6 +39,9 @@ const setupRiwayatPage = () => {
     renderContainer: tableBody,
     paginationContainer,
   });
+
+// 	load status
+	tampilkanStatus(getLocalstorage("alert"), 700, 1500);
 };
 
 function renderPrint() {
@@ -53,6 +56,23 @@ function renderPrint() {
       "td:last-child, th:last-child { display: none; }"
     );
   });
+	// 	CSV export
+	document.getElementById("btn-export-csv").addEventListener("click", () => handleExportCSV());
+}
+
+function handleExportCSV() {
+	const filter = document.getElementById("filter-export").value;
+	const data = getLocalstorage(kategoriKey) || [];
+	let dataExport = data;
+
+	if (filter !== "semua") dataExport = data.filter(item => item.jenis === filter);
+
+	exportToCSV({
+		data: dataExport,
+		fileName: `riwayat-${filter}.csv`,
+		headers: ["id", "tanggal", "kategori", "nominal", "jenis", "catatan"]
+	});
+	setupRiwayatPage();
 }
 
 function getAllTransaksiHTML(storageKey = "transaksiKasKu") {

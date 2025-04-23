@@ -408,6 +408,64 @@ function printElement(el, title = "Cetak", customStyle = "") {
   win.close();
 }
 
+function exportToCSV({
+	data = [],
+	fileName = "data.csv",
+	headers = []
+}){
+	if (data.length === 0){
+		setAlert({
+			status: true,
+			message: "Data Kosong, Tidak bisa di export",
+			info: "alert-warning"
+		});
+		return;
+	}
+
+	const csvRows = [];
+	// header
+	const keys = headers.length ? headers : Object.keys(data[0]);
+	csvRows.push(keys.join(","));
+
+	// data
+	for (const row of data){
+		const values = keys.map(key => `"${(row[key] ?? "").toString().replace(/"/g, '""')}"`);
+		csvRows.push(values.join(","));
+	}
+
+	// Buat Blob dan download
+	const csvContent = csvRows.join("\n");
+	const blob = new Blob([csvContent], { type: "text/csv" });
+	const url = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.href = url;
+	a.download = fileName;
+	a.click();
+	URL.revokeObjectURL(url);
+}
+
+// menampilkan alert
+function tampilkanStatus(dataStatus, durationIn = 500, durationOut = 1000) {
+	if (dataStatus) {
+		// 	tampilkan alert jika status bernilai true
+		if (dataStatus.status) {
+			loadStatus({
+				status: true,
+				message: dataStatus.message,
+				info: dataStatus.info
+			});
+			const alertEl = document.querySelector(".alert");
+			setTimeout(() => {
+				alertEl.classList.add("hide");
+				setTimeout(() => {
+					alertEl.remove();
+					localStorage.removeItem("alert");
+				}, durationIn);
+			}, durationOut);
+		}
+	}
+}
+
 export {
   escapeHTML,
   validateDataFormat,
@@ -419,9 +477,10 @@ export {
   paginate,
   dataSum,
   createElement,
-  loadStatus,
   capitalize,
   renderGrafik,
   setAlert,
   printElement,
+	exportToCSV,
+	tampilkanStatus
 };
