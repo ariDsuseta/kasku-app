@@ -30,6 +30,8 @@
   --dark-color: #343a40;
   --white-color: #fff;
   --black-color: black;
+  --color-icon-light: #58636f;
+  --color-icon-dark: #979797;
 }
 
 /*html {scroll-behavior: smooth}*/
@@ -1077,6 +1079,52 @@ body.dark .fitur-section code {color: var(--dark-color)}
 	right: 0;
 	left: 0;
 	background-color: #1a73e8;
+}
+
+.btn-password {
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  bottom: 0;
+  padding: 0 .5rem;
+}
+.material-icons {
+  font-size: 24px;
+  color: var(--color-icon-light);
+}
+
+body.dark .material-icons{
+  color: var(--color-icon-dark);
+}
+
+.icons-small {
+  font-size: 1.5em !important;
+}
+
+#grafik-detail {
+  display: none;
+  padding: 10px;
+  margin-top: 1rem;
+  position: fixed;
+  top: 4rem;
+  right: 0;
+  z-index: 50;
+  background-color: var(--bg-card-light);
+  box-shadow: var(--shadow);
+}
+
+#grafik-detail ul {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+
+.btn-close {
+  border: none;
+  background-color: transparent;
+  right: 10px;
+  top: 10px;
 }
 
 @media (max-width: 768px) {

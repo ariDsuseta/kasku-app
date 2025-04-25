@@ -270,94 +270,104 @@ function capitalize(str) {
 
 // GRAFIK LINE
 
+
 function renderGrafik({
   datakey = "",
-  jenis = [], // string atau array
+  jenis = [],
   brdColor = ["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
   parentEl,
   labelGrafik,
-  tipe = "line", // bisa "line", "bar", dll
+  tipe = "line",
+  callback,
 }) {
   const transaksi = getLocalstorage(datakey) || [];
-
   const jenisList = Array.isArray(jenis) ? jenis : [jenis];
   const colors = Array.isArray(brdColor) ? brdColor : [brdColor];
 
-  // Ambil dan urutkan semua tanggal unik
-  const allTanggal = [...new Set(transaksi.map((item) => item.tanggal))].sort(
-    (a, b) => new Date(a) - new Date(b)
-  );
+  // Kumpulkan semua tanggal unik
+  const allTanggal = [...new Set(transaksi.map(item => item.tanggal))].sort((a, b) => new Date(a) - new Date(b));
 
+  // Dataset untuk setiap jenis
   const datasets = jenisList.map((jns, idx) => {
-    const dataJenis = transaksi.filter((item) => item.jenis === jns);
-    const dataPerTanggal = {};
-
-    dataJenis.forEach((item) => {
-      const tgl = item.tanggal;
-      if (!dataPerTanggal[tgl]) dataPerTanggal[tgl] = 0;
-      dataPerTanggal[tgl] += item.nominal;
+    const dataPerTanggal = allTanggal.map(tgl => {
+      const total = transaksi
+          .filter(item => item.jenis === jns && item.tanggal === tgl)
+          .reduce((sum, curr) => sum + curr.nominal, 0);
+      return total;
     });
-
-    const data = allTanggal.map((tgl) => dataPerTanggal[tgl] || 0);
 
     return {
       label: capitalize(jns),
-      data,
-      backgroundColor: colors[idx] || "rgba(0,0,0,0.5)",
-      borderColor: colors[idx] || "rgba(0,0,0,1)",
-      borderWidth: 2,
-      fill: false,
+      data: dataPerTanggal,
+      borderColor: colors[idx] || "rgb(0,0,0)",
+      backgroundColor: colors[idx] || "rgba(0,0,0,0.2)",
+      fill: tipe === "line" ? false : true,
       tension: tipe === "line" ? 0.3 : 0,
       pointRadius: tipe === "line" ? 4 : 0,
-      pointHoverRadius: tipe === "line" ? 6 : 0,
+      pointHoverRadius: tipe === "line" ? 6 : 0
     };
   });
 
+  // Render chart
   if (!parentEl) return;
-
   const grafikLabel = document.getElementById(labelGrafik);
   grafikLabel.textContent = `Grafik ${jenisList.map(capitalize).join(" & ")}`;
 
   const ctx = parentEl.getContext("2d");
-
-  // Hapus chart lama jika ada
-  if (parentEl._chartInstance) {
-    parentEl._chartInstance.destroy();
-  }
-
-  const chart = new Chart(ctx, {
+  new Chart(ctx, {
     type: tipe,
     data: {
       labels: allTanggal,
-      datasets,
+      datasets
     },
     options: {
       responsive: true,
+      onClick: (e, elements) => {
+        if (elements.length > 0) {
+          const chart = elements[0].element.$context.chart;
+          const index = elements[0].index;
+          const labelTanggal = chart.data.labels[index];
+          const transaksiDetail = transaksi.filter(item => item.tanggal === labelTanggal);
+
+          // Tampilkan ke UI
+          const detailBox = document.getElementById("grafik-detail");
+          const detailList = document.getElementById("grafik-detail-list");
+          const detailTitle = document.getElementById("grafik-detail-title");
+
+          detailTitle.textContent = `Detail Transaksi - ${labelTanggal}`;
+          detailList.innerHTML = transaksiDetail.map(item => `
+            <li>
+              <strong>${capitalize(item.jenis)}:</strong> 
+              Rp ${item.nominal.toLocaleString("id-ID")} 
+              (${item.kategori}) - ${item.catatan}
+            </li>
+          `).join("");
+          detailBox.style.display = "block";
+          if(typeof callback === "function") callback();
+        }
+      },
       plugins: {
         tooltip: {
           callbacks: {
-            label: (ctx) => `Rp ${ctx.raw.toLocaleString("id-ID")}`,
-          },
+            label: ctx => `Rp ${ctx.raw.toLocaleString('id-ID')}`
+          }
         },
         legend: {
-          display: true,
-        },
+          display: true
+        }
       },
-      scales: ["line", "bar"].includes(tipe)
-        ? {
-            y: {
-              beginAtZero: true,
-              ticks: {
-                callback: (val) => `Rp ${val.toLocaleString("id-ID")}`,
-              },
-            },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: val => `Rp ${val.toLocaleString("id-ID")}`
           }
-        : undefined,
-    },
+        }
+      }
+    }
   });
-
-  parentEl._chartInstance = chart;
 }
+
 
 function setAlert({ status = false, message = "", info = "alert-success" }) {
   const setAlert = {

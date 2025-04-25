@@ -62,3 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const isValidUser = (usr, pswd) => (usr.toLowerCase() === "admin" && pswd.toLowerCase() === "admin" ? true : false);
+
+document.querySelector(".btn-password").addEventListener("click", function () {
+	const icon = this.children[0];
+	const inPass = document.getElementById("loginForm").password;
+	if (icon.innerText === "visibility") {
+		inPass.setAttribute("type", "password");
+		icon.innerText = "visibility_off";
+	} else {
+		inPass.setAttribute("type", "text");
+		icon.innerText = "visibility";
+	}
+});
