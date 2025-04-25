@@ -1,73 +1,80 @@
-import {exportToCSV, getLocalstorage, printElement, tampilkanStatus} from "../utils.js";
+import {
+  exportToCSV,
+  getLocalstorage,
+  printElement,
+  tampilkanStatus,
+} from '../utils.js'
 
 export function renderLaporan(content) {
-  const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
+  const data = JSON.parse(localStorage.getItem('transaksiKasKu') || '[]')
 
-  let totalMasuk = 0;
-  let totalKeluar = 0;
-  const perKategori = {};
+  let totalMasuk = 0
+  let totalKeluar = 0
+  const perKategori = {}
 
-	// cek status jika ada tamilkan
-	tampilkanStatus(getLocalstorage("alert"), 700, 1500);
+  // cek status jika ada tamilkan
+  tampilkanStatus(getLocalstorage('alert'), 700, 1500)
 
   data.forEach((item) => {
-    const jumlah = Number(item.nominal);
-    if (item.jenis === "pemasukan") {
-      totalMasuk += jumlah;
+    const jumlah = Number(item.nominal)
+    if (item.jenis === 'pemasukan') {
+      totalMasuk += jumlah
       perKategori[item.kategori] = perKategori[item.kategori] || {
         masuk: 0,
         keluar: 0,
-      };
-      perKategori[item.kategori].masuk += jumlah;
+      }
+      perKategori[item.kategori].masuk += jumlah
     } else {
-      totalKeluar += jumlah;
+      totalKeluar += jumlah
       perKategori[item.kategori] = perKategori[item.kategori] || {
         masuk: 0,
         keluar: 0,
-      };
-      perKategori[item.kategori].keluar += jumlah;
+      }
+      perKategori[item.kategori].keluar += jumlah
     }
-  });
+  })
 
-  const saldo = totalMasuk - totalKeluar;
+  const saldo = totalMasuk - totalKeluar
 
   renderElContent(content, {
-		totalMasuk,
-		totalKeluar,
-		saldo,
-		perKategori,
-	});
+    totalMasuk,
+    totalKeluar,
+    saldo,
+    perKategori,
+  })
 
-  document.getElementById("btnPrintRingkasan").addEventListener("click", () => {
-    const table = document.getElementById("riwayat");
-    printElement(table, "Ringkasan Perkategori");
-  });
+  document.getElementById('btnPrintRingkasan').addEventListener('click', () => {
+    const table = document.getElementById('riwayat')
+    printElement(table, 'Ringkasan Perkategori')
+  })
 
-	// 	CSV export
-	document.getElementById("btn-export-csv").addEventListener("click", () => {
+  // 	CSV export
+  document.getElementById('btn-export-csv').addEventListener('click', () => {
+    const data = Object.entries(perKategori).map((item, index) => ({
+      no: index + 1,
+      kategori: item[0],
+      pemasukan: item[1].masuk,
+      pengeluaran: item[1].keluar,
+    }))
 
-		const data = Object.entries(perKategori).map((item, index) => ({
-			no: index + 1,
-			kategori: item[0],
-			pemasukan: item[1].masuk,
-			pengeluaran: item[1].keluar
-		}));
-
-		exportToCSV({
-			data,
-			fileName: "Ringkasan-Perkategori.csv",
-			headers: ["no", "kategori", "pemasukan", "pengeluaran"]
-		});
-		renderElLaporan(content);
-	});
+    exportToCSV({
+      data,
+      fileName: 'Ringkasan-Perkategori.csv',
+      headers: ['no', 'kategori', 'pemasukan', 'pengeluaran'],
+    })
+    renderElLaporan(content)
+  })
 }
 
 function renderElLaporan(el) {
-	renderLaporan(el);
+  renderLaporan(el)
 }
 
-function renderElContent(content, {totalMasuk, totalKeluar, saldo, perKategori}){
-	content.innerHTML = `
+function renderElContent(
+  content,
+  { totalMasuk, totalKeluar, saldo, perKategori }
+) {
+  content.innerHTML = `
 		<div class="mtxl">
 			<section class="laporan">
 				<h2>📈 Laporan Keuangan</h2>
@@ -91,19 +98,19 @@ function renderElContent(content, {totalMasuk, totalKeluar, saldo, perKategori})
 					</thead>
 					<tbody>
 						${Object.entries(perKategori)
-	.map(
-		([kat, val]) => `
+              .map(
+                ([kat, val]) => `
 							<tr>
 								<td>${kat}</td>
 								<td>Rp ${val.masuk.toLocaleString()}</td>
 								<td>Rp ${val.keluar.toLocaleString()}</td>
 							</tr>
 						`
-	)
-	.join("")}
+              )
+              .join('')}
 					</tbody>
 				</table>
 			</section>
     </div>
-  `;
+  `
 }
