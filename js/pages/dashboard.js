@@ -138,8 +138,13 @@ function exportData() {
 
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
+  const date = new Date()
+  const tanggal = date.getDate()
+  const bulan = date.getMonth()
+  const tahun = date.getFullYear()
+  const tanggalSaatIni = `${tanggal}-${bulan + 1}-${tahun}`
   a.href = url
-  a.download = 'backup_kas.json'
+  a.download = `backup_kas_${tanggalSaatIni}.json`
   a.click()
   URL.revokeObjectURL(url)
 }
