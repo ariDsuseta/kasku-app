@@ -5,6 +5,7 @@ import {renderRiwayat} from "./pages/riwayat.js";
 import {renderLaporan} from "./pages/laporan.js";
 import {logoutUser} from "./utils.js";
 import {renderSetting} from "./pages/setting.js";
+import {renderInfo} from "./pages/info.js";
 // load halaman berdasarkan nama halaman
 export function loadPage (page, content){
 	switch (page){
@@ -25,6 +26,9 @@ export function loadPage (page, content){
 			break;
 		case "setting":
 			renderSetting(content);
+			break;
+		case "info":
+			renderInfo(content);
 			break;
 		case "logout":
 			logoutUser();

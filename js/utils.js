@@ -228,7 +228,7 @@ function loadStatus({
       textContent: message,
       attributes: {
         class: "alert " + info + " show",
-        style: "z-index: 40; position:absolute; top:5rem; right:1rem;",
+        style: "z-index: 40; position:fixed; top:5rem; right:1rem;",
       },
       children: [
         createElement({

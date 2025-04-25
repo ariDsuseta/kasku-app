@@ -28,8 +28,27 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
   const totalPengeluaran = dataSum(transaksi, "pengeluaran");
   const saldo = totalPemasukan - totalPengeluaran;
 
+	const dari = document.getElementById("filter-dari").value;
+	const sampai = document.getElementById("filter-sampai").value;
+	const kategori = document.getElementById("filter-kategori").value;
+	let hasilFilter = transaksi;
+	const rowsPerPage = 5;
+
+	if (dari) {
+		hasilFilter = hasilFilter.filter(tx => new Date(tx.tanggal) >= new Date(dari));
+	}
+
+	if (sampai) {
+		hasilFilter = hasilFilter.filter(tx => new Date(tx.tanggal) <= new Date(sampai));
+	}
+
+	if (kategori) {
+		hasilFilter = hasilFilter.filter(tx => tx.kategori === kategori);
+	}
+
 	const statusAlert = getLocalstorage("alert");
-	tampilkanStatus(statusAlert);
+	tampilkanStatus(statusAlert, 700, 1500);
+
   document.getElementById(
     "total-pemasukan"
   ).innerText = `Rp ${totalPemasukan.toLocaleString()}`;
@@ -37,10 +56,11 @@ window.tampilkanDaftarTransaksi = (page = 1) => {
     "total-pengeluaran"
   ).innerText = `Rp ${totalPengeluaran.toLocaleString()}`;
   document.getElementById("saldo").innerText = `Rp ${saldo.toLocaleString()}`;
+	if (hasilFilter.length <= rowsPerPage) document.getElementById("pagination").style.display = "none";
 
   paginate({
-    data: transaksi,
-    rowsPerPage: 5,
+    data: hasilFilter,
+    rowsPerPage,
     currentPage: page,
     maxButton: 5,
     renderRows: (data, startIndex) =>
@@ -197,32 +217,83 @@ function setupTransaksiPage() {
   const elOptionKategori = document.getElementById("kategori");
   const getDataOptionKategori = getLocalstorage("data-kategori");
 
-  // data kategori default
-  const elOption = document.createElement("option");
-  elOption.disabled = true;
-  elOption.setAttribute("selected", "");
-  elOption.setAttribute("value", "");
-  elOption.textContent = "Pilih Kategori";
-  elOptionKategori.appendChild(elOption);
+
+	const optionKat = createElement({
+		tag:"option",
+		attributes: {
+			disabled: true,
+			selected: "",
+			value: "",
+		},
+		textContent: "Pilih Kategori"
+	});
+	elOptionKategori.appendChild(optionKat);
 
   getDataOptionKategori && getDataOptionKategori.forEach((data) => {
-    const elOption = document.createElement("option");
-    elOption.value = data.nama;
-    elOption.textContent = data.nama;
+		const elOption = createElement({
+			tag:"option",
+			attributes: {
+				value: data.nama,
+			},
+			textContent: data.nama
+		});
     elOptionKategori.appendChild(elOption);
+		document.getElementById("filter-kategori").appendChild(createElement({
+			tag:"option",
+			attributes: {
+				value: data.nama,
+			},
+			textContent: data.nama
+		}));
   });
 
-	if (transaksi.length === 0){
-		setAlert({
-			status: true,
-			message: "Data Masih Kosong",
-			info: "alert-info",
-		});
-	}
+	// if (transaksi.length === 0){
+	// 	setAlert({
+	// 		status: true,
+	// 		message: "Data Masih Kosong",
+	// 		info: "alert-info",
+	// 	});
+	// }
 
 	formEl.addEventListener("submit", function (e) {
 		addDataForm(this, e);
 	});
+	document.getElementById("form-filter").addEventListener("submit", (e) => {
+		e.preventDefault();
+		// set status
+		const dari = document.getElementById("filter-dari");
+		const sampai = document.getElementById("filter-sampai");
+
+		if (!dari.value && !sampai.value) return;
+
+		setAlert({
+			status: true,
+			message: "Data telah di filter",
+			info: "alert-success"
+		});
+		tampilkanDaftarTransaksi(pageIndex());
+	});
+
+	document.querySelector(".btn-reset").addEventListener("click", () => {
+		const dari = document.getElementById("filter-dari");
+		const sampai = document.getElementById("filter-sampai");
+		const kategori = document.getElementById("filter-kategori");
+
+		if(!dari.value && !sampai.value) return;
+
+		setAlert({
+			status: true,
+			message: "Filter data telah di reset",
+			info: "alert-success"
+		});
+
+		dari.value = "";
+		sampai.value = "";
+		kategori.value = "";
+		document.getElementById("pagination").style.display="block";
+		tampilkanDaftarTransaksi(pageIndex());
+	});
+
 	tampilkanDaftarTransaksi(pageIndex());
 }
 
