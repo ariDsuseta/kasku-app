@@ -16,9 +16,12 @@ const setupRiwayatPage = () => {
   const dataKategori = getLocalstorage(kategoriKey) || [];
   const tableBody = document.getElementById("riwayat-body");
   const paginationContainer = document.querySelector("#pagination");
+	const rowsPerPage = 12;
+	if ( dataKategori.length <= rowsPerPage) document.getElementById("pagination").style.display = "none";
+	// console.log(dataKategori);
   paginate({
     data: dataKategori,
-    rowsPerPage: 12,
+    rowsPerPage,
     currentPage: 1,
     maxButton: 5,
     renderRows: (data, startIndex) =>
@@ -26,7 +29,7 @@ const setupRiwayatPage = () => {
         .map(
           (item, i) => `
 					<tr class="no-wrap ${item.jenis === "pemasukan" ? "bg-success" : ""}">
-						<td>${startIndex + i + 1}</td>
+						<td style="text-align: center!important;">${startIndex + i + 1}</td>
 						<td>${item.tanggal}</td>
 						<td>${item.kategori}</td>
 						<td>Rp ${item.nominal.toLocaleString("id-ID")}</td>

@@ -1,0 +1,85 @@
+<div class="mtxl">
+  <section class="fitur-section">
+    <h1>📌 Aplikasi Manajemen Keuangan "KasKu" – Fitur Lengkap</h1>
+
+    <h2>1. Autentikasi Lokal (Login Simulasi)</h2>
+    <ul>
+      <li>Sistem login sederhana berbasis <code>localStorage</code>.</li>
+      <li>Menyimpan sesi pengguna secara lokal di browser.</li>
+      <li>Tidak memerlukan database eksternal.</li>
+    </ul>
+
+    <h2>2. Dashboard Ringkasan</h2>
+    <ul>
+      <li>Menampilkan total pemasukan, pengeluaran, dan saldo akhir.</li>
+      <li>Dilengkapi grafik interaktif menggunakan <strong>Chart.js</strong>:
+        <ul>
+          <li>📈 Line Chart</li>
+          <li>Dukungan multi-line (pemasukan & pengeluaran)</li>
+          <li>Mendukung jenis grafik lain seperti <code>bar</code>, dll</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>3. Formulir Input Transaksi</h2>
+    <ul>
+      <li>Input: tanggal, nominal, jenis, kategori, catatan.</li>
+      <li>Validasi input wajib & nominal positif.</li>
+      <li>Fitur edit & batal edit.</li>
+    </ul>
+
+    <h2>4. Daftar Transaksi</h2>
+    <ul>
+      <li>Tabel interaktif dengan pagination.</li>
+      <li>Fitur edit dan hapus transaksi.</li>
+      <li>Kolom: Nomor, Kategori, Jenis, Nominal, Tanggal, Catatan.</li>
+    </ul>
+
+    <h2>5. Kategori Transaksi</h2>
+    <ul>
+      <li>Dikelola lewat <code>localStorage</code>.</li>
+      <li>Ditampilkan dalam dropdown input transaksi.</li>
+      <li>Dimuat otomatis saat halaman dibuka.</li>
+    </ul>
+
+    <h2>6. Riwayat Transaksi</h2>
+    <ul>
+      <li>Halaman khusus semua transaksi lengkap.</li>
+      <li>Fitur tambahan:
+        <ul>
+          <li>🖨️ Print seluruh transaksi</li>
+          <li>📤 Export CSV (semua, pemasukan, pengeluaran)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>7. Fungsi Modular & Reusable</h2>
+    <ul>
+      <li><code>renderGrafik()</code> mendukung multi-line & multi-tipe grafik.</li>
+      <li><code>exportToCSV()</code> fleksibel untuk berbagai data.</li>
+      <li><code>printTabel()</code> bisa dipakai untuk semua jenis tabel.</li>
+    </ul>
+
+    <h2>8. Tampilan Modern & Responsif</h2>
+    <ul>
+      <li>Desain bersih dan ringan untuk semua perangkat.</li>
+      <li>Mendukung pengembangan dark mode di tahap berikutnya.</li>
+    </ul>
+
+    <h2>🔧 Teknologi yang Digunakan</h2>
+    <ul>
+      <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+      <li><strong>Penyimpanan:</strong> localStorage</li>
+      <li><strong>Grafik:</strong> Chart.js</li>
+      <li><strong>Utility:</strong> Native Print, Export CSV</li>
+    </ul>
+
+    <h2>🚀 Pengembangan Selanjutnya (Opsional)</h2>
+    <ul>
+      <li>📅 Filter berdasarkan tanggal & kategori ✅</li>
+      <li>📥 Export ke Excel / PDF</li>
+      <li>📱 Versi PWA (offline & installable)</li>
+      <li>🔒 Proteksi data dengan PIN/password</li>
+    </ul>
+  </section>
+</div>

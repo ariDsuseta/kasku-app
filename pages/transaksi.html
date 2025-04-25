@@ -20,8 +20,29 @@
     <p>💵 Saldo: <span id="saldo">0</span></p>
   </div>
 
-  <h3>📋 Daftar Transaksi</h3>
-<!--  <ul id="daftar-transaksi" class="daftar-transaksi"></ul>-->
+  <h3 class="mb">📋 Daftar Transaksi</h3>
+
+    <form id="form-filter">
+      <div class="flex gap-1:gap item-center:stretch columns:mobile">
+        <label>
+          Dari:
+          <input type="date" id="filter-dari">
+        </label>
+        <label>
+          Sampai:
+          <input type="date" id="filter-sampai">
+        </label>
+        <label>
+          Kategori:
+          <select id="filter-kategori">
+            <option value="">Semua Kategori</option>
+          </select>
+        </label>
+        <button type="submit" class="btn-filter">Terapkan Filter</button>
+        <button type="button" class="btn-reset">Reset</button>
+      </div>
+    </form>
+
   <div id="transaksi-table">
     <table>
       <thead>

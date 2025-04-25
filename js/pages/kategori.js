@@ -65,6 +65,14 @@ function addData(form, event) {
 function setupKategoriPage() {
   const formEl = document.getElementById("form-kategori");
 
+	document.addEventListener("keydown", (event) => {
+		const key = event.key;
+		const ctrl = event.ctrlKey;
+		if(ctrl && key === 'k'){
+			document.getElementById("form-kategori").nama.focus();
+		}
+	});
+
   if (dataKategori !== 0) {
     tampilkanDaftarKategori();
     formEl.addEventListener("submit", function (e) {
