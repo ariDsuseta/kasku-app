@@ -1081,7 +1081,7 @@ body.dark .fitur-section code {
 }
 #form-kategori .input-shortchut {
   position: relative;
-  flex: 1;
+  flex: 5;
 }
 #form-kategori .input-shortchut::after {
   content: 'CTRL+K';

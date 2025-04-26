@@ -4,27 +4,27 @@ import {
   paginate,
   printElement,
   tampilkanStatus,
-} from '../utils.js'
+} from "../utils.js";
 
 export function renderRiwayat(content) {
-  fetch('pages/riwayat.html')
+  fetch("pages/riwayat.html")
     .then((res) => res.text())
     .then((html) => {
-      content.innerHTML = html
-      setupRiwayatPage()
-      renderPrint()
-    })
+      content.innerHTML = html;
+      setupRiwayatPage();
+      renderPrint();
+    });
 }
 
-const kategoriKey = 'transaksiKasKu'
+const kategoriKey = "transaksiKasKu";
 
 const setupRiwayatPage = () => {
-  const dataKategori = getLocalstorage(kategoriKey) || []
-  const tableBody = document.getElementById('riwayat-body')
-  const paginationContainer = document.querySelector('#pagination')
-  const rowsPerPage = 12
+  const dataKategori = getLocalstorage(kategoriKey) || [];
+  const tableBody = document.getElementById("riwayat-body");
+  const paginationContainer = document.querySelector("#pagination");
+  const rowsPerPage = 12;
   if (dataKategori.length <= rowsPerPage)
-    document.getElementById('pagination').style.display = 'none'
+    document.getElementById("pagination").style.display = "none";
   // console.log(dataKategori);
   paginate({
     data: dataKategori,
@@ -35,62 +35,62 @@ const setupRiwayatPage = () => {
       data
         .map(
           (item, i) => `
-					<tr class="no-wrap ${item.jenis === 'pemasukan' ? 'bg-success' : ''}">
+					<tr class="no-wrap ${item.jenis === "pemasukan" ? "bg-success" : ""}">
 						<td style="text-align: center!important;">${startIndex + i + 1}</td>
 						<td>${item.tanggal}</td>
 						<td>${item.kategori}</td>
-						<td>Rp ${item.nominal.toLocaleString('id-ID')}</td>
+						<td>Rp ${item.nominal.toLocaleString("id-ID")}</td>
 						<td>${item.jenis}</td>
 						<td>${item.catatan}</td>
 					</tr>
-				`
+				`,
         )
-        .join(''),
+        .join(""),
     renderContainer: tableBody,
     paginationContainer,
-  })
+  });
 
   // 	load status
-  tampilkanStatus(getLocalstorage('alert'), 700, 1500)
-}
+  tampilkanStatus(getLocalstorage("alert"), 700, 1500);
+};
 
 function renderPrint() {
-  document.getElementById('btnPrintRiwayat').addEventListener('click', () => {
-    const html = getAllTransaksiHTML()
-    const tempDiv = document.createElement('div')
-    tempDiv.innerHTML = html
+  document.getElementById("btnPrintRiwayat").addEventListener("click", () => {
+    const html = getAllTransaksiHTML();
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
 
     printElement(
       tempDiv,
-      'Riwayat Transaksi',
-      'td:last-child, th:last-child { display: none; }'
-    )
-  })
+      "Riwayat Transaksi",
+      "td:last-child, th:last-child { display: none; }",
+    );
+  });
   // 	CSV export
   document
-    .getElementById('btn-export-csv')
-    .addEventListener('click', () => handleExportCSV())
+    .getElementById("btn-export-csv")
+    .addEventListener("click", () => handleExportCSV());
 }
 
 function handleExportCSV() {
-  const filter = document.getElementById('filter-export').value
-  const data = getLocalstorage(kategoriKey) || []
-  let dataExport = data
+  const filter = document.getElementById("filter-export").value;
+  const data = getLocalstorage(kategoriKey) || [];
+  let dataExport = data;
 
-  if (filter !== 'semua')
-    dataExport = data.filter((item) => item.jenis === filter)
+  if (filter !== "semua")
+    dataExport = data.filter((item) => item.jenis === filter);
 
   exportToCSV({
     data: dataExport,
     fileName: `riwayat-${filter}.csv`,
-    headers: ['id', 'tanggal', 'kategori', 'nominal', 'jenis', 'catatan'],
-  })
-  setupRiwayatPage()
+    headers: ["id", "tanggal", "kategori", "nominal", "jenis", "catatan"],
+  });
+  setupRiwayatPage();
 }
 
-function getAllTransaksiHTML(storageKey = 'transaksiKasKu') {
-  const transaksi = getLocalstorage(storageKey) || []
-  if (transaksi.length === 0) return '<p>Tidak ada data transaksi.</p>'
+function getAllTransaksiHTML(storageKey = "transaksiKasKu") {
+  const transaksi = getLocalstorage(storageKey) || [];
+  if (transaksi.length === 0) return "<p>Tidak ada data transaksi.</p>";
 
   const rows = transaksi
     .map(
@@ -98,16 +98,16 @@ function getAllTransaksiHTML(storageKey = 'transaksiKasKu') {
 		<tr>
 			<td style="text-align: center;">${i + 1}</td>
 			<td>${item.kategori}</td>
-			<td style="color:${item.jenis === 'pemasukan' ? '#28a745' : '#dc3545'}">${
+			<td style="color:${item.jenis === "pemasukan" ? "#28a745" : "#dc3545"}">${
         item.jenis
       }</td>
-			<td>Rp ${item.nominal.toLocaleString('id-ID')}</td>
+			<td>Rp ${item.nominal.toLocaleString("id-ID")}</td>
 			<td>${item.tanggal}</td>
 			<td>${item.catatan}</td>
 		</tr>
-	`
+	`,
     )
-    .join('')
+    .join("");
 
   return `
 		<table border="1" cellspacing="0" cellpadding="6" style="width:100%; border-collapse: collapse;">
@@ -123,5 +123,5 @@ function getAllTransaksiHTML(storageKey = 'transaksiKasKu') {
 			</thead>
 			<tbody>${rows}</tbody>
 		</table>
-	`
+	`;
 }
