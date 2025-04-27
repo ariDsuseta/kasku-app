@@ -472,8 +472,8 @@ function tampilkanStatus(dataStatus, durationIn = 500, durationOut = 1000) {
       setTimeout(() => {
         alertEl.classList.add("hide");
         setTimeout(() => {
-          alertEl.remove();
           localStorage.removeItem("alert");
+          alertEl.remove();
         }, durationIn);
       }, durationOut);
     }
