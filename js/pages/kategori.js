@@ -160,9 +160,19 @@ function setupKategoriPage() {
     tampilkanDaftarKategori();
     formEl.addEventListener("submit", function (e) {
       addData(this, e);
-      tampilkanDaftarKategori();
     });
   }
+	document.addEventListener("click", event => {
+		const targetEl = event.target;
+		const attrTarget = targetEl.getAttribute("class");
+		const elInformasi = document.querySelector(".informasi");
+
+		if(attrTarget === "kategori-info" || attrTarget === "informasi show"){
+			elInformasi.classList.add("show");
+		} else {
+			elInformasi && elInformasi.classList.remove("show");
+		}
+	});
 }
 
 function hapusData(id, conf = confirm("Yakin ingin menghapus data ini!")) {
@@ -184,10 +194,9 @@ function hapusData(id, conf = confirm("Yakin ingin menghapus data ini!")) {
 }
 
 function editData(id) {
-  if (window.innerWidth <= 375)
-    document
-      .getElementById("app-content")
-      .scrollIntoView({ behavior: "smooth", block: "start" });
+  document
+    .getElementById("app-content")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
   const dataEdit = dataKategori.find((data) => data.id === id);
   const formEl = document.getElementById("form-kategori");
   formEl.dataset.edit = id;

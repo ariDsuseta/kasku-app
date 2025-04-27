@@ -28,4 +28,70 @@
       </table>
     </div>
   </section>
+  <div class="informasi">
+    <section class="panduan-kategori">
+      <h2 class="mb">📚 Panduan Input Data Kategori</h2>
+
+      <h3 class="mb">✏️ 1. Input Multi Kategori</h3>
+      <p>
+        Anda dapat <strong>menambahkan banyak kategori sekaligus</strong> hanya dalam satu kali input.
+        Caranya, ketikkan nama kategori yang ingin ditambahkan, <strong>pisahkan dengan koma (,)</strong>.
+      </p>
+      <p><strong>Contoh Input:</strong></p>
+      <pre class="badge">Makan, Transportasi, Belanja, Hiburan</pre>
+      <p>Maka sistem akan otomatis membuat <strong>4 kategori</strong> sekaligus.</p>
+
+      <hr class="mb">
+
+      <h3 class="mb">🎨 2. Pengaturan Multi ikon</h3>
+      <p>
+        Anda dapat menambahkan banyak ikon yang bisa di hubungkan dengan kategori, Hanya dalam satu kali input. caranya, ketikan nama kategori lalu hubungkan dengan ikon menggunakan karakter <strong>( => )</strong> dan pisahkan dengan <strong>(,)</strong>untuk memperbanyak data yang diinputkan sekaligus.
+      </p>
+      <p><strong>Contoh:</strong></p>
+      <ul class="list-default mb">
+        <li><pre class="badge mbsm">Makanan => 🍔, Minuman => 🍷, Barang => 📦</pre></li>
+        <li><pre class="badge">Makanan => 🍔</pre></li>
+      </ul>
+      <p>Jika ingin menambah beberapa data lakukan dengan contoh yang atas.</p>
+      <p>Jika ingin menambah satu data lakukan dengan contoh yang di bawah.</p>
+
+      <hr class="mb">
+
+      <h3 class="mb">🔄 3. Update Data Kategori</h3>
+      <p>
+        Jika Anda menginput kategori <strong>dengan nama yang sudah ada sebelumnya</strong>,
+        sistem akan <strong>memperbarui data kategori tersebut</strong> (menggunakan ID yang sama) tanpa membuat duplikat baru.
+      </p>
+
+      <hr class="mb">
+
+      <h3 class="mb">✅ 4. Validasi Input</h3>
+      <p>
+        Sistem akan otomatis <strong>mengabaikan</strong> nama kategori kosong atau hanya spasi.
+        Input kategori akan dianggap sah hanya jika nama tidak kosong.
+      </p>
+
+      <hr class="mb">
+
+      <h3 class="mb">🛠️ 5. Fitur-Fitur di Halaman Kategori</h3>
+      <ul class="list-default">
+        <li>Tambah kategori baru (satu atau banyak sekaligus)</li>
+        <li>Edit kategori (nama, ikon, dan warna)</li>
+        <li>Hapus kategori yang tidak diperlukan</li>
+        <li>Ikon dan warna kustom untuk mempercantik tampilan daftar kategori</li>
+        <li>Simpan otomatis ke LocalStorage (data tetap aman meskipun browser ditutup)</li>
+      </ul>
+      <hr class="mb">
+      <h3 class="mb">⚠️ 6. Peringatan</h3>
+      <p><strong>Jika Anda mengedit nama kategori, pastikan juga memperbarui data transaksi yang terkait. Misalnya:</strong>
+      <pre class="badge mb">👕 Pakaian</pre>
+      diubah menjadi
+      <pre class="badge mb">👕 Pakaians</pre>
+      maka data transaksi lama dengan nama "Pakaian" tidak akan sinkron dengan ikon baru, karena keduanya dianggap berbeda.</p>
+      <p><strong>Akibatnya, ikon pada transaksi tersebut bisa hilang.</strong> Pastikan nama kategori dan transaksi selalu konsisten.</p>
+      <pre class="badge mb">Cobalah jika masih penasaran 😎😎😎</pre>
+
+    </section>
+
+  </div>
 </div>
