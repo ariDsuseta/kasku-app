@@ -442,25 +442,20 @@ function exportToCSV({ data = [], fileName = "data.csv", headers = [] }) {
 }
 
 // menampilkan alert
-function tampilkanStatus(dataStatus, durationIn = 500, durationOut = 1000) {
+function tampilkanStatus(dataStatus, durationOut = 1000) {
   if (dataStatus) {
     // 	tampilkan alert jika status bernilai true
-    if (dataStatus.status) {
-      loadStatus({
-        status: true,
-        message: dataStatus.message,
-        info: dataStatus.info,
-      });
-      const alertEl = document.querySelector(".alert");
-      setTimeout(() => {
-        alertEl.classList.add("hide");
-        setTimeout(() => {
-          localStorage.removeItem("alert");
-          alertEl.remove();
-        }, durationIn);
-      }, durationOut);
-    }
-  }
+		loadStatus({
+			status: true,
+			message: dataStatus.message,
+			info: dataStatus.info,
+			time: durationOut
+		});
+		setTimeout(() => {
+			const alertEl = document.querySelector(".alert .closebtn");
+			alertEl.click();
+		}, durationOut * 2);
+	}
 }
 
 export {

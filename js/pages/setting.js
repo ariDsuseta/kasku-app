@@ -6,7 +6,7 @@ function renderSetting(content){
 		content.innerHTML = html;
 		settingHandler.init();
 		if (getLocalstorage("alert")){
-			settingHandler.status(true);
+			settingHandler.status();
 		}
 	});
 }
@@ -15,12 +15,11 @@ class SettingHandler {
 	constructor() {
 		this.transaksiKey = 'transaksiKasKu';
 		this.kategoriKey = 'data-kategori';
-		this.statusAlert = getLocalstorage("alert");
 		this.init();
 	}
 
-	status(bool, time){
-		if (bool) tampilkanStatus(this.statusAlert, time? time/2 : 700, time ? time : 1500);
+	status(){
+		tampilkanStatus(getLocalstorage("alert"), 500);
 	}
 
 	// Toggle Dark Mode
@@ -32,13 +31,24 @@ class SettingHandler {
 
 	// Backup data ke JSON
 	backupDataJSON() {
+		if (!getLocalstorage(this.kategoriKey) && !getLocalstorage(this.transaksiKey)){
+			setAlert({
+				status: true,
+				message: "Data Masih Kosong!, Harap Masukan data terlebih dahulu",
+				info: "alert-info",
+			});
+
+			this.status();
+			return;
+		}
+
 		setAlert({
 			status: true,
 			message: "Data Sedang di Proses",
 			info: "alert-info",
 		});
 
-		this.status(true);
+		this.status();
 
 		const data = {
 			transaksi: getLocalstorage(this.transaksiKey) || [],
@@ -81,7 +91,7 @@ class SettingHandler {
 						message: "⚠️ File tidak valid! (Struktur salah)",
 						info: "alert-warning",
 					});
-					this.status(true);
+					this.status();
 				}
 			} catch (error) {
 				setAlert({
@@ -90,7 +100,7 @@ class SettingHandler {
 					info: "alert-error",
 				});
 
-				this.status(true);
+				this.status();
 			}
 		};
 		reader.readAsText(file);
@@ -106,7 +116,7 @@ class SettingHandler {
 				message: "❌ Tidak ada data untuk di expor!",
 				info: "alert-error",
 			});
-			this.status(true);
+			this.status();
 			return;
 		}
 

@@ -14,13 +14,13 @@ export function renderDashboard(content) {
       content.innerHTML = html;
       setupDashboard();
 			if (getLocalstorage("alert")){
-				status(true);
+				status();
 			}
     });
 }
 
-function status(bool, time) {
-	if (bool) tampilkanStatus(getLocalstorage("alert"), time? time/2 : 700, time ? time : 1500);
+function status() {
+	tampilkanStatus(getLocalstorage("alert"), 700);
 }
 
 function setupDashboard() {
@@ -98,16 +98,16 @@ function setupDashboard() {
 
   // render chart bar
 
-  document.getElementById("saldo").textContent = `Rp ${escapeHTML(
+  document.getElementById("saldo").textContent = saldo > 0 ? `Rp ${escapeHTML(
     saldo.toLocaleString(),
-  )}`;
-  document.getElementById("pemasukan").textContent = `Rp ${escapeHTML(
+  )}` : "";
+  document.getElementById("pemasukan").textContent = pemasukan > 0 ? `Rp ${escapeHTML(
     pemasukan.toLocaleString(),
-  )}`;
-  document.getElementById("pengeluaran").textContent = `Rp ${escapeHTML(
+  )}` : "";
+  document.getElementById("pengeluaran").textContent = pengeluaran > 0 ? `Rp ${escapeHTML(
     pengeluaran.toLocaleString(),
-  )}`;
-  document.getElementById("jumlah-transaksi").textContent = data.length;
+  )}` : "";
+  document.getElementById("jumlah-transaksi").textContent = data.length > 0 ? data.length : "";
 
   document.querySelector(".import-data").addEventListener("change", importData);
   document.querySelector(".btn-export").addEventListener("click", exportData);
