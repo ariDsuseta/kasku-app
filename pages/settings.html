@@ -1,20 +1,52 @@
-<div class="mtxl">
-  <h2 class="mb">⚙️ Settings</h2>
-  <div class="flex flex-wrap gap-1">
-    <div class="card mb-0" style="flex:1 1 500px;">
-      <h4 class="mb">🏠 Dashboard</h4>
-      <div class="setting-dashboard">Maih dalam pengembangan</div>
-    </div>
-    <div class="flex gap-1 columns" style="flex:1 1 500px;">
-      <div class="card mb-0">
-        <h4 class="mb">💰 Transaksi</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam beatae ducimus eius facere molestiae, natus qui quisquam ratione similique unde.</p>
+<div class="mtxl no-copy">
+  <section id="settings">
+    <h2 class="mb">⚙️ Pengaturan Aplikasi</h2>
+
+    <!-- Tema -->
+    <details class="setting-section">
+      <summary>🎨 Tema Aplikasi</summary>
+      <div class="setting-content">
+        <button id="toggle-darkmode">Toggle Dark Mode</button>
       </div>
-      <div class="card mb-0">
-        <h4 class="mb">📋 Riwayat & 📈 Laporan</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam beatae ducimus eius facere molestiae, natus qui quisquam ratione similique unde.</p>
+    </details>
+
+    <!-- Backup dan Restore -->
+    <details class="setting-section">
+      <summary>💾 Backup & Restore Data</summary>
+      <div class="setting-content">
+        <button id="backup-json">Backup Data (JSON)</button>
+        <button id="restore-json">Restore Data (JSON)</button>
       </div>
-    </div>
-  </div>
-  <button class="btn" style="position:fixed; bottom: 30px; right: 30px;">💾 Simpan</button>
+    </details>
+
+    <!-- Export Data -->
+    <details class="setting-section">
+      <summary>📤 Export Data</summary>
+      <div class="setting-content">
+        <button id="export-csv">Export ke CSV</button>
+        <!-- Bisa tambah Export PDF nanti -->
+      </div>
+    </details>
+
+    <!-- Reset Data -->
+    <details class="setting-section">
+      <summary>🗑️ Reset Data</summary>
+      <div class="setting-content">
+        <button id="reset-all-data" class="danger">Reset Semua Data</button>
+        <p class="warning-text">⚠️ Peringatan: Reset akan menghapus semua data tanpa bisa dikembalikan!</p>
+      </div>
+    </details>
+
+    <!-- Opsi Lanjutan (Nanti kalau mau) -->
+    <details class="setting-section">
+      <summary>⚙️ Pengaturan Lanjutan (Opsional)</summary>
+      <div class="setting-content">
+        <ul>
+          <li>Sinkronisasi ke Cloud (Coming Soon)</li>
+          <li>Pengaturan Bahasa (Coming Soon)</li>
+          <li>Keamanan Aplikasi (Coming Soon)</li>
+        </ul>
+      </div>
+    </details>
+  </section>
 </div>

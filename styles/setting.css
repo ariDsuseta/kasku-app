@@ -1,0 +1,51 @@
+.setting-section {
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.setting-content {
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.danger {
+	background-color: #dc3545;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	cursor: pointer;
+}
+
+.warning-text {
+	color: #dc3545;
+	margin-top: 10px;
+	font-size: 0.9em;
+}
+
+#settings button {
+	padding: .5rem 1rem;
+	cursor: pointer;
+	border: 1px solid;
+}
+
+body.dark #settings button:not(#reset-all-data){
+	background-color: var(--bg-card-dark);
+	border: 1px solid var(--border-color);
+	color: var(--light-color);
+}
+
+ul {
+	padding-left: 40px;
+}
+.sidebar ul{padding: 0}
+
+.no-copy {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Standar */
+}

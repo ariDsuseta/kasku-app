@@ -1,10 +1,11 @@
 import {
-  escapeHTML,
-  getLocalstorage,
-  validateDataFormat,
-  renderGrafik,
-  saveLocalStorage,
+	escapeHTML,
+	getLocalstorage,
+	validateDataFormat,
+	renderGrafik,
+	saveLocalStorage, setAlert, tampilkanStatus,
 } from "../utils.js";
+
 
 export function renderDashboard(content) {
   fetch("pages/dashboard.html")
@@ -12,7 +13,14 @@ export function renderDashboard(content) {
     .then((html) => {
       content.innerHTML = html;
       setupDashboard();
+			if (getLocalstorage("alert")){
+				status(true);
+			}
     });
+}
+
+function status(bool, time) {
+	if (bool) tampilkanStatus(getLocalstorage("alert"), time? time/2 : 700, time ? time : 1500);
 }
 
 function setupDashboard() {
@@ -136,6 +144,16 @@ function exportData() {
     kategori: JSON.parse(localStorage.getItem("data-kategori") || "[]"),
   };
 
+	if(data.transaksi.length === 0 && data.kategori.length === 0){
+		setAlert({
+			status: true,
+			message: "❌ Data Masih kosong!",
+			info: "alert-info"
+		});
+		status(true);
+		return;
+	}
+
   const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: "application/json",
   });
@@ -157,7 +175,15 @@ function importData() {
   const input = document.getElementById("import-file");
   const file = input.files[0];
 
-  if (!file) return alert("Pilih file terlebih dahulu!");
+  if (!file) {
+		setAlert({
+			status: true,
+			message: "⚠️ Pilih File terlebih dahulu!",
+			alert: "alert-warning"
+		});
+		status(true);
+		return;
+	}
   const reader = new FileReader();
 
   reader.onload = (e) => {
@@ -170,7 +196,11 @@ function importData() {
       localStorage.setItem("data-kategori", JSON.stringify(result.kategori));
       localStorage.setItem("transaksiKasKu", JSON.stringify(result.transaksi));
 
-      alert("Import berhasil!");
+			setAlert({
+				status: true,
+				message: "✅ Data berhasil di Import!",
+			});
+
       location.reload(); // refresh halaman agar data tampil
     } catch (err) {
       alert("Gagal import: " + err.message);

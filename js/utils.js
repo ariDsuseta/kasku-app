@@ -67,23 +67,6 @@ const getLocalstorage = (key) => {
     return dataVal;
   }
 };
-// mouse follow
-function elFollowMe(followerEl, event, offsetX, offsetY) {
-  document.addEventListener(event, (e) => {
-    if (followerEl.classList.value.split(" ")[1] !== undefined) {
-      offsetX =
-        e.clientX >= window.innerWidth - followerEl.offsetWidth
-          ? followerEl.offsetWidth
-          : 0;
-      offsetY =
-        e.clientY >= window.innerHeight - followerEl.offsetHeight
-          ? -followerEl.offsetHeight
-          : 15;
-      followerEl.style.left = e.clientX - offsetX + "px";
-      followerEl.style.top = e.clientY + offsetY + "px";
-    }
-  });
-}
 
 // paginasi 2
 function paginate({
@@ -487,7 +470,6 @@ export {
   checkLogin,
   saveLocalStorage,
   getLocalstorage,
-  elFollowMe,
   paginate,
   dataSum,
   createElement,
