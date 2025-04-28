@@ -1,9 +1,10 @@
 import {
-  exportToCSV,
-  getLocalstorage,
-  paginate,
-  printElement,
-  tampilkanStatus,
+	createElement, escapeHTML,
+	exportToCSV,
+	getLocalstorage,
+	paginate,
+	printElement,
+	tampilkanStatus,
 } from "../utils.js";
 
 export function renderRiwayat(content) {
@@ -55,21 +56,77 @@ const setupRiwayatPage = () => {
 };
 
 function renderPrint() {
-  document.getElementById("btnPrintRiwayat").addEventListener("click", () => {
-    const html = getAllTransaksiHTML();
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
 
-    printElement(
-      tempDiv,
-      "Riwayat Transaksi",
-      "td:last-child, th:last-child { display: none; }",
-    );
+  document.getElementById("btnPrintRiwayat").addEventListener("click", () => {
+		const formElTitle = document.querySelector("form#judul-transaksi[data-content-title='judul-transaksi']");
+		if (formElTitle) return;
+
+		const formTitle = createElement({
+			tag:"form",
+			className: "form-title absolute flex gap-1 item-center",
+			id:"judul-transaksi",
+			attributes:{
+				style: "top:20px; right:10px; min-width:300px; z-index:60;",
+				'data-content-title': "judul-transaksi"
+			},
+			children:[
+				createElement({
+					tag: "input",
+					className: "input-title",
+					attributes:{
+						style: "margin-bottom:0;",
+						name: "title",
+						placeholder: "Judul transaksi"
+					}
+				}),
+				createElement({
+					tag: "button",
+					className: "print",
+					textContent: "Print",
+					attributes:{
+						type: "submit",
+						style: "padding: .5rem 1.2rem; background-color:var(--success-color)"
+					}
+				})
+			],
+			eventListeners: {
+				submit: (e) => {
+					e.preventDefault();
+					titleInput(formTitle);
+				}
+			}
+		});
+		document.body.appendChild(formTitle);
+
+		document.addEventListener("keydown", (event) => {
+			if(event.key === "Escape"){
+				formTitle.remove();
+			}
+		});
+		document.onclick = (event) => {
+			const titleClassName = event.target.className;
+			const excludeClass = ["print", "form-title", "input-title"];
+			const shouldProcess = !excludeClass.includes(titleClassName);
+			if(shouldProcess) formTitle.remove();
+		}
   });
   // 	CSV export
   document
     .getElementById("btn-export-csv")
     .addEventListener("click", () => handleExportCSV());
+}
+
+function titleInput(formInput) {
+	const html = getAllTransaksiHTML();
+	const tempDiv = document.createElement("div");
+	tempDiv.innerHTML = html;
+
+	printElement(
+		tempDiv,
+		escapeHTML(formInput.title.value),
+		"td:last-child, th:last-child { display: none; }",
+	);
+	formInput.remove();
 }
 
 function handleExportCSV() {

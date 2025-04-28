@@ -78,10 +78,28 @@ function renderElContent(
 		<div class="mtxl">
 			<section class="laporan">
 				<h2>📈 Laporan Keuangan</h2>
-				<div class="ringkasan">
-					<div class="card pemasukan">Pemasukan: Rp ${totalMasuk.toLocaleString()}</div>
-					<div class="card pengeluaran">Pengeluaran: Rp ${totalKeluar.toLocaleString()}</div>
-					<div class="card saldo">Saldo: Rp ${saldo.toLocaleString()}</div>
+				<div class="ringkasan flex flex-wrap">
+					<div class="card pemasukan">
+						<h3 class="flex gap-1 item-center content-center:mobile-start">
+							<i class="material-icons">attach_money</i>
+							<span>Pemasukan</span> 
+							${totalMasuk > 0 ? ": Rp "+totalMasuk.toLocaleString() : ""}
+						</h3>
+					</div>
+					<div class="card pengeluaran">
+						<h3 class="flex content-center:mobile-start gap-1 item-center">
+							<i class="material-icons">money_off</i>
+							<span>Pengeluaran</span> 
+							${totalKeluar > 0 ? ": Rp "+totalKeluar.toLocaleString() : ""}
+						</h3>
+					</div>
+					<div class="card saldo">
+						<h3 class="flex content-center:mobile-start gap-1 item-center">
+							<i class="material-icons">wallet</i>
+							<span>Saldo</span> 
+							${saldo > 0 ? "Rp: "+saldo.toLocaleString() : ""}
+						</h3>
+					</div>
 				</div>
         <div class="flex beetwen mb item-center">
           <h3>📑 Ringkasan per Kategori</h3>

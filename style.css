@@ -211,7 +211,8 @@ body.dark .sidebar li.active-page {
 .flex.gap-1\:gap {
   gap: 10px;
 }
-.flex.content-center {
+.flex.content-center,
+.content-center\:mobile-start{
   justify-content: center;
 }
 .flex.beetwen {
@@ -1260,4 +1261,5 @@ body.dark .informasi-aplikasi h2 {
 	  width: 300px;
 	  right: -300px;
   }
+  .content-center\:mobile-start {justify-content: left;}
 }
