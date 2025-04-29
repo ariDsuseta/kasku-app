@@ -58,7 +58,8 @@ class SettingHandler {
 		const link = document.createElement('a');
 		link.href = URL.createObjectURL(blob);
 		link.download = `backup-${new Date().toISOString()}.json`;
-		link.click();
+		setTimeout(() => link.click(),500);
+
 	}
 
 
@@ -113,7 +114,7 @@ class SettingHandler {
 		if (!transaksi.length) {
 			setAlert({
 				status: true,
-				message: "❌ Tidak ada data untuk di expor!",
+				message: "❌ Tidak ada data untuk di export!",
 				info: "alert-error",
 			});
 			this.status();
@@ -140,7 +141,7 @@ class SettingHandler {
 			localStorage.removeItem(this.kategoriKey);
 			setAlert({
 				status: true,
-				message: "✅ Data berhasil di Hapus!",
+				message: "✅ Data berhasil di reset!",
 				info: "alert-success",
 			});
 			location.reload();
