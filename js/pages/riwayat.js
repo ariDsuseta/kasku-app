@@ -3,7 +3,7 @@ import {
 	exportToCSV,
 	getLocalstorage,
 	paginate,
-	printElement,
+	printElement, setAlert,
 	tampilkanStatus,
 } from "../utils.js";
 
@@ -18,6 +18,7 @@ export function renderRiwayat(content) {
 }
 
 const kategoriKey = "transaksiKasKu";
+const dataKategoriKey = "data-kategori";
 
 const setupRiwayatPage = () => {
   const dataKategori = getLocalstorage(kategoriKey) || [];
@@ -50,16 +51,28 @@ const setupRiwayatPage = () => {
     renderContainer: tableBody,
     paginationContainer,
   });
-
-  // 	load status
-  tampilkanStatus(getLocalstorage("alert"), 700, 1500);
+	// load status
+	status(700);
 };
+
+function status(duration = 500){
+	tampilkanStatus(getLocalstorage("alert"), duration);
+}
 
 function renderPrint() {
 
   document.getElementById("btnPrintRiwayat").addEventListener("click", () => {
 		const formElTitle = document.querySelector("form#judul-transaksi[data-content-title='judul-transaksi']");
 		if (formElTitle) return;
+		if (!getLocalstorage(kategoriKey) && !getLocalstorage(dataKategoriKey)){
+			setAlert({
+				status: true,
+				message: "Data Masih Kosong!, Harap Masukan data terlebih dahulu",
+				info: "alert-info",
+			});
+			setupRiwayatPage();
+			return;
+		}
 
 		const formTitle = createElement({
 			tag:"form",
@@ -96,7 +109,9 @@ function renderPrint() {
 				}
 			}
 		});
+
 		document.body.appendChild(formTitle);
+		formTitle.title.focus();
 
 		document.addEventListener("keydown", (event) => {
 			if(event.key === "Escape"){

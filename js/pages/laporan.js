@@ -1,12 +1,13 @@
 import {
-  exportToCSV,
-  getLocalstorage,
-  printElement,
-  tampilkanStatus,
+	exportToCSV,
+	getLocalstorage,
+	printElement, setAlert,
+	tampilkanStatus,
 } from "../utils.js";
-
+const kategoriKey = "transaksiKasKu";
+const dataKategoriKey = "data-kategori";
 export function renderLaporan(content) {
-  const data = JSON.parse(localStorage.getItem("transaksiKasKu") || "[]");
+  const data = JSON.parse(localStorage.getItem(kategoriKey) || "[]");
 
   let totalMasuk = 0;
   let totalKeluar = 0;
@@ -45,7 +46,16 @@ export function renderLaporan(content) {
 
   document.getElementById("btnPrintRingkasan").addEventListener("click", () => {
     const table = document.getElementById("riwayat");
-    printElement(table, "Ringkasan Perkategori");
+    if (!getLocalstorage(kategoriKey) && !getLocalstorage(dataKategoriKey)) {
+			setAlert({
+				status: true,
+				message: "Data Masih Kosong!, Harap Masukan data terlebih dahulu",
+				info: "alert-info",
+			});
+			renderElLaporan(content);
+			return;
+		}
+		printElement(table, "Ringkasan Perkategori");
   });
 
   // 	CSV export
